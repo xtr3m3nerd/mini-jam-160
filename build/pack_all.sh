@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+cd "$(dirname "$0")"
 
 ITCH_USER="cranberryninja"
 ITCH_PAGE="dungeon-light"
@@ -22,21 +24,38 @@ linux[deploy]="${ITCH_USER}/${ITCH_PAGE}:linux"
 
 declare -A windows
 
-linux[dir]="./windows"
-linux[build]="Windows Desktop"
-linux[exe]="./build/windows/${GAMENAME}.exe"
-linux[zip]="${GAMENAME}_windows.zip"
-linux[deploy]="${ITCH_USER}/${ITCH_PAGE}:win"
+windows[dir]="./windows"
+windows[build]="Windows Desktop"
+windows[exe]="./build/windows/${GAMENAME}.exe"
+windows[zip]="${GAMENAME}_windows.zip"
+windows[deploy]="${ITCH_USER}/${ITCH_PAGE}:win"
 
 builds=(html linux windows)
 
-rm ./*.zip
+deploy=false
+
+while getopts ":D" opt;
+do
+	case $opt in
+		D)
+			deploy=true
+			;;
+		?)
+			echo "Invalid option: -$OPTARG" >&2
+			exit 1
+			;;
+	esac
+done
+
+rm -f ./*.zip
 for build_type in "${builds[@]}"
 do
-	echo "Clean directory ${build_type[dir]}"
-	mkdir -p "${build_type[dir]}"
-	rm "${build_type[dir]}/*"
-	cat << EOF > "${build_type[dir]}/.gitignore"
+	declare -n build_ref="$build_type"
+
+	echo "Clean directory ${build_ref[dir]}"
+	mkdir -p "${build_ref[dir]}"
+	rm -f "${build_ref[dir]}/*"
+	cat << EOF > "${build_ref[dir]}/.gitignore"
 # Ignore everything in this directory
 *
 # Except this file
@@ -44,14 +63,16 @@ do
 EOF
 	echo "Build"
 	cd ..
-	godot --headless --export-debug "${build_type[build]}" "${build_type[exe]}"
+	godot-engine --headless --export-debug "${build_ref[build]}" "${build_ref[exe]}"
 	cd build
 
 	echo "Zip"
-	cd "${build_type[dir]}"
-	zip -r "../${build_type[zip]}" ./* -x "./.gitignore"
+	cd "${build_ref[dir]}"
+	zip -r "../${build_ref[zip]}" ./* -x "./.gitignore"
 	cd ..
 
-	echo "Deploy"
-	butler push "${build_type[zip]}" "${build_type[deploy]}"
+	if $deploy; then
+		echo "Deploy"
+		butler push "${build_ref[zip]}" "${build_ref[deploy]}"
+	fi
 done
