@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://begbpk5w23jco"]
+[gd_scene load_steps=2 format=3 uid="uid://begbpk5w23jco"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_eugc3"]
 
 [node name="Boss" type="Node3D"]
+script = ExtResource("1_eugc3")

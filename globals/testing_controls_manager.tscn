@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwkfh6mckegj5"]
+
+[ext_resource type="Script" path="res://globals/testing_controls_manager.gd" id="1_ki2o3"]
+
+[node name="TestingControlsManager" type="Node"]
+script = ExtResource("1_ki2o3")

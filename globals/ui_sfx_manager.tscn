@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhnjlwks8cc3o"]
+
+[ext_resource type="Script" path="res://globals/ui_sfx_manager.gd" id="1_au5vp"]
+
+[node name="UiSfxManager" type="Node"]
+script = ExtResource("1_au5vp")
+
+[node name="ButtonNoises" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"

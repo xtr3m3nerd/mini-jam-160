@@ -1,0 +1,145 @@
+[gd_scene load_steps=24 format=3 uid="uid://dbi7q70ylhenu"]
+
+[ext_resource type="Script" path="res://prefabs/enemies/enemy.gd" id="1_wsobw"]
+[ext_resource type="PackedScene" uid="uid://17xgjqogeijf" path="res://assets/models/basic_demon.fbx" id="2_8d0ja"]
+[ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/health_manager.tscn" id="2_26eby"]
+[ext_resource type="Texture2D" uid="uid://doqvahoxybe1n" path="res://assets/images/shadow_clouds.png" id="2_puyms"]
+[ext_resource type="PackedScene" uid="uid://cawphrhgamkmm" path="res://prefabs/enemies/behaviors/melee_flank_behavior.tscn" id="5_jwos0"]
+[ext_resource type="PackedScene" uid="uid://dhdiuw8ths0en" path="res://prefabs/state_label.tscn" id="6_neegu"]
+[ext_resource type="PackedScene" uid="uid://f5co8frc5i74" path="res://prefabs/enemies/attacks/melee_attack_manager.tscn" id="7_1sobh"]
+[ext_resource type="Script" path="res://prefabs/enemies/CanSee.gd" id="8_4kmoy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r0tvl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xuiy"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nxllu"]
+material = SubResource("StandardMaterial3D_7xuiy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_opfv5"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfnmw"]
+material = SubResource("StandardMaterial3D_opfv5")
+size = Vector3(0.6, 0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_0pr0t"]
+_data = [Vector2(0.0305343, 0.0170732), 0.0, 0.0, 0, 0, Vector2(0.503817, 0.980976), 0.0, 0.0, 0, 0, Vector2(1, 0.0297561), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vo2om"]
+curve = SubResource("Curve_0pr0t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xdev0"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -8.57
+tangential_accel_max = 6.67
+scale_max = 4.0
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_vo2om")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1hw3"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_puyms")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_16bfa"]
+material = SubResource("StandardMaterial3D_x1hw3")
+
+[sub_resource type="Animation" id="Animation_dorfj"]
+resource_name = "idle"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yj12p"]
+_data = {
+"idle": SubResource("Animation_dorfj")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_6pu0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2qcd"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvubw"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="TestEnemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_wsobw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r0tvl")
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_negative = true
+omni_range = 10.0
+omni_attenuation = 3.03143
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_nxllu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.5)
+mesh = SubResource("BoxMesh_vfnmw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+amount = 16
+lifetime = 2.08
+explosiveness = 0.09
+randomness = 0.45
+process_material = SubResource("ParticleProcessMaterial_xdev0")
+draw_pass_1 = SubResource("QuadMesh_16bfa")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+strength = 17.65
+attenuation = 12.5534
+radius = 4.0
+
+[node name="Root Scene" parent="Graphics" instance=ExtResource("2_8d0ja")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_yj12p")
+}
+autoplay = "idle"
+
+[node name="HealthManager" parent="." instance=ExtResource("2_26eby")]
+
+[node name="MeleeFlankBehavior" parent="." node_paths=PackedStringArray("melee_attack_manager") instance=ExtResource("5_jwos0")]
+melee_attack_manager = NodePath("../MeleeAttackManager")
+
+[node name="StateLabel" parent="." instance=ExtResource("6_neegu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+visible = false
+
+[node name="MeleeAttackManager" parent="." instance=ExtResource("7_1sobh")]
+
+[node name="CanSee" type="MeshInstance3D" parent="." node_paths=PackedStringArray("behavior")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+visible = false
+mesh = SubResource("SphereMesh_6pu0l")
+script = ExtResource("8_4kmoy")
+behavior = NodePath("../MeleeFlankBehavior")
+seen_material = SubResource("StandardMaterial3D_j2qcd")
+unseen_material = SubResource("StandardMaterial3D_xvubw")
+
+[connection signal="state_changed" from="MeleeFlankBehavior" to="StateLabel" method="_on_state_changed"]
