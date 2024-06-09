@@ -5,6 +5,7 @@ class_name Weapon
 @onready var animation_player :AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bullet_emitter : BulletEmitter = $BulletEmitter
 @onready var fire_point : Node3D = $FirePoint
+@onready var ambient_sound = $AmbientSound
 
 @export var automatic = false
 
@@ -60,6 +61,11 @@ func set_active(a: bool):
 	visible = a
 	if !a:
 		animation_player.play("RESET")
+	if ambient_sound != null:
+		if a:
+			ambient_sound.play()
+		else:
+			ambient_sound.stop()
 
 func is_idle() -> bool:
 	return !animation_player.is_playing()
