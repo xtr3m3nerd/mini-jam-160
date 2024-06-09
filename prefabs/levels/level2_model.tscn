@@ -1,5 +1,94 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5pennk0dpov"]
+[gd_scene load_steps=5 format=3 uid="uid://bsjijpikj0q14"]
 
 [ext_resource type="PackedScene" uid="uid://5bxcu2taliw2" path="res://assets/models/levels/level2_v3.fbx" id="1_ityr7"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxfex"]
+sky_top_color = Color(0.507692, 0.392362, 0.598583, 1)
+sky_horizon_color = Color(0.676923, 0.640341, 0.682896, 1)
+sky_energy_multiplier = 0.1
+ground_horizon_color = Color(0.676923, 0.640341, 0.682896, 1)
+
+[sub_resource type="Sky" id="Sky_d8j0y"]
+sky_material = SubResource("ProceduralSkyMaterial_pxfex")
+
+[sub_resource type="Environment" id="Environment_qbcki"]
+background_mode = 2
+sky = SubResource("Sky_d8j0y")
+ssao_enabled = true
+sdfgi_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.381288, 0.298252, 0.338206, 1)
+fog_light_energy = 0.3
+
 [node name="Root Scene" instance=ExtResource("1_ityr7")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(0.207911, -0.847101, 0.489074, 0, 0.5, 0.866025, -0.978148, -0.180057, 0.103956, 0, 0, 0)
+light_color = Color(0.580392, 0.611765, 0.807843, 1)
+light_energy = 0.3
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_qbcki")
+
+[node name="lights" type="Node3D" parent="." index="4"]
+
+[node name="Lantern_light_1" type="OmniLight3D" parent="lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2966, -11.128, -2.29477)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_2" type="OmniLight3D" parent="lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0392, -11.128, -6.80185)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_3" type="OmniLight3D" parent="lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27056, -11.128, -11.2366)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_4" type="OmniLight3D" parent="lights" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2828, -11.128, -12.0792)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_5" type="OmniLight3D" parent="lights" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4122, -11.128, -21.5129)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_6" type="OmniLight3D" parent="lights" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84663, -11.128, -19.3101)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_7" type="OmniLight3D" parent="lights" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2015, -11.128, -11.2078)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_8" type="OmniLight3D" parent="lights" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2015, -11.128, -2.11776)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_9" type="OmniLight3D" parent="lights" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.01675, -11.128, 5.01933)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_10" type="OmniLight3D" parent="lights" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.960251, -11.128, 5.01933)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_11" type="OmniLight3D" parent="lights" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79769, -11.128, 16.4557)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
+
+[node name="Lantern_light_12" type="OmniLight3D" parent="lights" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17151, -11.128, 16.4557)
+light_color = Color(1, 0.540597, 0.135315, 1)
+light_energy = 0.669
