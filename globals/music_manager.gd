@@ -105,6 +105,7 @@ func play_intro_music():
 	cur_track.stop()
 	pre_track.stop()
 	fade_timer.stop()
+	start_music_timer.stop()
 	cur_track.stream = intro_music
 	cur_track.play()
 

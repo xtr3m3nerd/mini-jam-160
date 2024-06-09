@@ -5,15 +5,19 @@ extends Node3D
 
 var can_pickup=false
 
+func pickup():
+	queue_free()
+	return "RED_ORB"
+
 func _ready():
 	label_3d.hide()
 
-func _on_pickup_area_body_entered(body):
+func _on_body_entered(body):
 	if body == player:
 		label_3d.show()
 		can_pickup = true
 
-func _on_pickup_area_body_exited(body):
+func _on_body_exited(body):
 	if body == player:
 		label_3d.hide()
 		can_pickup = false
