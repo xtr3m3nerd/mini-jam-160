@@ -3,6 +3,9 @@ class_name Footsteps
 
 @export var footstep_streams: Array[AudioStream]
 
+@export var pitch_min = 0.88
+@export var pitch_max = 1.11
+
 var is_playing = false
 
 func play_steps():
@@ -19,6 +22,7 @@ func _on_finished():
 
 func play_step():
 	stream = footstep_streams.pick_random()
+	pitch_scale = randf_range(pitch_min, pitch_max)
 	play()
 
 func on_character_mover_moved(velocity, grounded):

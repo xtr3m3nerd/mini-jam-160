@@ -13,7 +13,7 @@ tile_1001 = ExtResource("3_jd43o")
 tile_1002 = ExtResource("4_88kma")
 tile_1003 = ExtResource("5_ne8fe")
 
-[sub_resource type="Shader" id="Shader_e5tso"]
+[sub_resource type="Shader" id="Shader_0i0h7"]
 code = "// NOTE: This UDIM Shader is automatically generated
 
 shader_type spatial;
@@ -72,7 +72,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ykdob"]
 render_priority = 0
-shader = SubResource("Shader_e5tso")
+shader = SubResource("Shader_0i0h7")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
