@@ -25,7 +25,7 @@ func _ready():
 	health_manager.damaged.connect(_spawn_hit_effect)
 	health_manager.damaged.connect(impact_sounds.play_random)
 	animation_player.animation_finished.connect(on_animation_finished)
-	character_mover.moved.connect(footsteps.on_character_mover_moved)
+	#character_mover.moved.connect(footsteps.on_character_mover_moved)
 	character_mover.moved.connect(update_animation)
 	await get_tree().create_timer(randf_range(0.0,1.0)).timeout
 	animation_player.stop()

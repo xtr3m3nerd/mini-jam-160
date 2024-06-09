@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://prefabs/footsteps.gd" id="1_m578v"]
 
 [node name="Footsteps" type="AudioStreamPlayer3D"]
+bus = &"Reverb"
 script = ExtResource("1_m578v")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
