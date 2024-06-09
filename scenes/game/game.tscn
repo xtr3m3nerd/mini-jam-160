@@ -1,36 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://q0wueqm0wixb"]
+[gd_scene load_steps=5 format=3 uid="uid://q0wueqm0wixb"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_pnvdp"]
 [ext_resource type="PackedScene" uid="uid://dcw5qf4f55kwr" path="res://scenes/game/game_manager.tscn" id="2_yj68e"]
 [ext_resource type="PackedScene" uid="uid://dnjxaxedn5ikn" path="res://prefabs/player.tscn" id="3_3nxsc"]
 [ext_resource type="AudioStream" uid="uid://cvbmpkxuraflx" path="res://assets/Audio/AMB/A_Dungeon_Ambience.wav" id="4_5gwvi"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xiksx"]
-sky_top_color = Color(0.515038, 0.0239122, 1.44392e-07, 1)
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_3dqq1"]
-sky_material = SubResource("ProceduralSkyMaterial_xiksx")
-
-[sub_resource type="Environment" id="Environment_pgctf"]
-background_energy_multiplier = 0.5
-sky = SubResource("Sky_3dqq1")
-ambient_light_energy = 0.5
-tonemap_mode = 2
-
 [node name="Game" type="Node3D"]
 script = ExtResource("1_pnvdp")
 
 [node name="GameManager" parent="." instance=ExtResource("2_yj68e")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_pgctf")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.1
-shadow_enabled = true
 
 [node name="Environment" type="Node3D" parent="."]
 

@@ -1,4 +1,37 @@
-[gd_resource type="Theme" format=3 uid="uid://b06q5f3v0pumc"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b06q5f3v0pumc"]
+
+[ext_resource type="FontFile" uid="uid://c6bjm213er1go" path="res://assets/Fonts/Peking Duck DEMO.otf" id="1_rs5t2"]
+[ext_resource type="Texture2D" uid="uid://dbyk8guy64wry" path="res://assets/images/button_notpushed.png" id="1_w2u5g"]
+[ext_resource type="Texture2D" uid="uid://ses0v0fk7s8l" path="res://assets/images/button_pushed.png" id="2_8s4cm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t75cx"]
+texture = ExtResource("1_w2u5g")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j740e"]
+texture = ExtResource("1_w2u5g")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+modulate_color = Color(0.807843, 0.709804, 0.639216, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48r6m"]
+texture = ExtResource("2_8s4cm")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
 
 [resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.368627, 0.0705882, 0.0352941, 0.666667)
+Button/colors/font_pressed_color = Color(0.368627, 0.0705882, 0.0352941, 0.666667)
 Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_rs5t2")
+Button/styles/hover = SubResource("StyleBoxTexture_t75cx")
+Button/styles/normal = SubResource("StyleBoxTexture_j740e")
+Button/styles/pressed = SubResource("StyleBoxTexture_48r6m")

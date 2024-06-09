@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dn7c143o2ay3x"]
+
+[ext_resource type="Texture2D" uid="uid://fmaea6i6uyjc" path="res://assets/textures/Mats/pavement_lambert1_BaseColor.png" id="1_f7a4b"]
+[ext_resource type="Texture2D" uid="uid://2f57dccvjwb5" path="res://assets/textures/Mats/pavement_lambert1_Height.png" id="2_gdai6"]
+[ext_resource type="Texture2D" uid="uid://dpd0fyvcb3y5e" path="res://assets/textures/Mats/pavement_lambert1_Normal.png" id="3_8lt4u"]
+[ext_resource type="Texture2D" uid="uid://cqh3cfad68y3q" path="res://assets/textures/Mats/pavement_lambert1_Roughness.png" id="4_n8uta"]
+
+[resource]
+albedo_texture = ExtResource("1_f7a4b")
+roughness_texture = ExtResource("4_n8uta")
+normal_enabled = true
+normal_texture = ExtResource("3_8lt4u")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_gdai6")
+texture_filter = 2
