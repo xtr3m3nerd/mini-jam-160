@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://djl5dsnl2hlki"]
+
+[ext_resource type="Texture2D" uid="uid://chowdd0yvbi1s" path="res://assets/textures/Mats/cellwindow_aiStandardSurface3_BaseColor.png" id="1_en047"]
+[ext_resource type="Texture2D" uid="uid://d21hmpla5b7ed" path="res://assets/textures/Mats/cellwindow_aiStandardSurface3_Height.png" id="2_jt3v6"]
+[ext_resource type="Texture2D" uid="uid://b3nwj1mlpgin2" path="res://assets/textures/Mats/cellwindow_aiStandardSurface3_Normal.png" id="3_aups2"]
+[ext_resource type="Texture2D" uid="uid://pu55hvxk564b" path="res://assets/textures/Mats/cellwindow_aiStandardSurface3_Roughness.png" id="4_x368m"]
+
+[resource]
+albedo_texture = ExtResource("1_en047")
+roughness_texture = ExtResource("4_x368m")
+normal_enabled = true
+normal_texture = ExtResource("3_aups2")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_jt3v6")
+texture_filter = 2

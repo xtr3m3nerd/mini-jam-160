@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgmaeynpqeok6"
-path.s3tc="res://.godot/imported/lantern_aiStandardSurface3_Emissive.png-68b7437dfb32df7994d12ab9add98374.s3tc.ctex"
+uid="uid://bxuhovbd4k1nf"
+path.s3tc="res://.godot/imported/menu_layout_w_camera-4c62c4a667c2ec38dd57d1c78b4287f0_pavement_lambert1_BaseColor.png-39e9566dfce15014eb8060d4b5842b98.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "23a51a81df9cd571473ec62bfaa7893f"
+}
 
 [deps]
 
-source_file="res://assets/textures/Mats/lantern_aiStandardSurface3_Emissive.png"
-dest_files=["res://.godot/imported/lantern_aiStandardSurface3_Emissive.png-68b7437dfb32df7994d12ab9add98374.s3tc.ctex"]
+source_file="res://assets/models/menu/menu_layout_w_camera-4c62c4a667c2ec38dd57d1c78b4287f0_pavement_lambert1_BaseColor.png"
+dest_files=["res://.godot/imported/menu_layout_w_camera-4c62c4a667c2ec38dd57d1c78b4287f0_pavement_lambert1_BaseColor.png-39e9566dfce15014eb8060d4b5842b98.s3tc.ctex"]
 
 [params]
 
