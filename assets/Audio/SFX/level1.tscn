@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpg8klhpegno5"]
+[gd_scene load_steps=11 format=3 uid="uid://bpg8klhpegno5"]
 
-[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_qp6pu"]
-[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="2_ilapr"]
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_q8tyk"]
+[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="2_p7wsr"]
+[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickup.tscn" id="3_ymkg4"]
+[ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/dropoff_zone.tscn" id="4_h0sg7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwrid"]
 albedo_color = Color(0.537255, 0, 0, 1)
@@ -23,7 +25,7 @@ size = Vector3(1, 2, 1)
 data = PackedVector3Array(-0.5, 1, 0.5, 0.5, 1, 0.5, -0.5, -1, 0.5, 0.5, 1, 0.5, 0.5, -1, 0.5, -0.5, -1, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, -0.5, 1, -0.5, -0.5, -1, -0.5, 0.5, -1, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, -1, 0.5, 0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, -1, -0.5, -0.5, 1, 0.5, -0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, -1, 0.5, 0.5, -1, 0.5, -0.5, -1, -0.5, 0.5, -1, 0.5, 0.5, -1, -0.5, -0.5, -1, -0.5)
 
 [node name="Level1" type="Node3D"]
-script = ExtResource("1_qp6pu")
+script = ExtResource("1_q8tyk")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_41pdm")
@@ -90,8 +92,16 @@ shape = SubResource("ConcavePolygonShape3D_lis7l")
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
-[node name="TestEnemy" parent="." instance=ExtResource("2_ilapr")]
+[node name="TestEnemy" parent="." instance=ExtResource("2_p7wsr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26033, 0, -4.42448)
+visible = false
 
-[node name="TestEnemy2" parent="." instance=ExtResource("2_ilapr")]
+[node name="TestEnemy2" parent="." instance=ExtResource("2_p7wsr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34817, 0, -2.4527)
+visible = false
+
+[node name="Pickup" parent="." instance=ExtResource("3_ymkg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02756, 0.2, 3.89875)
+
+[node name="DropoffZone" parent="." instance=ExtResource("4_h0sg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42148, 0.2, 3.76466)
