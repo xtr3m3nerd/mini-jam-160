@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dnjxaxedn5ikn"]
+[gd_scene load_steps=40 format=3 uid="uid://dnjxaxedn5ikn"]
 
 [ext_resource type="Script" path="res://prefabs/player.gd" id="1_fi8vs"]
 [ext_resource type="PackedScene" uid="uid://c45k0kryc6nl" path="res://prefabs/character_mover.tscn" id="2_gesuu"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://ce4x14y08bn1f" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_1.wav" id="18_5oq7f"]
 [ext_resource type="AudioStream" uid="uid://6kpk88il4oxd" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_2.wav" id="19_l2rlr"]
 [ext_resource type="AudioStream" uid="uid://byj081nptwxua" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_3.wav" id="20_v37tv"]
+[ext_resource type="PackedScene" uid="uid://be4sgkpxb3xpg" path="res://prefabs/player_health_bar.tscn" id="27_13lhd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3s1l1"]
 
@@ -419,5 +420,12 @@ color = Color(1, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_ycunu")
 }
+
+[node name="PlayerHealthBar" parent="UI" instance=ExtResource("27_13lhd")]
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 63.0
+offset_bottom = 59.0
+scale = Vector2(0.75, 0.75)
 
 [editable path="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms"]

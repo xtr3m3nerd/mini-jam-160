@@ -12,6 +12,7 @@ extends CharacterBody3D
 @onready var dead_sound = $DeadSound as AudioStreamPlayer
 @onready var impact_sounds = $ImpactSounds as RandomAudioStreamPlayer3D
 @onready var ui = $UI
+@onready var player_health_bar = $UI/PlayerHealthBar
 
 @export var mouse_sensitivity_h = 0.15
 @export var mouse_sensitivity_v = 0.15
@@ -39,6 +40,7 @@ func _ready():
 	health_manager.died.connect(kill)
 	health_manager.damaged.connect(hit_animation_player.play.bind("hit"))
 	health_manager.damaged.connect(impact_sounds.play_random)
+	health_manager.health_changed.connect(player_health_bar.on_health_changed)
 	character_mover.moved.connect(footsteps.on_character_mover_moved)
 	character_mover.moved.connect(weapon_manager.update_animation)
 
