@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bknfwe3g2py2l"]
+
+[ext_resource type="Texture2D" uid="uid://cbae6yubsdvr" path="res://assets/textures/Mats/lantern_aiStandardSurface3_BaseColor.png" id="1_swnfi"]
+[ext_resource type="Texture2D" uid="uid://dgmaeynpqeok6" path="res://assets/textures/Mats/lantern_aiStandardSurface3_Emissive.png" id="2_bub77"]
+
+[resource]
+albedo_texture = ExtResource("1_swnfi")
+emission_enabled = true
+emission_texture = ExtResource("2_bub77")
+texture_filter = 2

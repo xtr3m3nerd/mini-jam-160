@@ -427,6 +427,7 @@ shape = SubResource("ConcavePolygonShape3D_spgxt")
 shape = SubResource("ConcavePolygonShape3D_e8ygv")
 
 [node name="pCylinder57" parent="RootNode/level1" index="6"]
+transform = Transform3D(-0.00430827, 2.80551e-17, -0.114503, 5.2761e-19, 0.114584, 2.80551e-17, 0.114503, 5.2761e-19, -0.00430827, 0.122347, 0.0085465, 0.197057)
 surface_material_override/0 = ExtResource("4_ml3rt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1/pCylinder57" index="0"]
@@ -678,7 +679,6 @@ shape = SubResource("ConcavePolygonShape3D_0o8k3")
 shape = SubResource("ConcavePolygonShape3D_o0we6")
 
 [node name="pPlane2" parent="RootNode/level1" index="55"]
-visible = false
 material_override = SubResource("StandardMaterial3D_5fm34")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1/polySurface77" index="0"]
@@ -778,9 +778,6 @@ shape = SubResource("ConcavePolygonShape3D_55ffa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/level1/pCube188/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_jsq75")
-
-[node name="pPlane3" parent="RootNode/level1" index="75"]
-visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1/polySurface83" index="0"]
 

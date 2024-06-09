@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var character_mover = $CharacterMover as CharacterMover
 @onready var health_manager = $HealthManager as HealthManager
 @onready var weapon_manager = $Camera3D/WeaponManager as WeaponManager
+@onready var pickup_manager = $Camera3D/PickupManager as PickupManager
 @onready var footsteps = $Footsteps as Footsteps
 @onready var hit_animation_player = $UI/HitScreen/AnimationPlayer
 @onready var dead_sound = $DeadSound as AudioStreamPlayer
@@ -78,6 +79,7 @@ func _process(_delta):
 		character_mover.jump()
 	
 	weapon_manager.attack(Input.is_action_just_pressed("main_action"), Input.is_action_pressed("main_action"))
+	pickup_manager.pickup(Input.is_action_just_pressed("interact"))
 
 func kill():
 	dead = true
