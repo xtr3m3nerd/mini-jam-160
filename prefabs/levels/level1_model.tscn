@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t1huk"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="3_4pkhr"]
 [ext_resource type="Material" uid="uid://qbkw0r752jsf" path="res://assets/materials/barrel_material.tres" id="4_ml3rt"]
-[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
-[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/orb.tscn" id="6_58ve7"]
+[ext_resource type="PackedScene" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
+[ext_resource type="PackedScene" path="res://prefabs/orb.tscn" id="6_58ve7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_23vr1"]
 
