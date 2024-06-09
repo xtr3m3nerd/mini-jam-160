@@ -1,12 +1,17 @@
 class_name Player
 extends CharacterBody3D
 
+@export var dead_screen_prefab: PackedScene
+
 @onready var camera_3d = $Camera3D 
 @onready var character_mover = $CharacterMover as CharacterMover
 @onready var health_manager = $HealthManager as HealthManager
 @onready var weapon_manager = $Camera3D/WeaponManager as WeaponManager
 @onready var footsteps = $Footsteps as Footsteps
 @onready var hit_animation_player = $UI/HitScreen/AnimationPlayer
+@onready var dead_sound = $DeadSound as AudioStreamPlayer
+@onready var impact_sounds = $ImpactSounds as RandomAudioStreamPlayer3D
+@onready var ui = $UI
 
 @export var mouse_sensitivity_h = 0.15
 @export var mouse_sensitivity_v = 0.15
@@ -33,7 +38,9 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	health_manager.died.connect(kill)
 	health_manager.damaged.connect(hit_animation_player.play.bind("hit"))
+	health_manager.damaged.connect(impact_sounds.play_random)
 	character_mover.moved.connect(footsteps.on_character_mover_moved)
+	character_mover.moved.connect(weapon_manager.update_animation)
 
 func _input(event):
 	if dead:
@@ -72,7 +79,10 @@ func _process(_delta):
 
 func kill():
 	dead = true
-	character_mover.set_move_dir(Vector3.ZERO)
+	character_mover.freeze()
+	dead_sound.play()
+	var dead_screen = dead_screen_prefab.instantiate()
+	ui.add_child(dead_screen)
 
 func hurt(damage_data: DamageData):
 	health_manager.hurt(damage_data)

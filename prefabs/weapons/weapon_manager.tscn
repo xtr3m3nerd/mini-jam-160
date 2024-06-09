@@ -4,7 +4,3 @@
 
 [node name="WeaponManager" type="Node3D"]
 script = ExtResource("1_88yde")
-
-[node name="Weapons" type="Node3D" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

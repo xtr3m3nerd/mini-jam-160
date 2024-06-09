@@ -12,6 +12,8 @@ var character_body : CharacterBody3D
 var move_drag = 0.0
 var move_dir : Vector3
 
+var is_frozen = false
+
 signal moved(velocity: Vector3, grounded: bool)
 
 func _ready():
@@ -33,6 +35,8 @@ func jump():
 		character_body.velocity.y = jump_force
 
 func _physics_process(delta):
+	if is_frozen: 
+		return
 	if character_body.velocity.y > 0.0 and character_body.is_on_ceiling():
 		character_body.velocity.y = 0.0
 	if not character_body.is_on_floor():
@@ -48,3 +52,9 @@ func _physics_process(delta):
 	
 	character_body.move_and_slide()
 	moved.emit(character_body.velocity, character_body.is_on_floor())
+
+func freeze():
+	is_frozen = true
+	
+func unfreeze():
+	is_frozen = false

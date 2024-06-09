@@ -4,7 +4,7 @@ class_name Weapon
 
 @onready var animation_player :AnimationPlayer = $Graphics/AnimationPlayer
 @onready var bullet_emitter : BulletEmitter = $BulletEmitter
-@onready var fire_point : Node3D = %FirePoint
+@onready var fire_point : Node3D = $FirePoint
 
 @export var automatic = false
 
@@ -63,3 +63,11 @@ func set_active(a: bool):
 
 func is_idle() -> bool:
 	return !animation_player.is_playing()
+
+func start_moving():
+	if animation_player.current_animation != "attack":
+			animation_player.play("moving",0.3)
+
+func stop_moving():
+	if animation_player.current_animation != "attack":
+			animation_player.stop()

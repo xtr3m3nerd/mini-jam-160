@@ -6,18 +6,18 @@ class_name Footsteps
 @export var pitch_min = 0.88
 @export var pitch_max = 1.11
 
-var is_playing = false
+var is_stepping = false
 
 func play_steps():
-	if !is_playing:
-		is_playing = true
+	if !is_stepping:
+		is_stepping = true
 		play_step()
 
 func stop_steps():
-	is_playing = false
+	is_stepping = false
 
 func _on_finished():
-	if is_playing:
+	if is_stepping:
 		play_step()
 
 func play_step():

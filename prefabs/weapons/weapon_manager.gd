@@ -3,10 +3,9 @@ extends Node3D
 
 @onready var animation_player = $AnimationPlayer
 @onready var weapons = $Weapons.get_children()
-var weapons_unlocked = []
+var weapons_unlocked = [ ]
 var cur_slot = 0
 var cur_weapon = null
-@onready var arm_animation_player = $"../Arms/AnimationPlayer"
 
 func _ready():
 	for weapon in weapons:
@@ -20,8 +19,6 @@ func _ready():
 func attack(input_just_pressed: bool, input_held: bool):
 	if cur_weapon is Weapon:
 		cur_weapon.attack(input_just_pressed, input_held)
-	if input_just_pressed:
-		arm_animation_player.play("Arm_ANIM_punch_v1")
 
 func disable_all_weapons():
 	for weapon in weapons:
@@ -59,14 +56,11 @@ func switch_to_weapon_slot(slot_ind: int)->bool:
 func update_animation(velocity: Vector3, grounded: bool):
 	if cur_weapon is Weapon and !cur_weapon.is_idle():
 		animation_player.play("RESET")
-		if arm_animation_player.current_animation != "Arm_ANIM_punch_v1":
-			arm_animation_player.stop()
+		cur_weapon.stop_moving()
 	elif !grounded or velocity.length() < 5.0:
 		animation_player.play("RESET", 0.3)
-		if arm_animation_player.current_animation != "Arm_ANIM_punch_v1":
-			arm_animation_player.stop()
+		cur_weapon.stop_moving()
 	else:
 		animation_player.play("moving", 0.3)
-		if arm_animation_player.current_animation != "Arm_ANIM_punch_v1":
-			arm_animation_player.play("Arm_ANIM_run_v1",0.3)
+		cur_weapon.start_moving()
 		

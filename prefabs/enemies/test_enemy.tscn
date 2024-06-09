@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://dbi7q70ylhenu"]
+[gd_scene load_steps=46 format=3 uid="uid://dbi7q70ylhenu"]
 
 [ext_resource type="Script" path="res://prefabs/enemies/enemy.gd" id="1_wsobw"]
 [ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/health_manager.tscn" id="2_26eby"]
 [ext_resource type="Texture2D" uid="uid://doqvahoxybe1n" path="res://assets/images/shadow_clouds.png" id="2_puyms"]
 [ext_resource type="PackedScene" uid="uid://cd04s5plkgpld" path="res://assets/models/demon.tscn" id="4_44ney"]
+[ext_resource type="PackedScene" uid="uid://djecjq7altdel" path="res://prefabs/hit_effect.tscn" id="4_n5atd"]
 [ext_resource type="PackedScene" uid="uid://cawphrhgamkmm" path="res://prefabs/enemies/behaviors/melee_flank_behavior.tscn" id="5_jwos0"]
 [ext_resource type="PackedScene" uid="uid://dhdiuw8ths0en" path="res://prefabs/state_label.tscn" id="6_neegu"]
 [ext_resource type="PackedScene" uid="uid://f5co8frc5i74" path="res://prefabs/enemies/attacks/melee_attack_manager.tscn" id="7_1sobh"]
@@ -24,6 +25,9 @@
 [ext_resource type="AudioStream" uid="uid://boialt5tn8f02" path="res://assets/Audio/SFX/Monster_SFX/Tall_Grunt/A_Tall_Grunt_Screech_3.wav" id="22_h1xct"]
 [ext_resource type="AudioStream" uid="uid://ddb3exb4nh8bm" path="res://assets/Audio/SFX/Monster_SFX/Tall_Grunt/A_Tall_Grunt_Screech_4.wav" id="23_sd08d"]
 [ext_resource type="AudioStream" uid="uid://dt50qmmsxca8j" path="res://assets/Audio/SFX/Monster_SFX/Tall_Grunt/A_Tall_Grunt_Screech_5.wav" id="24_ojmfi"]
+[ext_resource type="AudioStream" uid="uid://ce4x14y08bn1f" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_1.wav" id="26_fxexi"]
+[ext_resource type="AudioStream" uid="uid://6kpk88il4oxd" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_2.wav" id="27_b7saf"]
+[ext_resource type="AudioStream" uid="uid://byj081nptwxua" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_3.wav" id="28_7gsl1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r0tvl"]
 
@@ -77,8 +81,88 @@ material = SubResource("StandardMaterial3D_x1hw3")
 resource_name = "idle"
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_rhgbu"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Demon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 2, 2), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wu4xq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Demon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2, 2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yj12p"]
 _data = {
+"RESET": SubResource("Animation_wu4xq"),
+"death": SubResource("Animation_rhgbu"),
 "idle": SubResource("Animation_dorfj")
 }
 
@@ -94,6 +178,7 @@ albedo_color = Color(0, 0, 1, 1)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_wsobw")
+hit_effect_prefab = ExtResource("4_n5atd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -130,6 +215,7 @@ draw_pass_1 = SubResource("QuadMesh_16bfa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 strength = 17.65
 attenuation = 12.5534
+cull_mask = 4293918721
 radius = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
@@ -139,9 +225,13 @@ libraries = {
 autoplay = "idle"
 
 [node name="Demon" parent="Graphics" instance=ExtResource("4_44ney")]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.1, 0)
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, -0.1, 0)
+
+[node name="HitPoint" type="Node3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="HealthManager" parent="." instance=ExtResource("2_26eby")]
+max_health = 20
 
 [node name="MeleeFlankBehavior" parent="." node_paths=PackedStringArray("melee_attack_manager", "character_mover") instance=ExtResource("5_jwos0")]
 melee_attack_manager = NodePath("../AttackManager")
@@ -153,6 +243,7 @@ visible = false
 
 [node name="AttackManager" parent="." instance=ExtResource("7_1sobh")]
 damage_dealt = 10
+attack_cooldown = 1.5
 
 [node name="CanSee" type="MeshInstance3D" parent="." node_paths=PackedStringArray("behavior")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -181,5 +272,15 @@ bus = &"Reverb"
 script = ExtResource("11_p03rg")
 streams = Array[AudioStream]([ExtResource("20_pp7x8"), ExtResource("21_r8jot"), ExtResource("22_h1xct"), ExtResource("23_sd08d"), ExtResource("24_ojmfi")])
 
+[node name="ImpactSounds" type="AudioStreamPlayer3D" parent="."]
+volume_db = -10.095
+script = ExtResource("11_p03rg")
+streams = Array[AudioStream]([ExtResource("26_fxexi"), ExtResource("27_b7saf"), ExtResource("28_7gsl1")])
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="state_changed" from="MeleeFlankBehavior" to="." method="_on_melee_flank_behavior_state_changed"]
 [connection signal="state_changed" from="MeleeFlankBehavior" to="StateLabel" method="_on_state_changed"]
+[connection signal="timeout" from="DespawnTimer" to="." method="queue_free"]
