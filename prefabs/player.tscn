@@ -83,16 +83,6 @@ spot_angle = 61.33
 [node name="Arms" parent="Camera3D" instance=ExtResource("4_x0flc")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.173274, -0.202665)
 
-[node name="Skeleton3D" parent="Camera3D/Arms/RootNode/arms/arm_jnt_GRP/R_arm_JNT_GRP" index="0"]
-bones/0/rotation = Quaternion(-0.443014, 0.896494, -0.0039885, 0.00468656)
-bones/1/rotation = Quaternion(-0.00890337, 0.0060161, -0.0361841, 0.999287)
-bones/2/rotation = Quaternion(-2.17782e-16, -0.234428, -5.92314e-16, 0.972134)
-bones/3/rotation = Quaternion(-4.5526e-17, 0.973249, 4.5526e-17, -0.229753)
-bones/7/rotation = Quaternion(5.48939e-18, 0.973249, 2.61631e-16, -0.229753)
-bones/11/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
-bones/15/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
-bones/19/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
-
 [node name="Skeleton3D" parent="Camera3D/Arms/RootNode/arms/arm_jnt_GRP/L_arm_JNT_GRP" index="0"]
 bones/0/rotation = Quaternion(-0.381691, 0.912657, -0.115134, 0.0900754)
 bones/1/rotation = Quaternion(6.2504e-17, -1.14672e-16, -0.191107, 0.981569)
