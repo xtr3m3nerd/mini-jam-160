@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brwk8iqj7f3qg"
-path="res://.godot/imported/hand.png-28c25dd668660cef30a63a5e9f639aa0.ctex"
+uid="uid://dbyk8guy64wry"
+path="res://.godot/imported/button_notpushed.png-7c74e2804a6427be97bae97e900b1dd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/hand.png"
-dest_files=["res://.godot/imported/hand.png-28c25dd668660cef30a63a5e9f639aa0.ctex"]
+source_file="res://assets/images/button_notpushed.png"
+dest_files=["res://.godot/imported/button_notpushed.png-7c74e2804a6427be97bae97e900b1dd5.ctex"]
 
 [params]
 

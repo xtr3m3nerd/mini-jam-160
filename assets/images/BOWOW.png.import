@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brwk8iqj7f3qg"
-path="res://.godot/imported/hand.png-28c25dd668660cef30a63a5e9f639aa0.ctex"
+uid="uid://dk4t6qwixgqto"
+path="res://.godot/imported/BOWOW.png-bbb03c1642ff9dff4121ddb12b15b2d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/hand.png"
-dest_files=["res://.godot/imported/hand.png-28c25dd668660cef30a63a5e9f639aa0.ctex"]
+source_file="res://assets/images/BOWOW.png"
+dest_files=["res://.godot/imported/BOWOW.png-bbb03c1642ff9dff4121ddb12b15b2d1.ctex"]
 
 [params]
 
