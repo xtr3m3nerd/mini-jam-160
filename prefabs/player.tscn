@@ -209,6 +209,9 @@ transform = Transform3D(0.999999, -4.16334e-17, 5.55111e-17, 4.16333e-17, 1, -1.
 [node name="R_arm_pinky_3_CTRL" parent="Camera3D/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset/R_arm_pinky_1_CTRL/R_arm_pinky_2_offset/R_arm_pinky_2_CTRL/R_arm_pinky_3_offset" index="0"]
 transform = Transform3D(1, -1.38778e-17, -5.55111e-17, 1.38778e-17, 1, -7.70372e-34, 5.55112e-17, 0, 1, 0, 0, 0)
 
+[node name="camera_perspective" parent="Camera3D/Arms/RootNode" index="1"]
+transform = Transform3D(-0.1, 0, -8.88178e-16, 0, 0.1, 0, 8.88178e-16, 0, -0.1, 4.76599e-05, 0.322352, -6.97374e-05)
+
 [node name="CharacterMover" parent="." instance=ExtResource("2_gesuu")]
 gravity = 80.0
 default_max_speed = 10.0
@@ -216,7 +219,9 @@ default_max_speed = 10.0
 [node name="HealthManager" parent="." instance=ExtResource("4_7w3qo")]
 
 [node name="Footsteps" parent="." instance=ExtResource("7_u3hxi")]
-volume_db = -22.695
+stream = ExtResource("8_s6tco")
+volume_db = -28.952
+bus = &"Reverb"
 footstep_streams = Array[AudioStream]([ExtResource("8_s6tco"), ExtResource("9_q15wc"), ExtResource("10_wtpge"), ExtResource("11_r8yw1"), ExtResource("12_oy2bd"), ExtResource("13_dkjvy"), ExtResource("14_a4f7c"), ExtResource("15_qynyt"), ExtResource("16_j30ov"), ExtResource("17_loy46")])
 
 [editable path="Camera3D/Root Scene"]
