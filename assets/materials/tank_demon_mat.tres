@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c3fr6gqlawow"]
+
+[ext_resource type="Texture2D" uid="uid://bkbcna2r1tb8q" path="res://assets/textures/tank_demon_tex/tank_lambert1_BaseColor.png" id="1_eiyet"]
+[ext_resource type="Texture2D" uid="uid://fw0r7cm2nn8w" path="res://assets/textures/tank_demon_tex/tank_lambert1_Emissive.png" id="2_uybj2"]
+
+[resource]
+albedo_texture = ExtResource("1_eiyet")
+emission_enabled = true
+emission_texture = ExtResource("2_uybj2")
+texture_filter = 2
