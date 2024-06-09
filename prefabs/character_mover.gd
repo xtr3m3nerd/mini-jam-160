@@ -4,7 +4,7 @@ extends Node3D
 @export var jump_force = 15.0
 @export var gravity = 30.0
 
-@export var max_speed = 15.0
+@export var default_max_speed = 15.0
 @export var move_accel = 4.0
 @export var stop_drag = 0.9
 
@@ -16,10 +16,17 @@ signal moved(velocity: Vector3, grounded: bool)
 
 func _ready():
 	character_body = get_parent()
-	move_drag = float(move_accel) / max_speed
+	update_drag(default_max_speed)
 
-func set_move_dir(new_move_dir: Vector3):
+func update_drag(new_max_speed: float) -> void:
+	move_drag = float(move_accel) / new_max_speed
+
+func set_move_dir(new_move_dir: Vector3, new_max_speed: float = 0.0):
 	move_dir = new_move_dir
+	if new_max_speed != 0.0:
+		update_drag(new_max_speed)
+	else:
+		update_drag(default_max_speed)
 
 func jump():
 	if character_body.is_on_floor():

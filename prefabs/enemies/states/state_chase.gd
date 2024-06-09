@@ -3,12 +3,9 @@ extends State
 
 signal unseen_timeout
 
-@export var move_speed = 2.0
-
 @export var unseen_time = 1.0
+@export var jump_angle = 30.0
 var unseen_timer: Timer
-
-@onready var behavior: Behavior = get_parent() as Behavior
 
 func _ready():
 	unseen_timer = Timer.new()
@@ -27,13 +24,16 @@ func during_physics_process(_delta):
 		unseen_timer.stop()
 	
 	var dir = behavior.player.global_position - behavior.unit.global_position
+	var dir2 = behavior.player.global_position - behavior.unit.global_position
 	dir.y = 0.0
+	if rad_to_deg(dir.angle_to(dir2)) > jump_angle:
+		behavior.character_mover.jump()
 	dir = dir.normalized()
 	
-	behavior.unit.look_at(behavior.player.global_position)
-	
-	behavior.unit.velocity = dir * move_speed
-	behavior.unit.move_and_slide()
+	behavior.character_mover.set_move_dir(dir)
+	var look_at_pos = behavior.player.global_position
+	look_at_pos.y = 0.0
+	behavior.unit.look_at(look_at_pos)
 
 func on_state_leave():
 	unseen_timer.stop()

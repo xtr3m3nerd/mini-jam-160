@@ -24,4 +24,5 @@ func on_state_leave():
 	idle_timer.stop()
 
 func on_state_enter():
+	behavior.character_mover.set_move_dir(Vector3.ZERO)
 	idle_timer.start(randf_range(idle_time_range.x, idle_time_range.y))

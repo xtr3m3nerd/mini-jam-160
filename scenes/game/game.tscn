@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://q0wueqm0wixb"]
+[gd_scene load_steps=8 format=3 uid="uid://q0wueqm0wixb"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_pnvdp"]
 [ext_resource type="PackedScene" uid="uid://dcw5qf4f55kwr" path="res://scenes/game/game_manager.tscn" id="2_yj68e"]
 [ext_resource type="PackedScene" uid="uid://dnjxaxedn5ikn" path="res://prefabs/player.tscn" id="3_3nxsc"]
+[ext_resource type="AudioStream" uid="uid://cvbmpkxuraflx" path="res://assets/Audio/AMB/A_Dungeon_Ambience.wav" id="4_5gwvi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xiksx"]
 sky_top_color = Color(0.515038, 0.0239122, 1.44392e-07, 1)
@@ -13,9 +14,9 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_xiksx")
 
 [sub_resource type="Environment" id="Environment_pgctf"]
-background_mode = 2
-background_energy_multiplier = 0.3
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_3dqq1")
+ambient_light_energy = 0.5
 tonemap_mode = 2
 
 [node name="Game" type="Node3D"]
@@ -34,3 +35,9 @@ shadow_enabled = true
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_3nxsc")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5gwvi")
+volume_db = -12.735
+autoplay = true
+bus = &"Sfx"

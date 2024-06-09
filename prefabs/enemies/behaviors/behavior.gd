@@ -4,6 +4,7 @@ extends Node
 signal state_changed(current_state: State, new_state: State)
 
 @export var vision_range = 15.0
+@export var character_mover: CharacterMover
 
 @onready var unit: Enemy = get_parent() as Enemy
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("player")

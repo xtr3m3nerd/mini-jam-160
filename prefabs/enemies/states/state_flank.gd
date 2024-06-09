@@ -21,8 +21,6 @@ var unseen_timer: Timer
 
 @export var use_random_dir: bool = false
 
-@onready var behavior: Behavior = get_parent() as Behavior
-
 func _ready():
 	flank_timer = Timer.new()
 	flank_timer.wait_time = flank_time_range.x
@@ -63,10 +61,13 @@ func during_physics_process(_delta):
 	move_dir.y = 0.0
 	move_dir = move_dir.normalized()
 	
-	behavior.unit.look_at(behavior.player.global_position)
+	var look_at_pos = behavior.player.global_position
+	look_at_pos.y = 0.0
+	behavior.unit.look_at(look_at_pos)
 	
-	behavior.unit.velocity = move_dir * move_speed
-	behavior.unit.move_and_slide()
+	behavior.character_mover.set_move_dir(move_dir, move_speed)
+	#behavior.unit.velocity = move_dir * move_speed
+	#behavior.unit.move_and_slide()
 
 func on_state_leave():	
 	flank_timer.stop()

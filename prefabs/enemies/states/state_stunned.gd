@@ -6,8 +6,6 @@ signal stunned_timeout
 @export var stunned_time = 1.0
 var stunned_timer: Timer
 
-@onready var behavior: Behavior = get_parent() as Behavior
-
 func _ready():
 	stunned_timer = Timer.new()
 	stunned_timer.wait_time = stunned_time
@@ -26,3 +24,4 @@ func on_state_leave():
 
 func on_state_enter():
 	stunned_timer.start()
+	behavior.character_mover.set_move_dir(Vector3.ZERO)

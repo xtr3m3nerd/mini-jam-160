@@ -5,6 +5,9 @@ extends CharacterBody3D
 @onready var graphics = $Graphics as Node3D
 @onready var animation_player = $Graphics/AnimationPlayer as AnimationPlayer
 @onready var health_manager = $HealthManager as HealthManager
+@onready var character_mover = $CharacterMover as CharacterMover
+@onready var footsteps = $Footsteps as Footsteps
+@onready var screech = $Screech as RandomAudioStreamPlayer3D
 
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var game_manager : GameManager = get_tree().get_first_node_in_group("game_manager")
@@ -15,6 +18,7 @@ var dead = false
 func _ready():
 	health_manager.died.connect(kill)
 	animation_player.animation_finished.connect(on_animation_finished)
+	character_mover.moved.connect(footsteps.on_character_mover_moved)
 	await get_tree().create_timer(randf_range(0.0,1.0)).timeout
 	animation_player.stop()
 	animation_player.play("idle", 0.5)
@@ -45,3 +49,8 @@ func on_animation_finished(anim_name):
 			animation_player.play("idle", 0.5)
 		_:
 			pass
+
+
+func _on_melee_flank_behavior_state_changed(current_state, new_state):
+	if new_state.state_name == "CHASE":
+		screech.play_random()

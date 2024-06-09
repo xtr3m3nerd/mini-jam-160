@@ -13,6 +13,7 @@ script = ExtResource("1_f52g1")
 
 [node name="StateIdle" type="Node" parent="."]
 script = ExtResource("2_g2nui")
+idle_time_range = null
 state_name = "IDLE"
 
 [node name="StateRoam" type="Node" parent="."]

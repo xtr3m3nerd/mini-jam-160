@@ -10,8 +10,6 @@ var roam_timer: Timer
 
 var target_dir: Vector3 = Vector3.ZERO
 
-@onready var behavior: Behavior = get_parent() as Behavior
-
 func _ready():
 	roam_timer = Timer.new()
 	roam_timer.wait_time = roam_time_range.x
@@ -29,8 +27,9 @@ func during_physics_process(_delta):
 	
 	behavior.unit.look_at(behavior.unit.global_position + target_dir)
 	
-	behavior.unit.velocity = target_dir * move_speed
-	behavior.unit.move_and_slide()
+	behavior.character_mover.set_move_dir(target_dir, move_speed)
+	#behavior.unit.velocity = target_dir * move_speed
+	#behavior.unit.move_and_slide()
 
 func on_state_leave():
 	target_dir = Vector3.ZERO

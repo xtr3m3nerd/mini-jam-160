@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var character_mover = $CharacterMover as CharacterMover
 @onready var health_manager = $HealthManager as HealthManager
 @onready var weapon_manager = $Camera3D/WeaponManager as WeaponManager
+@onready var footsteps = $Footsteps as Footsteps
 
 @export var mouse_sensitivity_h = 0.15
 @export var mouse_sensitivity_v = 0.15
@@ -30,6 +31,7 @@ var dead = false
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	health_manager.died.connect(kill)
+	character_mover.moved.connect(footsteps.on_character_mover_moved)
 
 func _input(event):
 	if dead:
@@ -72,3 +74,4 @@ func kill():
 
 func hurt(damage_data: DamageData):
 	health_manager.hurt(damage_data)
+

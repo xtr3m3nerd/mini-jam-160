@@ -3,12 +3,8 @@ extends State
 
 signal unseen_timeout
 
-@export var move_speed = 2.0
-
 @export var unseen_time = 1.0
 var unseen_timer: Timer
-
-@onready var behavior: Behavior = get_parent() as Behavior
 
 func _ready():
 	unseen_timer = Timer.new()
@@ -32,8 +28,9 @@ func during_physics_process(_delta):
 	
 	behavior.unit.look_at(behavior.unit.global_position + dir)
 	
-	behavior.unit.velocity = dir * move_speed
-	behavior.unit.move_and_slide()
+	behavior.character_mover.set_move_dir(dir)
+	#behavior.unit.velocity = dir * move_speed
+	#behavior.unit.move_and_slide()
 
 func on_state_leave():
 	unseen_timer.stop()

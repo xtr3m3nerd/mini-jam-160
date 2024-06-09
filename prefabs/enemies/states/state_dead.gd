@@ -11,4 +11,4 @@ func on_state_leave():
 	pass
 
 func on_state_enter():
-	pass
+	behavior.character_mover.set_move_dir(Vector3.ZERO)

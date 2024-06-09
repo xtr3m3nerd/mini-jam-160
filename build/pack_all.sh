@@ -30,7 +30,8 @@ windows[exe]="./build/windows/${GAMENAME}.exe"
 windows[zip]="${GAMENAME}_windows.zip"
 windows[deploy]="${ITCH_USER}/${ITCH_PAGE}:win"
 
-builds=(html linux windows)
+#builds=(html linux windows)
+builds=(html)
 
 deploy=false
 
