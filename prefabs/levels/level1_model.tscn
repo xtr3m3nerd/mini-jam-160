@@ -1,11 +1,29 @@
-[gd_scene load_steps=126 format=3 uid="uid://dftss8ns3r35i"]
+[gd_scene load_steps=129 format=3 uid="uid://dftss8ns3r35i"]
 
 [ext_resource type="PackedScene" uid="uid://cs8ey1otrqsnp" path="res://assets/models/levels/level1_v1.fbx" id="1_htrll"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t1huk"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="3_4pkhr"]
 [ext_resource type="Material" uid="uid://qbkw0r752jsf" path="res://assets/materials/barrel_material.tres" id="4_ml3rt"]
-[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
+[ext_resource type="PackedScene" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
 [ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickup.tscn" id="6_58ve7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rc760"]
+sky_top_color = Color(0.380593, 0.350629, 0.545161, 1)
+sky_horizon_color = Color(0.607753, 0.598922, 0.665885, 1)
+sky_energy_multiplier = 0.1
+ground_bottom_color = Color(0.0504197, 0.0450582, 0.11838, 1)
+ground_horizon_color = Color(0.607753, 0.598922, 0.665885, 1)
+
+[sub_resource type="Sky" id="Sky_5kb1l"]
+sky_material = SubResource("ProceduralSkyMaterial_rc760")
+
+[sub_resource type="Environment" id="Environment_5nxig"]
+background_mode = 2
+sky = SubResource("Sky_5kb1l")
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.381288, 0.298252, 0.338206, 1)
+fog_light_energy = 0.3
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_23vr1"]
 
@@ -365,29 +383,38 @@ data = PackedVector3Array(0.1456, 0.1007, -0.0051, 0.1475, 0.0993, -0.0038, 0.14
 [node name="Root Scene2" instance=ExtResource("1_htrll")]
 script = ExtResource("2_t1huk")
 
-[node name="PlayerSpawn" type="Node3D" parent="." index="0"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(0.207911, -0.971665, 0.112426, 0, 0.114937, 0.993373, -0.978148, -0.206534, 0.0238968, 0, 0, 0)
+light_color = Color(0.0284933, 0.000168265, 0.434392, 1)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_5nxig")
+
+[node name="PlayerSpawn" type="Node3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6109, 0, -3.34878)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("WorldBoundaryShape3D_23vr1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.82907)
 visible = false
 mesh = SubResource("CapsuleMesh_5afq8")
 
-[node name="TestEnemy" parent="." index="3" instance=ExtResource("3_4pkhr")]
+[node name="TestEnemy" parent="." index="5" instance=ExtResource("3_4pkhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 11)
 
-[node name="TestEnemy2" parent="." index="4" instance=ExtResource("3_4pkhr")]
+[node name="TestEnemy2" parent="." index="6" instance=ExtResource("3_4pkhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.74975, 0, 22.8625)
 
-[node name="TestEnemy3" parent="." index="5" instance=ExtResource("3_4pkhr")]
+[node name="TestEnemy3" parent="." index="7" instance=ExtResource("3_4pkhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4758, 0, -24.1083)
 
-[node name="RootNode" parent="." index="6"]
+[node name="RootNode" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.8481, 0)
 
 [node name="pCylinder33" parent="RootNode/level1" index="0"]
@@ -991,8 +1018,100 @@ shape = SubResource("ConcavePolygonShape3D_e1nnm")
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1" index="119"]
 transform = Transform3D(0, 0, -0.0985188, 0, 0.0985188, 0, 0.0985188, 0, 0, 0.0419087, 0.0189129, -0.0092205)
 
-[node name="TankEnemy" parent="." index="8" instance=ExtResource("5_lidmk")]
+[node name="TankEnemy" parent="." index="10" instance=ExtResource("5_lidmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)
 
-[node name="Orb" parent="." index="9" instance=ExtResource("6_58ve7")]
+[node name="Orb" parent="." index="11" instance=ExtResource("6_58ve7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -6)
+
+[node name="lights" type="Node3D" parent="." index="12"]
+
+[node name="Lantern_Light_1" type="OmniLight3D" parent="lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65953, 2.65347, 1.98892)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_7" type="OmniLight3D" parent="lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9626, 2.63157, -23.6535)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_8" type="OmniLight3D" parent="lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6663, 2.63157, -25.2585)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_9" type="OmniLight3D" parent="lights" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.139, 2.70365, -23.6981)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_10" type="OmniLight3D" parent="lights" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.19061, 2.70365, -16.9449)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_11" type="OmniLight3D" parent="lights" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3102, 2.70365, -16.9449)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_12" type="OmniLight3D" parent="lights" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2819, 2.70365, -5.67659)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_13" type="OmniLight3D" parent="lights" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44324, 2.70365, 16.106)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_14" type="OmniLight3D" parent="lights" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6305, 2.71599, 20.9842)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_15" type="OmniLight3D" parent="lights" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41288, 2.71379, 26.0082)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_3" type="OmniLight3D" parent="lights" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69221, 2.65347, 7.40906)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_6" type="OmniLight3D" parent="lights" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7155, 2.68654, 5.74439)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_2" type="OmniLight3D" parent="lights" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17182, 2.65347, 0.504944)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_4" type="OmniLight3D" parent="lights" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73393, 2.65827, -7.89348)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
+
+[node name="Lantern_Light_5" type="OmniLight3D" parent="lights" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21585, 2.65827, -6.28484)
+light_color = Color(1, 0.694875, 0.328635, 1)
+light_energy = 0.459
+light_bake_mode = 1
