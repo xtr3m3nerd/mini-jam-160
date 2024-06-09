@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ixblxe52q5yb"]
+[gd_scene load_steps=5 format=3 uid="uid://ixblxe52q5yb"]
 
 [ext_resource type="Script" path="res://globals/music_manager.gd" id="1_dahdd"]
+[ext_resource type="AudioStream" uid="uid://dkxyblmtjfxtj" path="res://assets/Audio/music/Intro_B_GR.wav" id="2_fn4xf"]
+[ext_resource type="AudioStream" uid="uid://dnvl25x8jj11w" path="res://assets/Audio/music/UI_Main_Start_Riser.wav" id="3_488nx"]
+[ext_resource type="AudioStream" uid="uid://diiylwelcfyro" path="res://assets/Audio/music/Main_GR.wav" id="4_pars0"]
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_dahdd")
+intro_music = ExtResource("2_fn4xf")
+riser = ExtResource("3_488nx")
+in_game_music = ExtResource("4_pars0")
 
 [node name="Track1" type="AudioStreamPlayer" parent="."]
+volume_db = -9.905
 bus = &"Music"
 
 [node name="Track2" type="AudioStreamPlayer" parent="."]
+volume_db = -9.905
 bus = &"Music"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=125 format=3 uid="uid://dftss8ns3r35i"]
+[gd_scene load_steps=126 format=3 uid="uid://dftss8ns3r35i"]
 
 [ext_resource type="PackedScene" uid="uid://cs8ey1otrqsnp" path="res://assets/models/levels/level1_v1.fbx" id="1_htrll"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t1huk"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="3_4pkhr"]
 [ext_resource type="Material" uid="uid://qbkw0r752jsf" path="res://assets/materials/barrel_material.tres" id="4_ml3rt"]
+[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_23vr1"]
 
@@ -997,3 +998,6 @@ shape = SubResource("ConcavePolygonShape3D_e1nnm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1" index="119"]
 transform = Transform3D(0, 0, -0.0985188, 0, 0.0985188, 0, 0.0985188, 0, 0, 0.0419087, 0.0189129, -0.0092205)
+
+[node name="TankEnemy" parent="." index="8" instance=ExtResource("5_lidmk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)

@@ -26,6 +26,7 @@ func _ready():
 	health_manager.damaged.connect(impact_sounds.play_random)
 	animation_player.animation_finished.connect(on_animation_finished)
 	character_mover.moved.connect(footsteps.on_character_mover_moved)
+	character_mover.moved.connect(update_animation)
 	await get_tree().create_timer(randf_range(0.0,1.0)).timeout
 	animation_player.stop()
 	animation_player.play("idle", 0.5)
@@ -68,3 +69,11 @@ func _spawn_hit_effect():
 	var hit_effect = hit_effect_prefab.instantiate()
 	hit_point.add_child(hit_effect)
 	hit_effect.global_position = hit_point.global_position
+	
+func update_animation(velocity: Vector3, grounded: bool):
+	if animation_player.current_animation == "attack":
+		pass
+	elif !grounded or velocity.length() < 0.1:
+		animation_player.play("RESET")
+	else:
+		animation_player.play("moving", 0.3)

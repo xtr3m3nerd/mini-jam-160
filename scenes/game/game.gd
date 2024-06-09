@@ -7,6 +7,7 @@ class_name Game
 var current_level = null
 
 func _ready():
+	MusicManager.play_game_music()
 	load_level(SceneManager.current_level)
 
 func load_level(level: PackedScene) -> void:

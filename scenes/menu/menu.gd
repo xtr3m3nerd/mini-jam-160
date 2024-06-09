@@ -13,6 +13,7 @@ class_name Menu
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	current_scene.menu = self
+	MusicManager.play_intro_music()
 
 func change_to_main_menu() -> void:
 	change_to_scene(main_menu_scene)

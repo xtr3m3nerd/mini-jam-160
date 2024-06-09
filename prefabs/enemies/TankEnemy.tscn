@@ -1,0 +1,330 @@
+[gd_scene load_steps=45 format=3 uid="uid://11x824ts84ue"]
+
+[ext_resource type="Script" path="res://prefabs/enemies/enemy.gd" id="1_dhd7d"]
+[ext_resource type="PackedScene" uid="uid://djecjq7altdel" path="res://prefabs/hit_effect.tscn" id="2_03eji"]
+[ext_resource type="Texture2D" uid="uid://doqvahoxybe1n" path="res://assets/images/shadow_clouds.png" id="3_7vmyi"]
+[ext_resource type="PackedScene" uid="uid://pjcf7ao8kjhr" path="res://assets/models/enemies/tank_enemy.tscn" id="5_kg1n5"]
+[ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/health_manager.tscn" id="5_vy6hv"]
+[ext_resource type="PackedScene" uid="uid://cawphrhgamkmm" path="res://prefabs/enemies/behaviors/melee_flank_behavior.tscn" id="6_s3goy"]
+[ext_resource type="PackedScene" uid="uid://dhdiuw8ths0en" path="res://prefabs/state_label.tscn" id="7_jwx4o"]
+[ext_resource type="PackedScene" uid="uid://f5co8frc5i74" path="res://prefabs/enemies/attacks/melee_attack_manager.tscn" id="8_gnvkh"]
+[ext_resource type="Script" path="res://prefabs/enemies/CanSee.gd" id="9_4t1k0"]
+[ext_resource type="PackedScene" uid="uid://c45k0kryc6nl" path="res://prefabs/character_mover.tscn" id="10_6nm78"]
+[ext_resource type="PackedScene" uid="uid://dlskl61y0hbcv" path="res://prefabs/footsteps.tscn" id="11_g3hq7"]
+[ext_resource type="AudioStream" uid="uid://dko0jew2i07l" path="res://assets/Audio/SFX/Monster_SFX/Tall_Grunt/A_Tall_Grunt_FS_1.wav" id="12_ges3w"]
+[ext_resource type="AudioStream" uid="uid://djgw4ewe5n3vj" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_1.wav" id="13_tu28v"]
+[ext_resource type="AudioStream" uid="uid://37xpexybfsa1" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_2.wav" id="14_7aj31"]
+[ext_resource type="AudioStream" uid="uid://vix74qti50cq" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_3.wav" id="15_xghsk"]
+[ext_resource type="AudioStream" uid="uid://cny8opj465uvu" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_4.wav" id="16_qg2hb"]
+[ext_resource type="AudioStream" uid="uid://bud7wglv0jmsi" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_5.wav" id="17_134jk"]
+[ext_resource type="AudioStream" uid="uid://dg7mlio6pt4el" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_6.wav" id="18_yht80"]
+[ext_resource type="AudioStream" uid="uid://byeh0aasnsh7p" path="res://assets/Audio/SFX/Monster_SFX/Tall_Grunt/A_Tall_Grunt_Screech_1.wav" id="20_ukhne"]
+[ext_resource type="Script" path="res://prefabs/random_audio_stream_player_3d.gd" id="21_0kwpx"]
+[ext_resource type="AudioStream" uid="uid://bp7qdag5u5544" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_1.wav" id="21_lu32x"]
+[ext_resource type="AudioStream" uid="uid://urmurouaodwu" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_2.wav" id="22_p3wee"]
+[ext_resource type="AudioStream" uid="uid://bxb8nohde1ax7" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_3.wav" id="23_g23y7"]
+[ext_resource type="AudioStream" uid="uid://boyj7thqh3sfq" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_4.wav" id="24_byb6d"]
+[ext_resource type="AudioStream" uid="uid://c4jka6vvo5krq" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_5.wav" id="25_x6esx"]
+[ext_resource type="AudioStream" uid="uid://dwjg7y0eujt6c" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_6.wav" id="26_l0og8"]
+[ext_resource type="AudioStream" uid="uid://ce4x14y08bn1f" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_1.wav" id="26_mc2b4"]
+[ext_resource type="AudioStream" uid="uid://6kpk88il4oxd" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_2.wav" id="27_ltbva"]
+[ext_resource type="AudioStream" uid="uid://byj081nptwxua" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_3.wav" id="28_tajgc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r0tvl"]
+
+[sub_resource type="Curve" id="Curve_0pr0t"]
+_data = [Vector2(0.0305343, 0.0170732), 0.0, 0.0, 0, 0, Vector2(0.503817, 0.980976), 0.0, 0.0, 0, 0, Vector2(1, 0.0297561), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vo2om"]
+curve = SubResource("Curve_0pr0t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xdev0"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -8.57
+tangential_accel_max = 6.67
+scale_max = 4.0
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_vo2om")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1hw3"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_7vmyi")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_16bfa"]
+material = SubResource("StandardMaterial3D_x1hw3")
+
+[sub_resource type="Animation" id="Animation_wu4xq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_rhgbu"]
+resource_name = "death"
+length = 1.9
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.89),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TankEnemy/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Tank_Death"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="Animation" id="Animation_dorfj"]
+resource_name = "idle"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_3wbtr"]
+resource_name = "attack"
+length = 2.5
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankEnemy/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Tank_Attack"),
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.98),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"perform_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1vtup"]
+resource_name = "moving"
+length = 0.94
+loop_mode = 1
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TankEnemy/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Tank_Walking"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yj12p"]
+_data = {
+"RESET": SubResource("Animation_wu4xq"),
+"attack": SubResource("Animation_3wbtr"),
+"death": SubResource("Animation_rhgbu"),
+"idle": SubResource("Animation_dorfj"),
+"moving": SubResource("Animation_1vtup")
+}
+
+[sub_resource type="SphereMesh" id="SphereMesh_6pu0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2qcd"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvubw"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="TankEnemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_dhd7d")
+hit_effect_prefab = ExtResource("2_03eji")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r0tvl")
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_negative = true
+omni_range = 10.0
+omni_attenuation = 3.03143
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+amount = 16
+lifetime = 2.08
+explosiveness = 0.09
+randomness = 0.45
+process_material = SubResource("ParticleProcessMaterial_xdev0")
+draw_pass_1 = SubResource("QuadMesh_16bfa")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+strength = 17.65
+attenuation = 12.5534
+cull_mask = 4293918721
+radius = 4.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_yj12p")
+}
+autoplay = "idle"
+
+[node name="HitPoint" type="Node3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="TankEnemy" parent="Graphics" instance=ExtResource("5_kg1n5")]
+
+[node name="Skeleton3D" parent="Graphics/TankEnemy/RootNode/Tank_Anim" index="0"]
+bones/0/position = Vector3(0.00141772, 0.0600956, -0.00366072)
+bones/0/rotation = Quaternion(0.169361, -0.00760938, -0.0170552, 0.985377)
+bones/1/rotation = Quaternion(0.0529814, -0.0122623, 0.0124481, 0.998443)
+bones/2/rotation = Quaternion(0.0452786, -0.0215727, 0.0228287, 0.998481)
+bones/3/rotation = Quaternion(0.0452635, -0.0217677, 0.0227262, 0.998479)
+bones/4/rotation = Quaternion(-0.0719558, 0.00907842, 0.00364812, 0.99736)
+bones/5/rotation = Quaternion(-0.171455, 0.0669634, -0.039092, 0.982136)
+bones/7/rotation = Quaternion(0.548795, 0.452026, -0.539664, 0.450843)
+bones/8/rotation = Quaternion(0.218973, -0.0443039, 0.389344, 0.893588)
+bones/9/rotation = Quaternion(0.138736, -0.374355, 0.360001, 0.843214)
+bones/10/rotation = Quaternion(0.0742343, 0.0930105, 0.037048, 0.992203)
+bones/11/rotation = Quaternion(0.193582, 0.35967, -0.102459, 0.907009)
+bones/12/rotation = Quaternion(0.200847, 0.0158965, -0.11203, 0.973066)
+bones/13/rotation = Quaternion(0.272813, 0.049291, -0.0670972, 0.958458)
+bones/15/rotation = Quaternion(0.602938, -0.404703, 0.527075, 0.441445)
+bones/16/rotation = Quaternion(0.304588, 0.140103, -0.240824, 0.910824)
+bones/17/rotation = Quaternion(0.096333, 0.4177, -0.223754, 0.875318)
+bones/18/rotation = Quaternion(0.151327, 0.144884, -0.131994, 0.968858)
+bones/19/rotation = Quaternion(0.159919, -0.356238, 0.101145, 0.915035)
+bones/20/rotation = Quaternion(0.268002, -0.0099975, 0.0837389, 0.95972)
+bones/21/rotation = Quaternion(0.320677, -0.0273907, 0.0397706, 0.945957)
+bones/23/rotation = Quaternion(0.039539, 0.0435913, 0.998263, -0.00267921)
+bones/24/rotation = Quaternion(-0.525527, 0.000259941, -0.00695872, 0.850749)
+bones/25/rotation = Quaternion(0.613376, -0.0387029, -0.0562376, 0.786835)
+bones/26/rotation = Quaternion(0.175077, 0.00631226, 0.0354052, 0.983898)
+bones/28/rotation = Quaternion(-0.0248153, 0.459303, 0.887344, 0.032352)
+bones/29/rotation = Quaternion(-0.42819, 0.0499302, -0.0326733, 0.901717)
+bones/30/rotation = Quaternion(0.655011, -0.0162417, 0.0310431, 0.754807)
+bones/31/rotation = Quaternion(0.175048, -0.00562792, -0.0357047, 0.983896)
+
+[node name="HealthManager" parent="." instance=ExtResource("5_vy6hv")]
+max_health = 50
+
+[node name="MeleeFlankBehavior" parent="." node_paths=PackedStringArray("melee_attack_manager", "character_mover") instance=ExtResource("6_s3goy")]
+melee_attack_manager = NodePath("../AttackManager")
+character_mover = NodePath("../CharacterMover")
+
+[node name="StateLabel" parent="." instance=ExtResource("7_jwx4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+visible = false
+
+[node name="AttackManager" parent="." instance=ExtResource("8_gnvkh")]
+damage_dealt = 25
+attack_cooldown = 1.5
+
+[node name="CanSee" type="MeshInstance3D" parent="." node_paths=PackedStringArray("behavior")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+visible = false
+mesh = SubResource("SphereMesh_6pu0l")
+script = ExtResource("9_4t1k0")
+behavior = NodePath("../MeleeFlankBehavior")
+seen_material = SubResource("StandardMaterial3D_j2qcd")
+unseen_material = SubResource("StandardMaterial3D_xvubw")
+
+[node name="CharacterMover" parent="." instance=ExtResource("10_6nm78")]
+gravity = 80.0
+default_max_speed = 3.0
+move_accel = 2.0
+
+[node name="Footsteps" parent="." instance=ExtResource("11_g3hq7")]
+stream = ExtResource("12_ges3w")
+volume_db = -28.095
+bus = &"Reverb"
+footstep_streams = Array[AudioStream]([ExtResource("13_tu28v"), ExtResource("14_7aj31"), ExtResource("15_xghsk"), ExtResource("16_qg2hb"), ExtResource("17_134jk"), ExtResource("18_yht80")])
+
+[node name="Screech" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("20_ukhne")
+volume_db = -12.19
+bus = &"Reverb"
+script = ExtResource("21_0kwpx")
+streams = Array[AudioStream]([ExtResource("21_lu32x"), ExtResource("22_p3wee"), ExtResource("23_g23y7"), ExtResource("24_byb6d"), ExtResource("25_x6esx"), ExtResource("26_l0og8")])
+
+[node name="ImpactSounds" type="AudioStreamPlayer3D" parent="."]
+volume_db = -10.095
+script = ExtResource("21_0kwpx")
+streams = Array[AudioStream]([ExtResource("26_mc2b4"), ExtResource("27_ltbva"), ExtResource("28_tajgc")])
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="state_changed" from="MeleeFlankBehavior" to="." method="_on_melee_flank_behavior_state_changed"]
+[connection signal="state_changed" from="MeleeFlankBehavior" to="StateLabel" method="_on_state_changed"]
+[connection signal="start_attack" from="AttackManager" to="Graphics/AnimationPlayer" method="play" binds= ["attack"]]
+[connection signal="timeout" from="DespawnTimer" to="." method="queue_free"]
+
+[editable path="Graphics/TankEnemy"]
