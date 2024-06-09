@@ -260,20 +260,21 @@ default_max_speed = 5.0
 move_accel = 2.0
 
 [node name="Footsteps" parent="." instance=ExtResource("10_6as3n")]
-stream = ExtResource("11_xilxc")
-volume_db = -28.095
-bus = &"Reverb"
+volume_db = -6.071
 footstep_streams = Array[AudioStream]([ExtResource("11_xilxc"), ExtResource("12_4ql4q"), ExtResource("13_iqjtk"), ExtResource("14_uta6f"), ExtResource("15_c5ddm"), ExtResource("16_en6u7"), ExtResource("17_nalxa"), ExtResource("18_yj1co")])
 
 [node name="Screech" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("20_pp7x8")
 volume_db = -12.19
 bus = &"Reverb"
+attenuation_filter_cutoff_hz = 7500.0
+attenuation_filter_db = -19.0
 script = ExtResource("11_p03rg")
 streams = Array[AudioStream]([ExtResource("20_pp7x8"), ExtResource("21_r8jot"), ExtResource("22_h1xct"), ExtResource("23_sd08d"), ExtResource("24_ojmfi")])
 
 [node name="ImpactSounds" type="AudioStreamPlayer3D" parent="."]
-volume_db = -10.095
+volume_db = -19.571
+bus = &"Sfx"
 script = ExtResource("11_p03rg")
 streams = Array[AudioStream]([ExtResource("26_fxexi"), ExtResource("27_b7saf"), ExtResource("28_7gsl1")])
 
