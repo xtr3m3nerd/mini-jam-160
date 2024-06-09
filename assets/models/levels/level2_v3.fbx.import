@@ -29,6 +29,53 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Barrel": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/barrel_material.tres"
+},
+"bone": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/bone_mat.tres"
+},
+"crate": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/crate_mat.tres"
+},
+"floor": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/floor_mat.tres"
+},
+"fragments": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/bone_fragments.tres"
+},
+"insertorb": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/orb_catcher_mat.tres"
+},
+"lantern": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/lantern_mat.tres"
+},
+"skull": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/skull_mat.tres"
+},
+"trapdoor": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/trapdoor_mat.tres"
+},
+"wall": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/wall_mat.tres"
+},
+"windowcell": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/materials/windowcell_mat.tres"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

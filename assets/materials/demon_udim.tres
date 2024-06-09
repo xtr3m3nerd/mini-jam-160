@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" script_class="UDIMShaderMaterial" load_steps=8 format=3 uid="uid://vhexgxe6hr38"]
+[gd_resource type="ShaderMaterial" script_class="UDIMShaderMaterial" load_steps=8 format=3 uid="uid://cqe1kmd7tun5c"]
 
 [ext_resource type="Script" path="res://addons/udim_material/UDIMTextureTileset.gd" id="1_3hwfm"]
 [ext_resource type="Texture2D" uid="uid://cgbqusvym8tn6" path="res://assets/textures/basic_demon_tex/sourceimages/basic_demon_lambert1_BaseColor.1001.png" id="2_0ycva"]
@@ -12,7 +12,11 @@ tile_1001 = ExtResource("2_0ycva")
 tile_1002 = ExtResource("3_6ge8b")
 tile_1003 = ExtResource("4_wsx1l")
 
+<<<<<<< HEAD
 [sub_resource type="Shader" id="Shader_vtrnr"]
+=======
+[sub_resource type="Shader" id="Shader_qm87g"]
+>>>>>>> 52a3026adcad1353f7b86fb89518464dab2c8f44
 code = "// NOTE: This UDIM Shader is automatically generated
 
 shader_type spatial;
@@ -71,7 +75,11 @@ void fragment() {
 
 [resource]
 render_priority = 0
+<<<<<<< HEAD
 shader = SubResource("Shader_vtrnr")
+=======
+shader = SubResource("Shader_qm87g")
+>>>>>>> 52a3026adcad1353f7b86fb89518464dab2c8f44
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
