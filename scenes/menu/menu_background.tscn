@@ -1,0 +1,163 @@
+[gd_scene load_steps=5 format=3 uid="uid://djdntaqlet7wd"]
+
+[ext_resource type="PackedScene" uid="uid://ct5stxubpsctu" path="res://assets/models/menu/menu_layout_w_camera.fbx" id="1_fborn"]
+
+[sub_resource type="Animation" id="Animation_go4ue"]
+resource_name = "menu_idle"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.915059, 0), Vector3(0, 0.890118, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-6.84517, -23.4891, -1.33983), Vector3(-6.84517, -23.4891, -1.33983)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.459, 0.627, 0.459]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D2:light_energy")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.69, 0.858, 0.69]
+}
+
+[sub_resource type="Animation" id="Animation_cg3nv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.915059, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.84517, -23.4891, -1.33983)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.459]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D2:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.69]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vccr2"]
+_data = {
+"RESET": SubResource("Animation_cg3nv"),
+"menu_idle": SubResource("Animation_go4ue")
+}
+
+[node name="MenuBackground" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.580392, 0.611765, 0.807843, 1)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="Root Scene" parent="." instance=ExtResource("1_fborn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235405, 0, 1.3382)
+
+[node name="menu_camera" parent="Root Scene/RootNode" index="1"]
+transform = Transform3D(0.544639, -0.0137346, 0.838558, 0, 0.999866, 0.0163766, -0.838671, -0.00891934, 0.544566, -4.63249, -23.753, -1.08362)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.609744, 0, 0.792598, 0, 1, 0, -0.792598, 0, 0.609744, -6.84517, -23.4891, -1.33983)
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7782, -22.1659, -1.9989)
+light_color = Color(1, 0.882353, 0.701961, 1)
+light_energy = 0.459
+light_indirect_energy = 1.696
+light_size = 0.121
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.50939, -22.1774, -6.60941)
+light_color = Color(1, 0.882353, 0.701961, 1)
+light_energy = 0.69
+light_indirect_energy = 1.696
+light_size = 0.121
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.968353, 0.0476318, 0.244998, -1.43256e-08, -0.98162, 0.190843, -0.249586, -0.184804, -0.950555, -6.33938, -23.1022, -5.21055)
+light_color = Color(1, 0.878431, 1, 1)
+light_energy = 14.503
+light_indirect_energy = 5.792
+shadow_enabled = true
+spot_range = 4.258
+spot_attenuation = 1.36604
+spot_angle = 55.44
+spot_angle_attenuation = 0.0281641
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vccr2")
+}
+autoplay = "menu_idle"
+
+[editable path="Root Scene"]

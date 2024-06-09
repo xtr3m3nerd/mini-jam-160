@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvlkp5gn6ijfv"]
+
+[ext_resource type="Texture2D" uid="uid://c5bawjdwvkfng" path="res://assets/textures/Mats/bone_aiStandardSurface3_BaseColor.png" id="1_w7k5u"]
+
+[resource]
+albedo_texture = ExtResource("1_w7k5u")
+texture_filter = 2

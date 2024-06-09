@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cfe06p38g40nh"]
+
+[ext_resource type="Texture2D" uid="uid://dfq5tu0rkrbyb" path="res://assets/textures/Mats/pedestal_aiStandardSurface3_BaseColor.png" id="1_jnnln"]
+[ext_resource type="Texture2D" uid="uid://d2ynqjiyay3n8" path="res://assets/textures/Mats/pedestal_aiStandardSurface3_Height.png" id="2_dnq00"]
+[ext_resource type="Texture2D" uid="uid://f7pehcqs0003" path="res://assets/textures/Mats/pedestal_aiStandardSurface3_Normal.png" id="3_1t4el"]
+[ext_resource type="Texture2D" uid="uid://buaw82qgt8i5d" path="res://assets/textures/Mats/pedestal_aiStandardSurface3_Roughness.png" id="4_em5bv"]
+
+[resource]
+albedo_texture = ExtResource("1_jnnln")
+roughness_texture = ExtResource("4_em5bv")
+normal_enabled = true
+normal_texture = ExtResource("3_1t4el")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_dnq00")
+texture_filter = 2

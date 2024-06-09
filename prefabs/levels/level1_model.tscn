@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t1huk"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="3_4pkhr"]
 [ext_resource type="Material" uid="uid://qbkw0r752jsf" path="res://assets/materials/barrel_material.tres" id="4_ml3rt"]
-[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
-[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/orb.tscn" id="6_58ve7"]
+[ext_resource type="PackedScene" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
+[ext_resource type="PackedScene" path="res://prefabs/orb.tscn" id="6_58ve7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_23vr1"]
 
@@ -427,6 +427,7 @@ shape = SubResource("ConcavePolygonShape3D_spgxt")
 shape = SubResource("ConcavePolygonShape3D_e8ygv")
 
 [node name="pCylinder57" parent="RootNode/level1" index="6"]
+transform = Transform3D(-0.00430827, 2.80551e-17, -0.114503, 5.2761e-19, 0.114584, 2.80551e-17, 0.114503, 5.2761e-19, -0.00430827, 0.122347, 0.0085465, 0.197057)
 surface_material_override/0 = ExtResource("4_ml3rt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1/pCylinder57" index="0"]
