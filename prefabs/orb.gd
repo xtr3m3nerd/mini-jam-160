@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("player")
-@onready var label_3d = $Graphics/Label3D
+@onready var label_3d = $Label3D
 
 var can_pickup=false
 

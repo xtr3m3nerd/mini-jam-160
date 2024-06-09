@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://globals/scene_manager.gd" id="1_snva8"]
 [ext_resource type="PackedScene" uid="uid://q0wueqm0wixb" path="res://scenes/game/game.tscn" id="2_k0es6"]
 [ext_resource type="PackedScene" uid="uid://dftss8ns3r35i" path="res://prefabs/levels/level1_model.tscn" id="3_vn44i"]
-[ext_resource type="PackedScene" uid="uid://u80vcsnqp1w5" path="res://scenes/levels/level2.tscn" id="4_inutg"]
-[ext_resource type="PackedScene" uid="uid://1x3w7xvwl3oy" path="res://scenes/levels/level3.tscn" id="5_uwh2e"]
-[ext_resource type="PackedScene" uid="uid://begbpk5w23jco" path="res://scenes/levels/boss.tscn" id="6_c7y02"]
+[ext_resource type="PackedScene" uid="uid://c5pennk0dpov" path="res://prefabs/levels/level2_model.tscn" id="4_rvd3h"]
+[ext_resource type="PackedScene" uid="uid://dx4kyebir3gcv" path="res://prefabs/levels/level3_model.tscn" id="5_1yonb"]
+[ext_resource type="PackedScene" uid="uid://bpg8klhpegno5" path="res://scenes/levels/level1.tscn" id="6_df88y"]
 [ext_resource type="PackedScene" uid="uid://ykpjmci2q4ax" path="res://scenes/menu/menu.tscn" id="7_p0ehv"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_snva8")
 game_scene = ExtResource("2_k0es6")
-levels = Array[PackedScene]([ExtResource("3_vn44i"), ExtResource("4_inutg"), ExtResource("5_uwh2e"), ExtResource("6_c7y02")])
+levels = Array[PackedScene]([ExtResource("3_vn44i"), ExtResource("4_rvd3h"), ExtResource("5_1yonb"), ExtResource("6_df88y")])
 main_menu_scene = ExtResource("7_p0ehv")
