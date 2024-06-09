@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dcwhm4i5lfftk"
+path.s3tc="res://.godot/imported/arms_anim_beacon_carry_v1-d847fcf3c86f9f30449a43a91df0dfe2_arms_mesh_lambert1_BaseColor.1001.png-f76639b85c35660f399faac075dbd66f.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "68b66f3baf5a8827cf82364258094e86"
+}
+
+[deps]
+
+source_file="res://assets/models/arms/arms_anim_beacon_carry_v1-d847fcf3c86f9f30449a43a91df0dfe2_arms_mesh_lambert1_BaseColor.1001.png"
+dest_files=["res://.godot/imported/arms_anim_beacon_carry_v1-d847fcf3c86f9f30449a43a91df0dfe2_arms_mesh_lambert1_BaseColor.1001.png-f76639b85c35660f399faac075dbd66f.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -66,8 +66,8 @@ func is_idle() -> bool:
 
 func start_moving():
 	if animation_player.current_animation != "attack":
-			animation_player.play("moving",0.3)
+		animation_player.play("moving",0.3)
 
 func stop_moving():
 	if animation_player.current_animation != "attack":
-			animation_player.stop()
+		animation_player.stop()

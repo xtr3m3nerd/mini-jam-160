@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1mlfaajqe73f"
-path.s3tc="res://.godot/imported/tank_lambert1_BaseColor.png-1106b11a4c371b5c8127fe3ef5f143f1.s3tc.ctex"
+uid="uid://c2cva4pkoh08o"
+path.s3tc="res://.godot/imported/saber_lambert1_BaseColor.1001.png-a605cc166ef03729b70a9f84e71f10c9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Tank_MAT/tank_lambert1_BaseColor.png"
-dest_files=["res://.godot/imported/tank_lambert1_BaseColor.png-1106b11a4c371b5c8127fe3ef5f143f1.s3tc.ctex"]
+source_file="res://assets/textures/saber_textures/saber_lambert1_BaseColor.1001.png"
+dest_files=["res://.godot/imported/saber_lambert1_BaseColor.1001.png-a605cc166ef03729b70a9f84e71f10c9.s3tc.ctex"]
 
 [params]
 

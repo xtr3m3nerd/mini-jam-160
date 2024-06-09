@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1mlfaajqe73f"
-path.s3tc="res://.godot/imported/tank_lambert1_BaseColor.png-1106b11a4c371b5c8127fe3ef5f143f1.s3tc.ctex"
+uid="uid://dmwp2446a8d44"
+path.s3tc="res://.godot/imported/saber_lambert1_Height.1001.png-6414e0b3d82a6d14d815dd14751094c1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Tank_MAT/tank_lambert1_BaseColor.png"
-dest_files=["res://.godot/imported/tank_lambert1_BaseColor.png-1106b11a4c371b5c8127fe3ef5f143f1.s3tc.ctex"]
+source_file="res://assets/textures/saber_textures/saber_lambert1_Height.1001.png"
+dest_files=["res://.godot/imported/saber_lambert1_Height.1001.png-6414e0b3d82a6d14d815dd14751094c1.s3tc.ctex"]
 
 [params]
 
@@ -24,8 +24,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=7
+roughness/src_normal="res://assets/textures/saber_textures/saber_lambert1_Normal.1001.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

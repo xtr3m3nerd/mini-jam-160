@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1mlfaajqe73f"
-path.s3tc="res://.godot/imported/tank_lambert1_BaseColor.png-1106b11a4c371b5c8127fe3ef5f143f1.s3tc.ctex"
+uid="uid://dmrw3p5usuwhp"
+path.s3tc="res://.godot/imported/barrel_aiStandardSurface3_BaseColor.png-91ba70341138c97445ca333d63205376.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Tank_MAT/tank_lambert1_BaseColor.png"
-dest_files=["res://.godot/imported/tank_lambert1_BaseColor.png-1106b11a4c371b5c8127fe3ef5f143f1.s3tc.ctex"]
+source_file="res://assets/textures/Mats/barrel_aiStandardSurface3_BaseColor.png"
+dest_files=["res://.godot/imported/barrel_aiStandardSurface3_BaseColor.png-91ba70341138c97445ca333d63205376.s3tc.ctex"]
 
 [params]
 

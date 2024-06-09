@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddqo4ufw18qr5"]
+
+[ext_resource type="PackedScene" uid="uid://cf8oubyimsdv1" path="res://assets/models/arms/arms_anim_beacon_carry_v1.fbx" id="1_hfxch"]
+
+[node name="BeaconCarry" instance=ExtResource("1_hfxch")]
+
+[node name="beacon" parent="RootNode/arms/arm_geo_GRP" index="2"]
+transform = Transform3D(1.94665, -0.368317, -0.108907, 0.369561, 1.94941, 0.0128677, 0.104611, -0.0329088, 1.98114, -0.344496, 0.0831708, 0.0976989)
+
+[node name="Skeleton3D" parent="RootNode/arms/arm_jnt_GRP/R_arm_JNT_GRP" index="0"]
+bones/0/position = Vector3(-0.0229493, 0.313616, -0.0188598)
+bones/0/rotation = Quaternion(-0.461507, 0.735042, 0.12562, -0.480567)
+bones/1/position = Vector3(0.0448459, 0.0014924, -0.000663331)
+bones/1/rotation = Quaternion(0.24508, 0.174267, -0.029119, 0.953268)
+bones/2/position = Vector3(0.0406408, 0.00161428, -0.00539454)
+bones/2/rotation = Quaternion(-0.0214447, -0.0994088, -0.474329, 0.874454)
+bones/11/position = Vector3(0.0203273, -0.000378065, -0.0169518)
+bones/11/rotation = Quaternion(0.345399, 0.917442, -0.0435264, -0.192629)
+
+[node name="Skeleton3D" parent="RootNode/arms/arm_jnt_GRP/L_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(-0.550897, 0.654401, -0.468275, -0.221335)
+bones/1/rotation = Quaternion(-0.0719616, 0.15623, -0.59352, 0.786224)
+bones/2/rotation = Quaternion(-0.29604, -0.131966, -0.320265, 0.890155)
+bones/3/position = Vector3(0.0244914, -0.00351656, -0.00876217)
+bones/3/rotation = Quaternion(0.593529, 0.744084, 0.0783448, -0.296521)
+bones/7/position = Vector3(0.0229902, -0.00114328, -0.0130292)
+bones/7/rotation = Quaternion(0.576371, 0.739869, -0.0484335, -0.343577)
+bones/8/position = Vector3(-0.00574878, -0.00123109, 0.000229298)
+bones/8/rotation = Quaternion(-0.178254, 0.0407746, 0.0365359, 0.98246)
+bones/11/position = Vector3(0.0193075, -0.000464528, -0.0169877)
+bones/11/rotation = Quaternion(0.448076, 0.859874, 0.121198, -0.212499)
+bones/12/position = Vector3(-0.00621092, -0.000984953, 0.000795607)
+bones/12/rotation = Quaternion(0.284648, 0.0231942, 0.365265, 0.886013)
+bones/15/rotation = Quaternion(0.503074, 0.828168, -0.118239, -0.216964)
+bones/17/position = Vector3(-0.00502959, -0.00240741, 0.00144444)
+bones/17/rotation = Quaternion(-0.0335095, 0.0341325, 0.0971921, 0.994116)
+bones/19/rotation = Quaternion(0.259306, 0.954161, 0.0332221, -0.145717)
+bones/20/rotation = Quaternion(-0.0772508, -0.0279366, 0.149688, 0.985315)
+
+[node name="L_arm_shoulder_ctrl" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.931062, -0.286234, -0.226259, 0.330037, 0.396311, 0.856746, -0.155561, -0.872357, 0.463458, 0.0115001, 0.0364692, 0.0365257)
+
+[node name="L_arm_elbow_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset" index="0"]
+transform = Transform3D(0.251576, -0.959181, 0.129157, 0.90738, 0.280178, 0.313309, -0.336707, 0.038373, 0.940827, 0, 0, 0)
+
+[node name="L_arm_wrist_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset" index="0"]
+transform = Transform3D(0.615125, -0.654736, 0.439251, 0.707162, 0.704516, 0.0598282, -0.348631, 0.27382, 0.89637, 0, 0, 0)
+
+[node name="L_arm_thumb_1_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset" index="0"]
+transform = Transform3D(0.851585, -0.473626, -0.224681, 0.468233, 0.879954, -0.0802428, 0.235714, -0.0368693, 0.971123, 0, 0, 0)
+
+[node name="L_arm_thumb_2_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset/L_arm_thumb_1_CTRL/L_arm_thumb_2_offset" index="0"]
+transform = Transform3D(0.942576, -0.291637, -0.162781, 0.29832, 0.954302, 0.0176857, 0.150184, -0.0652308, 0.986504, 0, 0, 0)
+
+[node name="L_arm_index_1_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset" index="0"]
+transform = Transform3D(0.46561, -0.884989, 0.00160973, 0.884187, 0.465264, 0.041744, -0.0376919, -0.0180131, 0.999127, 0, 0, 0)
+
+[node name="L_arm_index_3_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset/L_arm_index_1_CTRL/L_arm_index_2_offset/L_arm_index_2_CTRL/L_arm_index_3_offset" index="0"]
+transform = Transform3D(0.980976, -0.192475, -0.0252713, 0.194003, 0.976663, 0.0921525, 0.00694448, -0.0953021, 0.995424, 0, 0, 0)
+
+[node name="L_arm_middle_1_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset" index="0"]
+transform = Transform3D(0.569022, -0.761548, -0.310256, 0.756122, 0.632858, -0.166643, 0.323255, -0.139768, 0.935933, 0, 0, 0)
+
+[node name="L_arm_middle_2_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset/L_arm_middle_1_CTRL/L_arm_middle_2_offset" index="0"]
+transform = Transform3D(0.752997, -0.376154, 0.539911, 0.62778, 0.656555, -0.418126, -0.197201, 0.653792, 0.730526, 0, 0, 0)
+
+[node name="L_arm_ring_1_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset" index="0"]
+transform = Transform3D(0.333543, -0.93108, 0.147781, 0.911543, 0.278531, -0.302507, 0.240496, 0.235608, 0.941621, 0, 0, 0)
+
+[node name="L_arm_ring_2_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset/L_arm_ring_1_CTRL/L_arm_ring_2_offset" index="0"]
+transform = Transform3D(0.950291, -0.19573, -0.24215, 0.240337, 0.955543, 0.17081, 0.197952, -0.220517, 0.955085, 0, 0, 0)
+
+[node name="L_arm_pinky_1_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset" index="0"]
+transform = Transform3D(0.415651, -0.908133, 0.0502741, 0.734504, 0.302554, -0.607425, 0.536412, 0.289404, 0.792784, 0, 0, 0)
+
+[node name="R_arm_shoulder_ctrl" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.50128, -0.247241, 0.82921, 0.0514973, 0.965135, 0.256637, -0.863751, -0.0859452, 0.496535, 0.00157528, 0.00280753, -0.0189561)
+
+[node name="R_arm_elbow_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset" index="0"]
+transform = Transform3D(0.976002, 0.0725203, -0.205333, 0.0518211, 0.838483, 0.542458, 0.211508, -0.54008, 0.814603, 0, 0, 0)
+
+[node name="R_arm_wrist_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset" index="0"]
+transform = Transform3D(0.562451, -0.812554, -0.152986, 0.820667, 0.526068, 0.223067, -0.100773, -0.251014, 0.962724, 0, 0, 0)
+
+[node name="R_arm_middle_1_CTRL" parent="RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset" index="0"]
+transform = Transform3D(0.787663, -0.614903, -0.038494, 0.583409, 0.764487, -0.274216, 0.198044, 0.193532, 0.960897, 0, 0, 0)
