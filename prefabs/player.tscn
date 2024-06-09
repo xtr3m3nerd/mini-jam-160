@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dnjxaxedn5ikn"]
+[gd_scene load_steps=22 format=3 uid="uid://dnjxaxedn5ikn"]
 
 [ext_resource type="Script" path="res://prefabs/player.gd" id="1_fi8vs"]
 [ext_resource type="PackedScene" uid="uid://c45k0kryc6nl" path="res://prefabs/character_mover.tscn" id="2_gesuu"]
 [ext_resource type="PackedScene" uid="uid://bxoma4p1wa410" path="res://prefabs/weapons/weapon_manager.tscn" id="2_ra2p6"]
-[ext_resource type="PackedScene" uid="uid://cknwqmnrq78qs" path="res://assets/models/arms_test.fbx" id="3_omdmx"]
 [ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/health_manager.tscn" id="4_7w3qo"]
 [ext_resource type="PackedScene" uid="uid://cdx8gia7y2a8i" path="res://prefabs/player/arms2.tscn" id="4_x0flc"]
 [ext_resource type="PackedScene" uid="uid://dlskl61y0hbcv" path="res://prefabs/footsteps.tscn" id="7_u3hxi"]
@@ -21,6 +20,43 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3s1l1"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xqtal"]
+
+[sub_resource type="Animation" id="Animation_ryjf6"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.815686), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_27hw8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycunu"]
+_data = {
+"RESET": SubResource("Animation_27hw8"),
+"hit": SubResource("Animation_ryjf6")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -43,32 +79,15 @@ fov = 74.96
 
 [node name="WeaponManager" parent="Camera3D" instance=ExtResource("2_ra2p6")]
 
-[node name="Root Scene" parent="Camera3D" instance=ExtResource("3_omdmx")]
-transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 0, -2.99, -0.0776592)
-visible = false
+[node name="Weapons2" type="Node3D" parent="Camera3D/WeaponManager"]
 
-[node name="Skeleton3D" parent="Camera3D/Root Scene/RootNode/arms/L_arm/arm_jnt_GRP/R_arm_JNT_GRP" index="0"]
-bones/0/rotation = Quaternion(-0.443014, 0.896494, -0.0039885, 0.00468656)
-bones/1/rotation = Quaternion(-0.00890337, 0.0060161, -0.0361841, 0.999287)
-bones/2/rotation = Quaternion(-2.51973e-16, -0.234428, 1.20582e-16, 0.972134)
-bones/3/rotation = Quaternion(-2.61631e-16, 0.973249, -5.48939e-18, -0.229753)
-bones/7/rotation = Quaternion(-2.10615e-16, 0.973249, 2.10615e-16, -0.229753)
-bones/11/rotation = Quaternion(-2.61631e-16, 0.973249, -5.48939e-18, -0.229753)
-bones/15/rotation = Quaternion(-2.61631e-16, 0.973249, -5.48939e-18, -0.229753)
-bones/18/rotation = Quaternion(-4.9913e-19, 0.118944, 7.81267e-18, 0.992901)
-bones/19/rotation = Quaternion(-2.61631e-16, 0.973249, -5.48939e-18, -0.229753)
+[node name="Fist" type="Node3D" parent="Camera3D/WeaponManager/Weapons2"]
 
-[node name="Skeleton3D" parent="Camera3D/Root Scene/RootNode/arms/L_arm/arm_jnt_GRP/L_arm_JNT_GRP" index="0"]
-bones/0/rotation = Quaternion(0.297609, 0.757147, 0.287247, -0.505615)
-bones/2/rotation = Quaternion(1.21648e-16, -0.229753, -2.83198e-17, 0.973249)
-bones/3/rotation = Quaternion(4.5526e-17, 0.973249, -4.5526e-17, -0.229753)
-bones/7/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
-bones/11/rotation = Quaternion(-4.5526e-17, 0.973249, 4.5526e-17, -0.229753)
-bones/15/rotation = Quaternion(4.5526e-17, 0.973249, -4.5526e-17, -0.229753)
-bones/19/rotation = Quaternion(4.5526e-17, 0.973249, -4.5526e-17, -0.229753)
+[node name="Crossbow" type="Node3D" parent="Camera3D/WeaponManager/Weapons2"]
 
-[node name="L_arm_shoulder_ctrl" parent="Camera3D/Root Scene/RootNode/arms/L_arm/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
-transform = Transform3D(-0.431711, 0.678223, 0.594675, -0.631944, 0.243019, -0.735927, -0.64364, -0.693509, 0.323685, -0.0705791, 0.0183401, 0.0150493)
+[node name="Grenade" type="Node3D" parent="Camera3D/WeaponManager/Weapons2"]
+
+[node name="Sword" type="Node3D" parent="Camera3D/WeaponManager/Weapons2"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
 visible = false
@@ -219,5 +238,20 @@ default_max_speed = 10.0
 volume_db = -22.695
 footstep_streams = Array[AudioStream]([ExtResource("8_s6tco"), ExtResource("9_q15wc"), ExtResource("10_wtpge"), ExtResource("11_r8yw1"), ExtResource("12_oy2bd"), ExtResource("13_dkjvy"), ExtResource("14_a4f7c"), ExtResource("15_qynyt"), ExtResource("16_j30ov"), ExtResource("17_loy46")])
 
-[editable path="Camera3D/Root Scene"]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HitScreen" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HitScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_ycunu")
+}
+
 [editable path="Camera3D/Arms"]

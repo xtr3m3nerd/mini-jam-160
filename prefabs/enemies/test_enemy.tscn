@@ -144,14 +144,15 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, -0.
 [node name="HealthManager" parent="." instance=ExtResource("2_26eby")]
 
 [node name="MeleeFlankBehavior" parent="." node_paths=PackedStringArray("melee_attack_manager", "character_mover") instance=ExtResource("5_jwos0")]
-melee_attack_manager = NodePath("../MeleeAttackManager")
+melee_attack_manager = NodePath("../AttackManager")
 character_mover = NodePath("../CharacterMover")
 
 [node name="StateLabel" parent="." instance=ExtResource("6_neegu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 visible = false
 
-[node name="MeleeAttackManager" parent="." instance=ExtResource("7_1sobh")]
+[node name="AttackManager" parent="." instance=ExtResource("7_1sobh")]
+damage_dealt = 10
 
 [node name="CanSee" type="MeshInstance3D" parent="." node_paths=PackedStringArray("behavior")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
