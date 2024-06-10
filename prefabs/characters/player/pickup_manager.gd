@@ -14,6 +14,9 @@ func pickup(input_just_pressed: bool):
 		ray_cast_3d.enabled = true
 		ray_cast_3d.force_raycast_update()
 		if ray_cast_3d.is_colliding():
+			if ray_cast_3d.get_collider().has_method("interact"):
+				ray_cast_3d.get_collider().interact()
+				
 			if ray_cast_3d.get_collider().has_method("pickup") and pickup_in_hand == null:
 				pickup_in_hand = ray_cast_3d.get_collider().pickup()
 				print(pickup_in_hand)

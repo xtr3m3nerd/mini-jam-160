@@ -1,39 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cep84ac8datp2"]
+[gd_scene load_steps=10 format=3 uid="uid://bogi02pfqtxye"]
 
-[ext_resource type="PackedScene" uid="uid://dlybmx2p36vcx" path="res://assets/models/door.tscn" id="1_ukqgv"]
+[ext_resource type="Script" path="res://prefabs/door.gd" id="1_0v541"]
+[ext_resource type="PackedScene" path="res://assets/models/door.tscn" id="1_ukqgv"]
 [ext_resource type="AudioStream" uid="uid://b525xxjleyulc" path="res://assets/Audio/SFX/Object_Interaction_SFX/Door/A_Door_Open_1.wav" id="2_hgkc2"]
 [ext_resource type="AudioStream" uid="uid://ctu42dpkwg28d" path="res://assets/Audio/SFX/Object_Interaction_SFX/Door/A_Door_Close_1.wav" id="3_5ula5"]
-
-[sub_resource type="Animation" id="Animation_ylaao"]
-resource_name = "open"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../sounds")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("2_hgkc2")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_nglvy"]
 length = 0.001
@@ -80,6 +50,36 @@ tracks/1/keys = {
 }
 tracks/1/use_blend = true
 
+[sub_resource type="Animation" id="Animation_ylaao"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_hgkc2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tfqjw"]
 _data = {
 "RESET": SubResource("Animation_nglvy"),
@@ -87,7 +87,13 @@ _data = {
 "open": SubResource("Animation_ylaao")
 }
 
-[node name="Door" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_amcvk"]
+size = Vector3(0.321899, 2.33705, 1.65358)
+
+[node name="Door" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_0v541")
 
 [node name="door" parent="." instance=ExtResource("1_ukqgv")]
 
@@ -98,3 +104,7 @@ libraries = {
 }
 
 [node name="sounds" type="AudioStreamPlayer3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00760484, 1.11637, -0.760446)
+shape = SubResource("BoxShape3D_amcvk")
