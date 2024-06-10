@@ -4,12 +4,14 @@
 [ext_resource type="Script" path="res://prefabs/base_orb.gd" id="2_38l05"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgw1x"]
+resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
 
 [node name="BaseOrb" instance=ExtResource("1_ibbgf")]
 script = ExtResource("2_38l05")
+base_material = SubResource("StandardMaterial3D_jgw1x")
 
 [node name="RootNode" parent="." index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.956093, -0.446563, 1.08449)

@@ -15,7 +15,9 @@ func load_level(level: PackedScene) -> void:
 		environment.remove_child(current_level)
 		current_level.queue_free()
 	current_level = level.instantiate() as Level
+	current_level.level_finished.connect(next_level)
 	environment.add_child(current_level)
 	player.global_transform = current_level.player_spawn.global_transform
-	
-	pass
+
+func next_level():
+	load_level(SceneManager.next_level())

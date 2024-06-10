@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var base_material: Material
 @onready var mesh_instance = $RootNode/pCube12 as MeshInstance3D
 @onready var omni_light_3d = $OmniLight3D as OmniLight3D
 
@@ -9,8 +10,8 @@ extends Node3D
 		update_color(c)
 
 func _ready():
-	#update_color(color)
-	pass
+	mesh_instance.material_overlay = base_material.duplicate()
+	update_color(color)
 
 func update_color(c):
 	if omni_light_3d == null:
