@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bogi02pfqtxye"]
 
 [ext_resource type="Script" path="res://prefabs/door.gd" id="1_0v541"]
-[ext_resource type="PackedScene" path="res://assets/models/door.tscn" id="1_ukqgv"]
+[ext_resource type="PackedScene" uid="uid://dlybmx2p36vcx" path="res://assets/models/door.tscn" id="1_ukqgv"]
 [ext_resource type="AudioStream" uid="uid://b525xxjleyulc" path="res://assets/Audio/SFX/Object_Interaction_SFX/Door/A_Door_Open_1.wav" id="2_hgkc2"]
 [ext_resource type="AudioStream" uid="uid://ctu42dpkwg28d" path="res://assets/Audio/SFX/Object_Interaction_SFX/Door/A_Door_Close_1.wav" id="3_5ula5"]
 

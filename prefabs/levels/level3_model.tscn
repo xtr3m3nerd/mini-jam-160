@@ -1,7 +1,8 @@
-[gd_scene load_steps=142 format=3 uid="uid://dfsms4ch3ugdb"]
+[gd_scene load_steps=143 format=3 uid="uid://dfsms4ch3ugdb"]
 
 [ext_resource type="PackedScene" uid="uid://d1uw0sonh1n78" path="res://assets/models/levels/level3_v3.fbx" id="1_c60xy"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t4h5h"]
+[ext_resource type="PackedScene" uid="uid://cep84ac8datp2" path="res://prefabs/door.tscn" id="3_lq0ka"]
 [ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/pickups/base_orb.tscn" id="3_t2iu8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2easu"]
@@ -1109,14 +1110,19 @@ shape = SubResource("ConcavePolygonShape3D_ksmv4")
 [node name="PlayerSpawn" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.56968, 1.36728, 32.4368)
 
-[node name="DeathZone" type="Area3D" parent="." index="5"]
+[node name="doors" type="Node3D" parent="." index="5"]
+
+[node name="Door" parent="doors" index="0" instance=ExtResource("3_lq0ka")]
+transform = Transform3D(-0.0549152, 0, -0.998491, 0, 1, 0, 0.998491, 0, -0.0549152, 12.0327, 0.765841, -20.4714)
+
+[node name="DeathZone" type="Area3D" parent="." index="6"]
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.58583, 0)
 shape = SubResource("WorldBoundaryShape3D_tpuyc")
 
-[node name="WinZone" type="Area3D" parent="." index="6"]
+[node name="WinZone" type="Area3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1773, 2.56784, -32.253)
 collision_layer = 4
 collision_mask = 2
