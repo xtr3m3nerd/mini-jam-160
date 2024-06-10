@@ -1,7 +1,8 @@
-[gd_scene load_steps=138 format=3 uid="uid://c5pennk0dpov"]
+[gd_scene load_steps=139 format=3 uid="uid://c5pennk0dpov"]
 
 [ext_resource type="PackedScene" uid="uid://5bxcu2taliw2" path="res://assets/models/levels/level2_v3.fbx" id="1_ityr7"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_70lf7"]
+[ext_resource type="PackedScene" uid="uid://o0rf1b1ed2mk" path="res://prefabs/trapdoor.tscn" id="3_3dunc"]
 [ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/pickups/dropoff_zone.tscn" id="3_hdslu"]
 [ext_resource type="PackedScene" uid="uid://bogi02pfqtxye" path="res://prefabs/door.tscn" id="3_tf0u8"]
 [ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickups/pickup.tscn" id="4_xfhgf"]
@@ -986,9 +987,15 @@ shape = SubResource("ConcavePolygonShape3D_db8u1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/level2/pCube160/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_sb73l")
 
+[node name="pCube50" parent="RootNode/level2" index="115"]
+transform = Transform3D(0.265343, 0, 0, 0, 0.265343, 0, 0, 0, 0.265343, 0.0361457, 8.53539e-05, 0.450585)
+visible = false
+
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level2/pCube50" index="0"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/level2/pCube50/StaticBody3D" index="0"]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_3evd3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level2/pCylinder79" index="0"]
@@ -1117,14 +1124,17 @@ light_energy = 0.669
 [node name="doors" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6631, 0)
 
-[node name="Door" parent="doors" index="0" instance=ExtResource("3_tf0u8")]
-transform = Transform3D(0.0171798, 0, -0.858506, 0, 1, 0, 1.00228, 0, 0.0147155, 4.31273, -13.7982, -0.663273)
+[node name="trapdoor" parent="doors" index="0" instance=ExtResource("3_3dunc")]
+transform = Transform3D(0.272988, 0, -9.31323e-10, 0, 0.299419, 0, 0, 0, 0.274553, -3.22382, -13.8866, -5.87162)
 
-[node name="Door2" parent="doors" index="1" instance=ExtResource("3_tf0u8")]
-transform = Transform3D(0.0171798, 0, -0.858506, 0, 1, 0, 1.00228, 0, 0.0147155, 4.21925, -13.7982, -12.8159)
+[node name="Door" parent="doors" index="1" instance=ExtResource("3_tf0u8")]
+transform = Transform3D(0.0171382, 0, -0.999853, 0, 1, 0, 0.999853, 0, 0.0171382, 4.07813, -13.8466, -0.613606)
 
-[node name="Door3" parent="doors" index="2" instance=ExtResource("3_tf0u8")]
-transform = Transform3D(-0.0369654, 0, -1.0627, 0, 1, 0, 0.99764, 0, -0.039376, -8.74445, -13.8184, -11.8738)
+[node name="Door2" parent="doors" index="2" instance=ExtResource("3_tf0u8")]
+transform = Transform3D(0.0171382, 0, -0.999853, 0, 1, 0, 0.999853, 0, 0.0171382, 4.05838, -13.7982, -12.8159)
+
+[node name="Door3" parent="doors" index="3" instance=ExtResource("3_tf0u8")]
+transform = Transform3D(-0.0371465, 0, -1.08603, 0, 1, 0, 1.00253, 0, -0.0402406, -8.76361, -13.8184, -11.9608)
 
 [node name="PlayerSpawn" type="Node3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)

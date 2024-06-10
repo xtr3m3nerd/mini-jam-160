@@ -40,7 +40,7 @@ data = PackedVector3Array(0.1255, 0.0468, -0.0453, 0.1255, 0.0492, -0.0453, 0.13
 [node name="pCube50" type="Node3D"]
 
 [node name="pCube50" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116, -0.045, 0.08)
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -23.4352, -9.16226, 8.61941)
 mesh = SubResource("ArrayMesh_wr84a")
 skeleton = NodePath("")
 
