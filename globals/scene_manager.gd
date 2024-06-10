@@ -12,3 +12,8 @@ func change_to_menu() -> void:
 func play_game_with_level(level: int) -> void:
 	current_level = levels[level]
 	get_tree().change_scene_to_packed(game_scene)
+
+func next_level():
+	var index = levels.find(current_level)
+	current_level = levels[index + 1]
+	return current_level

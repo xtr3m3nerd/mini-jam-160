@@ -1,5 +1,7 @@
 extends Area3D
 
+signal dropped_off
+
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var label_3d = $Label3D
 @onready var base_orb = $BaseOrb
@@ -11,8 +13,10 @@ var cant_drop_message = "Looks like you can put something here"
 func dropoff(color: Color):
 	print("Dropped off " + str(color))
 	base_orb.color = color
+	base_orb.update_color(color)
 	base_orb.show()
 	label_3d.hide()
+	dropped_off.emit()
 
 func _ready():
 	base_orb.hide()

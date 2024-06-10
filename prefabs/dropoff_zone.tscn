@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://owmifl5gi0ks"]
+[gd_scene load_steps=5 format=3 uid="uid://owmifl5gi0ks"]
 
 [ext_resource type="Script" path="res://prefabs/dropoff_zone.gd" id="1_hjhgq"]
 [ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/base_orb.tscn" id="2_17kk2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7sxrg"]
 radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buyek"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
 
 [node name="DropoffZone" type="Area3D"]
 collision_layer = 4
@@ -23,6 +29,7 @@ text = "Press 'E' to drop off"
 
 [node name="BaseOrb" parent="." instance=ExtResource("2_17kk2")]
 visible = false
+base_material = SubResource("StandardMaterial3D_buyek")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
