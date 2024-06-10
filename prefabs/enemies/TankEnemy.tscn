@@ -317,7 +317,7 @@ move_accel = 2.0
 
 [node name="Footsteps" parent="." instance=ExtResource("11_g3hq7")]
 stream = ExtResource("13_tu28v")
-volume_db = -11.333
+volume_db = -11.332
 footstep_streams = Array[AudioStream]([ExtResource("13_tu28v"), ExtResource("14_7aj31"), ExtResource("15_xghsk"), ExtResource("16_qg2hb"), ExtResource("17_134jk"), ExtResource("18_yht80")])
 
 [node name="Screech" type="AudioStreamPlayer3D" parent="."]
