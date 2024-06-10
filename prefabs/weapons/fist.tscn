@@ -1,0 +1,228 @@
+[gd_scene load_steps=17 format=3 uid="uid://cf6eqfupvbxgh"]
+
+[ext_resource type="Script" path="res://prefabs/weapons/weapon.gd" id="1_405i2"]
+[ext_resource type="PackedScene" uid="uid://cdx8gia7y2a8i" path="res://prefabs/characters/player/arms.tscn" id="2_r37m3"]
+[ext_resource type="PackedScene" uid="uid://3tgpiy7bqx7u" path="res://prefabs/weapons/bullet_emitters/bullet_emitter.tscn" id="3_f7gag"]
+[ext_resource type="PackedScene" uid="uid://bd5l2yuxtc0so" path="res://prefabs/weapons/bullet_emitters/area_damage_emitter.tscn" id="4_ep81x"]
+[ext_resource type="Texture2D" uid="uid://bosbrodxv1a1j" path="res://assets/images/crosshair001.png" id="5_o010y"]
+[ext_resource type="Script" path="res://scripts/random_audio_stream_player_3d.gd" id="6_nms2y"]
+[ext_resource type="AudioStream" uid="uid://nmhaowlf3kex" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_1.wav" id="7_8qfuh"]
+[ext_resource type="AudioStream" uid="uid://bbgskkl5uw68r" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_2.wav" id="8_c8205"]
+[ext_resource type="AudioStream" uid="uid://dd7leio3ut5lu" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_3.wav" id="9_yn2o7"]
+[ext_resource type="AudioStream" uid="uid://c1v0rstxvdrce" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_4.wav" id="10_ay11s"]
+[ext_resource type="AudioStream" uid="uid://b80fdwjtdlssk" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_5.wav" id="11_etnoi"]
+[ext_resource type="AudioStream" uid="uid://dt0jl2wfy23i4" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_6.wav" id="12_2vpxx"]
+
+[sub_resource type="Animation" id="Animation_tq0c8"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_8qcwm"]
+resource_name = "attack"
+length = 1.3
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arms/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Arm_ANIM_punch_v1"),
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.38),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"actually_attack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FistWhooshes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.29),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_d7apf"]
+resource_name = "moving"
+length = 1.05
+loop_mode = 1
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arms/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Arm_ANIM_run_v1"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7d7d"]
+_data = {
+"RESET": SubResource("Animation_tq0c8"),
+"attack": SubResource("Animation_8qcwm"),
+"moving": SubResource("Animation_d7apf")
+}
+
+[node name="Fist" type="Node3D"]
+script = ExtResource("1_405i2")
+ammo = -1
+attack_rate = 0.5
+animation_controlled_attack = true
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="Arms" parent="Graphics" instance=ExtResource("2_r37m3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.173274, -0.202665)
+
+[node name="L_arm_shoulder_ctrl" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.323306, 0.946273, -0.00634542, -0.254423, 0.0933816, 0.962574, 0.91145, -0.309591, 0.270945, -0.0619251, 0.034193, 0.0393984)
+
+[node name="L_arm_elbow_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset" index="0"]
+transform = Transform3D(0.272527, -0.962148, 4.50972e-19, 0.962148, 0.272527, 7.1772e-18, -7.02843e-18, -1.52208e-18, 1, 0, 0, 0)
+
+[node name="L_arm_wrist_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset" index="0"]
+transform = Transform3D(0.861344, -0.177354, 0.476057, 0.279105, 0.948194, -0.151746, -0.424482, 0.263575, 0.866223, 0, 0, 0)
+
+[node name="L_arm_thumb_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset" index="0"]
+transform = Transform3D(0.758483, 0.594014, 0.268049, -0.110625, 0.5227, -0.845309, -0.642234, 0.611499, 0.462173, 0.00268899, -0.00277203, -0.00394602)
+
+[node name="L_arm_thumb_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset/L_arm_thumb_1_CTRL/L_arm_thumb_2_offset" index="0"]
+transform = Transform3D(0.982208, -0.158951, 0.100008, 0.170773, 0.534458, -0.827763, 0.0781232, 0.830115, 0.552094, 0, 0, 0)
+
+[node name="L_arm_index_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset" index="0"]
+transform = Transform3D(0.332281, -0.903032, 0.272254, 0.938685, 0.34477, -0.00208788, -0.0919798, 0.256255, 0.962223, 0, 0, 0)
+
+[node name="L_arm_index_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset/L_arm_index_1_CTRL/L_arm_index_2_offset" index="0"]
+transform = Transform3D(0.0589984, -0.777623, 0.625957, 0.96785, -0.109031, -0.226671, 0.244513, 0.619205, 0.746189, 0, 0, 0)
+
+[node name="L_arm_index_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset/L_arm_index_1_CTRL/L_arm_index_2_offset/L_arm_index_2_CTRL/L_arm_index_3_offset" index="0"]
+transform = Transform3D(-0.292368, -0.828972, 0.476787, 0.868282, -0.439048, -0.230921, 0.40076, 0.346471, 0.848144, 0, 0, 0)
+
+[node name="L_arm_middle_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset" index="0"]
+transform = Transform3D(0.413929, -0.842939, 0.34368, 0.90907, 0.363085, -0.204353, 0.0474721, 0.397017, 0.916582, 0, 0, 0)
+
+[node name="L_arm_middle_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset/L_arm_middle_1_CTRL/L_arm_middle_2_offset" index="0"]
+transform = Transform3D(0.285193, -0.943519, 0.16863, 0.621158, 0.0479527, -0.782217, 0.72995, 0.327828, 0.599751, 0, 0, 0)
+
+[node name="L_arm_middle_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset/L_arm_middle_1_CTRL/L_arm_middle_2_offset/L_arm_middle_2_CTRL/L_arm_middle_3_offset" index="0"]
+transform = Transform3D(0.22955, -0.703128, 0.672992, 0.697873, -0.363076, -0.617373, 0.678438, 0.611381, 0.407351, 0, 0, 0)
+
+[node name="L_arm_ring_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset" index="0"]
+transform = Transform3D(0.196322, -0.944588, 0.263079, 0.800016, -0.000826125, -0.599977, 0.566948, 0.328257, 0.755524, 0, 0, 0)
+
+[node name="L_arm_ring_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset/L_arm_ring_1_CTRL/L_arm_ring_2_offset" index="0"]
+transform = Transform3D(0.14745, -0.971489, 0.185655, 0.735101, -0.0179428, -0.677719, 0.661728, 0.236406, 0.711497, 0, 0, 0)
+
+[node name="L_arm_ring_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset/L_arm_ring_1_CTRL/L_arm_ring_2_offset/L_arm_ring_2_CTRL/L_arm_ring_3_offset" index="0"]
+transform = Transform3D(0.257796, -0.776965, 0.57434, 0.761567, -0.202418, -0.615664, 0.594607, 0.596114, 0.539528, 0, 0, 0)
+
+[node name="L_arm_pinky_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset" index="0"]
+transform = Transform3D(0.0409744, -0.988602, 0.144868, -0.0898093, -0.148047, -0.984893, 0.995116, 0.0273449, -0.0948517, 0, 0, 0)
+
+[node name="L_arm_pinky_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset/L_arm_pinky_1_CTRL/L_arm_pinky_2_offset" index="0"]
+transform = Transform3D(0.714381, -0.310441, 0.627126, 0.660505, 0.00320732, -0.750815, 0.231073, 0.950587, 0.207339, 0, 0, 0)
+
+[node name="L_arm_pinky_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset/L_arm_pinky_1_CTRL/L_arm_pinky_2_offset/L_arm_pinky_2_CTRL/L_arm_pinky_3_offset" index="0"]
+transform = Transform3D(0.183682, -0.826669, 0.531863, 0.84926, -0.139004, -0.509349, 0.494994, 0.545248, 0.676525, 0, 0, 0)
+
+[node name="R_arm_shoulder_ctrl" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_elbow_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_wrist_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_thumb_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_thumb_1_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_thumb_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_thumb_1_offset/R_arm_thumb_1_CTRL/R_arm_thumb_2_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_index_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_index_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset/R_arm_index_1_CTRL/R_arm_index_2_offset" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_index_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset/R_arm_index_1_CTRL/R_arm_index_2_offset/R_arm_index_2_CTRL/R_arm_index_3_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_middle_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset" index="0"]
+transform = Transform3D(1, 6.93889e-18, -4.81482e-35, -6.93889e-18, 1, -6.93889e-18, 0, 6.93889e-18, 1, 0, 0, 0)
+
+[node name="R_arm_middle_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset/R_arm_middle_1_CTRL/R_arm_middle_2_offset" index="0"]
+transform = Transform3D(1, -1.73472e-17, -1.20371e-34, 1.73472e-17, 1, 6.93889e-18, 0, -6.93889e-18, 1, 0, 0, 0)
+
+[node name="R_arm_middle_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset/R_arm_middle_1_CTRL/R_arm_middle_2_offset/R_arm_middle_2_CTRL/R_arm_middle_3_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, 5.55112e-17, 1.38778e-17, 1, 7.70372e-34, -5.55112e-17, 0, 1, 0, 0, 0)
+
+[node name="R_arm_ring_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset" index="0"]
+transform = Transform3D(1, 1.54074e-33, 1.11022e-16, 0, 1, -1.38778e-17, -1.11022e-16, 1.38778e-17, 0.999999, 0, 0, 0)
+
+[node name="R_arm_ring_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset/R_arm_ring_1_CTRL/R_arm_ring_2_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, -5.55112e-17, 1.38778e-17, 1, -2.77556e-17, 5.55112e-17, 2.77556e-17, 1, 0, 0, 0)
+
+[node name="R_arm_ring_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset/R_arm_ring_1_CTRL/R_arm_ring_2_offset/R_arm_ring_2_CTRL/R_arm_ring_3_offset" index="0"]
+transform = Transform3D(0.999999, -4.16334e-17, -5.55112e-17, 4.16333e-17, 1, -2.77556e-17, 5.55111e-17, 2.77556e-17, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_1_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, 1.66533e-16, 1.38778e-17, 1, -4.16334e-17, -1.66533e-16, 4.16334e-17, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_2_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset/R_arm_pinky_1_CTRL/R_arm_pinky_2_offset" index="0"]
+transform = Transform3D(0.999999, -1.38778e-17, -1.92593e-34, 1.38778e-17, 1, 1.38778e-17, 0, -1.38778e-17, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_3_CTRL" parent="Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset/R_arm_pinky_1_CTRL/R_arm_pinky_2_offset/R_arm_pinky_2_CTRL/R_arm_pinky_3_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, 0, 1.38778e-17, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="camera_perspective" parent="Graphics/Arms/RootNode" index="1"]
+transform = Transform3D(-0.1, 0, -8.88178e-16, 0, 0.1, 0, 8.88178e-16, 0, -0.1, 4.76599e-05, 0.322352, -6.97374e-05)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_u7d7d")
+}
+
+[node name="BulletEmitter" parent="." instance=ExtResource("3_f7gag")]
+
+[node name="AreaDamageEmitter" parent="BulletEmitter" instance=ExtResource("4_ep81x")]
+attack_radius = 1.5
+
+[node name="FirePoint" type="Node3D" parent="."]
+
+[node name="Crosshairs" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_o010y")
+
+[node name="FistWhooshes" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("6_nms2y")
+streams = Array[AudioStream]([ExtResource("7_8qfuh"), ExtResource("8_c8205"), ExtResource("9_yn2o7"), ExtResource("10_ay11s"), ExtResource("11_etnoi"), ExtResource("12_2vpxx")])
+
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0893466, 0, -0.700826)
+volume_db = -30.0
+bus = &"Sfx"
+
+[editable path="Graphics/Arms"]

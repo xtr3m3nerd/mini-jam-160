@@ -1,0 +1,178 @@
+[gd_scene load_steps=16 format=3 uid="uid://desw8f2ia15re"]
+
+[ext_resource type="Script" path="res://prefabs/weapons/weapon.gd" id="1_gpl6k"]
+[ext_resource type="PackedScene" uid="uid://ds02uopifrapf" path="res://assets/models/arms/arms_sword.tscn" id="2_22kep"]
+[ext_resource type="PackedScene" uid="uid://3tgpiy7bqx7u" path="res://prefabs/weapons/bullet_emitters/bullet_emitter.tscn" id="3_ak8cd"]
+[ext_resource type="PackedScene" uid="uid://bd5l2yuxtc0so" path="res://prefabs/weapons/bullet_emitters/area_damage_emitter.tscn" id="4_cufb6"]
+[ext_resource type="Texture2D" uid="uid://bosbrodxv1a1j" path="res://assets/images/crosshair001.png" id="5_tq7d7"]
+[ext_resource type="Script" path="res://scripts/random_audio_stream_player_3d.gd" id="6_jo5jd"]
+[ext_resource type="AudioStream" uid="uid://l4y520lp3hjo" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_1.wav" id="7_io5jp"]
+[ext_resource type="AudioStream" uid="uid://b6yk8utk4clmq" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_2.wav" id="8_73yu7"]
+[ext_resource type="AudioStream" uid="uid://h7ra1utie3gy" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_3.wav" id="9_yxxb1"]
+[ext_resource type="AudioStream" uid="uid://cqncsrk6s0vtd" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_4.wav" id="10_dojll"]
+[ext_resource type="AudioStream" uid="uid://c56p5b4j33tn1" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Hum.wav" id="11_eo4pt"]
+
+[sub_resource type="Animation" id="Animation_kvjku"]
+resource_name = "attack"
+length = 4.7
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsSword/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("arms_anim_sword_swing1", "arms_anim_sword_swing2", "arms_anim_sword_swing3"),
+"times": PackedFloat32Array(0.02, 0.97, 2.49)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.69, 0.96, 2.13, 2.49, 4.52),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"actually_attack"
+}, {
+"args": [],
+"method": &"check_stop"
+}, {
+"args": [],
+"method": &"actually_attack"
+}, {
+"args": [],
+"method": &"check_stop"
+}, {
+"args": [],
+"method": &"actually_attack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sabre_Swing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.69, 2.13, 4.52),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play_random"
+}, {
+"args": [0.0],
+"method": &"play_random"
+}, {
+"args": [0.0],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v18nx"]
+resource_name = "pullout"
+length = 2.0
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsSword/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("arms_anim_sword_unsheath"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="Animation" id="Animation_8idae"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shpug"]
+_data = {
+"RESET": SubResource("Animation_8idae"),
+"attack": SubResource("Animation_kvjku"),
+"pullout": SubResource("Animation_v18nx")
+}
+
+[node name="Sword" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328631, 0, 0)
+script = ExtResource("1_gpl6k")
+damage = 20
+ammo = -1
+attack_rate = 1.0
+animation_controlled_attack = true
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="ArmsSword" parent="Graphics" instance=ExtResource("2_22kep")]
+
+[node name="saber" parent="Graphics/ArmsSword/RootNode/arms/arm_geo_GRP" index="2"]
+transform = Transform3D(0.569226, 0.125424, -1.13896, -1.19235, 0.0105008, -0.585323, -0.13997, 0.420619, 0.35424, -0.00763199, 0.22525, -0.0484722)
+
+[node name="Skeleton3D" parent="Graphics/ArmsSword/RootNode/arms/arm_jnt_GRP/R_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(-0.443014, 0.896494, -0.0039885, 0.00468656)
+bones/1/rotation = Quaternion(-0.00890337, 0.0060161, -0.0361841, 0.999287)
+bones/2/rotation = Quaternion(-2.17782e-16, -0.234428, -5.92314e-16, 0.972134)
+bones/3/rotation = Quaternion(-4.5526e-17, 0.973249, 4.5526e-17, -0.229753)
+bones/7/rotation = Quaternion(5.48939e-18, 0.973249, 2.61631e-16, -0.229753)
+bones/11/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
+bones/15/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
+bones/19/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
+
+[node name="Skeleton3D" parent="Graphics/ArmsSword/RootNode/arms/arm_jnt_GRP/L_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(-0.624828, 0.722751, 0.276112, 0.104797)
+bones/2/rotation = Quaternion(-1.09641e-16, -0.229753, 4.89782e-17, 0.973249)
+bones/3/rotation = Quaternion(-0.570481, -0.4278, 0.271246, 0.646501)
+bones/4/rotation = Quaternion(-0.26749, 0.158169, -0.125751, 0.942135)
+bones/5/rotation = Quaternion(-0.0915698, 0.265767, 0.375612, 0.883119)
+bones/7/rotation = Quaternion(0.762689, 0.608291, -0.0737606, -0.206996)
+bones/8/rotation = Quaternion(0.0251403, -0.0241319, 0.0032601, 0.999387)
+bones/9/rotation = Quaternion(-0.0529187, 0.0836996, 0.414791, 0.904512)
+bones/11/rotation = Quaternion(0.589989, 0.79662, -0.0749893, -0.108101)
+bones/12/rotation = Quaternion(0.013477, -0.144492, 0.33903, 0.929515)
+bones/13/rotation = Quaternion(0.205061, 0.0743214, 0.491852, 0.842916)
+bones/15/rotation = Quaternion(0.491386, 0.868659, -0.0543444, -0.031925)
+bones/16/rotation = Quaternion(0.168096, -0.279245, 0.399433, 0.856866)
+bones/17/rotation = Quaternion(0.294716, -0.0069283, 0.597254, 0.74591)
+bones/18/rotation = Quaternion(2.86663e-18, 0.118944, -2.39296e-17, 0.992901)
+bones/19/rotation = Quaternion(-0.124183, 0.936647, -0.203823, -0.256373)
+bones/20/rotation = Quaternion(0.220524, -0.396428, -0.0929825, 0.886323)
+
+[node name="L_arm_shoulder_ctrl" parent="Graphics/ArmsSword/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.902262, -0.385302, 0.19356, 0.426648, 0.732792, -0.530081, 0.0624018, 0.560854, 0.825559, 0.0150126, 0.0242857, -0.0240939)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_shpug")
+}
+
+[node name="BulletEmitter" parent="." instance=ExtResource("3_ak8cd")]
+
+[node name="AreaDamageEmitter" parent="BulletEmitter" instance=ExtResource("4_cufb6")]
+attack_radius = 2.5
+
+[node name="FirePoint" type="Node3D" parent="."]
+
+[node name="Crosshairs" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_tq7d7")
+
+[node name="Sabre_Swing" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0619138, 0, -0.737175)
+volume_db = -4.571
+bus = &"Sfx"
+script = ExtResource("6_jo5jd")
+streams = Array[AudioStream]([ExtResource("7_io5jp"), ExtResource("8_73yu7"), ExtResource("9_yxxb1"), ExtResource("10_dojll")])
+
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0893466, 0, -0.700826)
+stream = ExtResource("11_eo4pt")
+volume_db = -30.0
+bus = &"Sfx"
+
+[editable path="Graphics/ArmsSword"]

@@ -6,7 +6,11 @@ extends CharacterBody3D
 
 @export var time_to_live = 5.0
 var destroy_timer: Timer
+var bodies_to_exclude = []
 
+func set_bodies_to_exclude(bodies: Array):
+	bodies_to_exclude = bodies
+			
 func _ready() -> void:
 	destroy_timer = Timer.new()
 	destroy_timer.wait_time = time_to_live
@@ -22,10 +26,13 @@ func _physics_process(delta):
 	if move_speed == 0:
 		destroy_timer.stop()
 		
-	if collision:
+	if collision and not (collision.get_collider() in bodies_to_exclude):
 		if damage > 0:
-			if collision.get_collider().has_method("take_damage"):
-				collision.get_collider().take_damage(damage)
+			if collision.get_collider().has_method("hurt"):
+				var damage_data = DamageData.new()
+				damage_data.amount = damage
+				damage_data.hit_pos = collision.get_collider().global_position + Vector3.UP
+				collision.get_collider().hurt(damage_data)
 		queue_free()
 
 func _destroy_timeout() -> void:
