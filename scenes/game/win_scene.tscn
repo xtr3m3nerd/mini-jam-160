@@ -44,5 +44,6 @@ text = "Main Menu"
 stream = ExtResource("2_rq85f")
 volume_db = -7.495
 autoplay = true
+bus = &"Reverb"
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
