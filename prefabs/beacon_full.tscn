@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1dhg5i3bynds"]
+
+[ext_resource type="PackedScene" uid="uid://dqlt4rwy0ugw5" path="res://prefabs/beacon.tscn" id="1_50x5i"]
+[ext_resource type="PackedScene" uid="uid://ddb2acsicq6lg" path="res://prefabs/beacon_open.tscn" id="2_u64lg"]
+
+[node name="BeaconFull" type="Node3D"]
+
+[node name="Beacon" parent="." instance=ExtResource("1_50x5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171793, 0, 0.196982)
+
+[node name="Beacon_Open" parent="." instance=ExtResource("2_u64lg")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0265137, 0, 0.0334207)

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cpx1s0hw62ilr"]
+
+[ext_resource type="Texture2D" uid="uid://dpr6ammk52lrg" path="res://assets/textures/Mats/beacon.png" id="1_ggugh"]
+
+[resource]
+albedo_texture = ExtResource("1_ggugh")
+texture_filter = 2

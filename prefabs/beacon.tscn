@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqlt4rwy0ugw5"]
+
+[ext_resource type="PackedScene" uid="uid://y2auot2rrso4" path="res://assets/models/beacon.fbx" id="1_tncnf"]
+
+[node name="Beacon" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150971, 0, 0.158539)
+
+[node name="Root Scene" parent="." instance=ExtResource("1_tncnf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.912981, 0, -0.066834)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://c5pennk0dpov"]
+[gd_scene load_steps=141 format=3 uid="uid://c5pennk0dpov"]
 
 [ext_resource type="PackedScene" uid="uid://5bxcu2taliw2" path="res://assets/models/levels/level2_v3.fbx" id="1_ityr7"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_70lf7"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickups/pickup.tscn" id="4_xfhgf"]
 [ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/characters/enemies/templates/tank_demon.tscn" id="5_do74b"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/characters/enemies/templates/basic_demon.tscn" id="6_lihu3"]
+[ext_resource type="PackedScene" uid="uid://ddb2acsicq6lg" path="res://prefabs/beacon_open.tscn" id="9_rwtgi"]
+[ext_resource type="PackedScene" uid="uid://dqlt4rwy0ugw5" path="res://prefabs/beacon.tscn" id="10_7l35t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxfex"]
 sky_top_color = Color(0.507692, 0.392362, 0.598583, 1)
@@ -1134,7 +1136,7 @@ transform = Transform3D(0.0171382, 0, -0.999853, 0, 1, 0, 0.999853, 0, 0.0171382
 transform = Transform3D(0.0171382, 0, -0.999853, 0, 1, 0, 0.999853, 0, 0.0171382, 4.05838, -13.7982, -12.8159)
 
 [node name="Door3" parent="doors" index="3" instance=ExtResource("3_tf0u8")]
-transform = Transform3D(-0.0371465, 0, -1.08603, 0, 1, 0, 1.00253, 0, -0.0402406, -8.76361, -13.8184, -11.9608)
+transform = Transform3D(-0.0371465, 0, -1.08603, 0, 1, 0, 1.00253, 0, -0.0402406, -8.77045, -13.8184, -11.9561)
 
 [node name="PlayerSpawn" type="Node3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
@@ -1176,6 +1178,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0482, 0, -6.58235)
 [node name="TestEnemy3" parent="." index="16" instance=ExtResource("6_lihu3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53823, 0, -16.5678)
 
+[node name="Beacon_Open" parent="." index="17" instance=ExtResource("9_rwtgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23229, -0.142609, -5.48436)
+
+[node name="OmniLight3D" parent="Beacon_Open/Root Scene" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278016, 0.642255, -0.0662317)
+
+[node name="Beacon" parent="." index="18" instance=ExtResource("10_7l35t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27843, -0.139287, -4.92879)
+
 [connection signal="dropped_off" from="DropoffZone" to="." method="_on_dropped_off"]
 [connection signal="dropped_off" from="DropoffZone2" to="." method="_on_dropped_off"]
 [connection signal="dropped_off" from="DropoffZone3" to="." method="_on_dropped_off"]
+
+[editable path="Beacon_Open"]
