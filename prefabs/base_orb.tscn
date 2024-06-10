@@ -27,6 +27,7 @@ omni_range = 2.0
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("3_76q2b")
 attenuation_model = 3
+volume_db = -4.571
 autoplay = true
-max_distance = 5.0
+max_distance = 10.0
 bus = &"Reverb"
