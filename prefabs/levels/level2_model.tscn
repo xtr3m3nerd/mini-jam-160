@@ -1,11 +1,12 @@
-[gd_scene load_steps=137 format=3 uid="uid://c5pennk0dpov"]
+[gd_scene load_steps=138 format=3 uid="uid://c5pennk0dpov"]
 
 [ext_resource type="PackedScene" uid="uid://5bxcu2taliw2" path="res://assets/models/levels/level2_v3.fbx" id="1_ityr7"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_70lf7"]
 [ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/pickups/dropoff_zone.tscn" id="3_hdslu"]
 [ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickups/pickup.tscn" id="4_xfhgf"]
-[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/characters/enemies/templates/tank_demon.tscn" id="5_do74b"]
-[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/characters/enemies/templates/basic_demon.tscn" id="6_lihu3"]
+[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/characters/enemies/templates/tank_demon.tscn" id="5_6fan7"]
+[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/characters/enemies/templates/basic_demon.tscn" id="6_jemap"]
+[ext_resource type="PackedScene" uid="uid://cj37fdft846wl" path="res://prefabs/characters/enemies/templates/speedster_demon.tscn" id="7_telof"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pxfex"]
 sky_top_color = Color(0.507692, 0.392362, 0.598583, 1)
@@ -1141,17 +1142,20 @@ color = Color(0, 1, 0, 1)
 [node name="Pickup3" parent="." index="11" instance=ExtResource("4_xfhgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7317, 0.230759, -11.9316)
 
-[node name="TankEnemy2" parent="." index="12" instance=ExtResource("5_do74b")]
+[node name="TankEnemy2" parent="." index="12" instance=ExtResource("5_6fan7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96474, 0, 5.16121)
 
-[node name="TestEnemy" parent="." index="13" instance=ExtResource("6_lihu3")]
+[node name="TestEnemy" parent="." index="13" instance=ExtResource("6_jemap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66007, 0, 14.7375)
 
-[node name="TestEnemy2" parent="." index="14" instance=ExtResource("6_lihu3")]
+[node name="TestEnemy2" parent="." index="14" instance=ExtResource("6_jemap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0482, 0, -6.58235)
 
-[node name="TestEnemy3" parent="." index="15" instance=ExtResource("6_lihu3")]
+[node name="TestEnemy3" parent="." index="15" instance=ExtResource("6_jemap")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53823, 0, -16.5678)
+
+[node name="SpeedsterEnemy" parent="." index="16" instance=ExtResource("7_telof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.90792, 0, -14.2321)
 
 [connection signal="dropped_off" from="DropoffZone" to="." method="_on_dropped_off"]
 [connection signal="dropped_off" from="DropoffZone2" to="." method="_on_dropped_off"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://cj37fdft846wl"]
+[gd_scene load_steps=44 format=3 uid="uid://cj37fdft846wl"]
 
 [ext_resource type="Script" path="res://prefabs/characters/enemies/enemy.gd" id="1_l1kne"]
 [ext_resource type="PackedScene" uid="uid://djecjq7altdel" path="res://prefabs/characters/hit_effect.tscn" id="2_mdw6d"]
 [ext_resource type="Texture2D" uid="uid://doqvahoxybe1n" path="res://assets/images/shadow_clouds.png" id="3_k51bp"]
-[ext_resource type="PackedScene" uid="uid://pjcf7ao8kjhr" path="res://assets/models/enemies/tank/tank_enemy.tscn" id="4_6w0k3"]
+[ext_resource type="PackedScene" uid="uid://qa613blc7v4t" path="res://assets/models/enemies/speedster/speedster.tscn" id="4_ae5yu"]
 [ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/characters/health_manager.tscn" id="5_62o63"]
 [ext_resource type="PackedScene" uid="uid://cawphrhgamkmm" path="res://prefabs/characters/enemies/behaviors/melee_flank_behavior.tscn" id="6_trvcd"]
 [ext_resource type="PackedScene" uid="uid://dhdiuw8ths0en" path="res://prefabs/characters/enemies/tools/state_label.tscn" id="7_prsq2"]
@@ -11,24 +11,27 @@
 [ext_resource type="Script" path="res://prefabs/characters/enemies/tools/can_see.gd" id="9_gclg7"]
 [ext_resource type="PackedScene" uid="uid://c45k0kryc6nl" path="res://prefabs/characters/character_mover.tscn" id="10_e70uh"]
 [ext_resource type="PackedScene" uid="uid://dlskl61y0hbcv" path="res://prefabs/characters/footsteps.tscn" id="11_l6u2i"]
-[ext_resource type="AudioStream" uid="uid://djgw4ewe5n3vj" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_1.wav" id="12_p1agp"]
-[ext_resource type="AudioStream" uid="uid://37xpexybfsa1" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_2.wav" id="13_48ila"]
-[ext_resource type="AudioStream" uid="uid://vix74qti50cq" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_3.wav" id="14_eef23"]
-[ext_resource type="AudioStream" uid="uid://cny8opj465uvu" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_4.wav" id="15_tm240"]
-[ext_resource type="AudioStream" uid="uid://bud7wglv0jmsi" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_5.wav" id="16_nm07i"]
-[ext_resource type="AudioStream" uid="uid://dg7mlio6pt4el" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_FS_6.wav" id="17_727j7"]
+[ext_resource type="AudioStream" uid="uid://bl5hoa0ojhan7" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_1.wav" id="12_h3a4c"]
+[ext_resource type="AudioStream" uid="uid://dkr58q0ugf8o1" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_2.wav" id="13_seky1"]
+[ext_resource type="AudioStream" uid="uid://3pyryclch85g" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_3.wav" id="14_htbe4"]
+[ext_resource type="AudioStream" uid="uid://d3rs28xgsb53d" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_4.wav" id="15_hlu6m"]
+[ext_resource type="AudioStream" uid="uid://rogskcyjmjud" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_5.wav" id="16_k4fk7"]
+[ext_resource type="AudioStream" uid="uid://bcoruyigmallh" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_6.wav" id="17_klilh"]
+[ext_resource type="AudioStream" uid="uid://b0q0kitp8yqju" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_7.wav" id="18_cx7u0"]
 [ext_resource type="Script" path="res://scripts/random_audio_stream_player_3d.gd" id="18_oeaok"]
-[ext_resource type="AudioStream" uid="uid://bp7qdag5u5544" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_1.wav" id="19_1sitf"]
-[ext_resource type="AudioStream" uid="uid://urmurouaodwu" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_2.wav" id="20_csp5b"]
-[ext_resource type="AudioStream" uid="uid://bxb8nohde1ax7" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_3.wav" id="21_riavm"]
-[ext_resource type="AudioStream" uid="uid://boyj7thqh3sfq" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_4.wav" id="22_7e3do"]
-[ext_resource type="AudioStream" uid="uid://c4jka6vvo5krq" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_5.wav" id="23_6eou7"]
-[ext_resource type="AudioStream" uid="uid://dwjg7y0eujt6c" path="res://assets/Audio/SFX/Monster_SFX/Tank_Grunt/A_Tank_Grunt_Screech_6.wav" id="24_njynd"]
+[ext_resource type="AudioStream" uid="uid://b14pivlk1mid6" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_8.wav" id="19_7ibjm"]
+[ext_resource type="AudioStream" uid="uid://dcu0c6dwrj0eb" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_9.wav" id="20_bl5vb"]
+[ext_resource type="AudioStream" uid="uid://b4gf65f4g75w6" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_FS_10.wav" id="21_05u4a"]
+[ext_resource type="AudioStream" uid="uid://0cmmcc3ep54e" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_Screech_1.wav" id="23_h4gud"]
+[ext_resource type="AudioStream" uid="uid://c36r4skdjyfq3" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_Screech_2.wav" id="24_4fbx2"]
 [ext_resource type="AudioStream" uid="uid://ce4x14y08bn1f" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_1.wav" id="25_40qw3"]
+[ext_resource type="AudioStream" uid="uid://d1p22ve7vc30g" path="res://assets/Audio/SFX/Monster_SFX/Speedy_Grunt/A_Speedy_Grunt_Screech_3.wav" id="25_dasef"]
 [ext_resource type="AudioStream" uid="uid://6kpk88il4oxd" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_2.wav" id="26_o3gw0"]
 [ext_resource type="AudioStream" uid="uid://byj081nptwxua" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_3.wav" id="27_txxak"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r0tvl"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kx6tv"]
+radius = 0.4
+height = 1.5
 
 [sub_resource type="Curve" id="Curve_0pr0t"]
 _data = [Vector2(0.0305343, 0.0170732), 0.0, 0.0, 0, 0, Vector2(0.503817, 0.980976), 0.0, 0.0, 0, 0, Vector2(1, 0.0297561), 0.0, 0.0, 0, 0]
@@ -90,36 +93,39 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_3wbtr"]
 resource_name = "attack"
-length = 2.5
+length = 1.64
 step = 0.01
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TankEnemy/AnimationPlayer")
+tracks/0/path = NodePath("../AttackManager")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("Tank_Attack"),
-"times": PackedFloat32Array(0.01)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../AttackManager")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.98),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5, 1.13),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"perform_attack"
+}, {
 "args": [],
 "method": &"perform_attack"
 }]
 }
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Speedster/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Speedster_Attack"),
+"times": PackedFloat32Array(0.04)
+}
 
 [sub_resource type="Animation" id="Animation_rhgbu"]
 resource_name = "death"
-length = 1.9
+length = 1.5
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -140,7 +146,7 @@ tracks/1/path = NodePath("OmniLight3D:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.89),
+"times": PackedFloat32Array(0, 1.41),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -148,49 +154,67 @@ tracks/1/keys = {
 tracks/2/type = "animation"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TankEnemy/AnimationPlayer")
+tracks/2/path = NodePath("Speedster/AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": PackedStringArray("Tank_Death"),
-"times": PackedFloat32Array(0.01)
+"clips": PackedStringArray("Speedster_Death"),
+"times": PackedFloat32Array(0.04)
 }
 
 [sub_resource type="Animation" id="Animation_dorfj"]
 resource_name = "idle"
+length = 4.95
 loop_mode = 1
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Speedster/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Speedstar_Idle"),
+"times": PackedFloat32Array(0.03)
+}
 
 [sub_resource type="Animation" id="Animation_1vtup"]
 resource_name = "moving"
 length = 0.94
 loop_mode = 1
 step = 0.01
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TankEnemy/AnimationPlayer")
+tracks/0/path = NodePath("../Footsteps")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("Tank_Walking"),
-"times": PackedFloat32Array(0.01)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Footsteps")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.18, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.13, 0.37, 0.58, 0.84),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"play_step"
 }, {
 "args": [],
 "method": &"play_step"
+}, {
+"args": [],
+"method": &"play_step"
+}, {
+"args": [],
+"method": &"play_step"
 }]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Speedster/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Speedster_Walk"),
+"times": PackedFloat32Array(0.02)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yj12p"]
@@ -210,15 +234,15 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvubw"]
 albedo_color = Color(0, 0, 1, 1)
 
-[node name="TankEnemy" type="CharacterBody3D"]
+[node name="SpeedsterEnemy" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_l1kne")
 hit_effect_prefab = ExtResource("2_mdw6d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_r0tvl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_kx6tv")
 
 [node name="Graphics" type="Node3D" parent="."]
 
@@ -229,7 +253,7 @@ omni_range = 10.0
 omni_attenuation = 3.03143
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Graphics"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 amount = 16
 lifetime = 2.08
 explosiveness = 0.09
@@ -238,7 +262,7 @@ process_material = SubResource("ParticleProcessMaterial_xdev0")
 draw_pass_1 = SubResource("QuadMesh_16bfa")
 
 [node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="Graphics"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 strength = 17.65
 attenuation = 12.5534
 cull_mask = 4293918721
@@ -253,41 +277,41 @@ autoplay = "idle"
 [node name="HitPoint" type="Node3D" parent="Graphics"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="TankEnemy" parent="Graphics" instance=ExtResource("4_6w0k3")]
+[node name="Speedster" parent="Graphics" instance=ExtResource("4_ae5yu")]
 
-[node name="Skeleton3D" parent="Graphics/TankEnemy/RootNode/Tank_Anim" index="0"]
-bones/0/position = Vector3(0.00121893, 0.0619475, -0.00396066)
-bones/0/rotation = Quaternion(0.126516, 0.0359381, 0.0290531, 0.990888)
-bones/1/rotation = Quaternion(0.0695218, 0.0240929, 0.000616041, 0.997289)
-bones/2/rotation = Quaternion(0.0800497, 0.046776, -0.0186636, 0.995518)
-bones/3/rotation = Quaternion(0.0799916, 0.0469177, -0.0185774, 0.995517)
-bones/4/rotation = Quaternion(-0.0826271, -0.0302964, 0.00208255, 0.996118)
-bones/5/rotation = Quaternion(-0.180432, -0.147171, -0.00370155, 0.972508)
-bones/7/rotation = Quaternion(-0.567127, -0.43159, 0.555455, -0.428447)
-bones/8/rotation = Quaternion(0.21017, 0.0317667, 0.347527, 0.91326)
-bones/9/rotation = Quaternion(0.124817, -0.380731, 0.323882, 0.857068)
-bones/10/rotation = Quaternion(0.190491, 0.0229475, -0.155238, 0.969065)
-bones/11/rotation = Quaternion(0.230387, 0.363261, -0.136637, 0.892353)
-bones/12/rotation = Quaternion(0.205062, 0.016052, -0.117458, 0.971543)
-bones/13/rotation = Quaternion(0.297444, 0.0541903, -0.0713512, 0.950526)
-bones/15/rotation = Quaternion(0.625704, -0.387008, 0.512114, 0.443237)
-bones/16/rotation = Quaternion(0.33388, 0.133264, -0.293279, 0.885862)
-bones/17/rotation = Quaternion(0.0886118, 0.40678, -0.206905, 0.885364)
-bones/18/rotation = Quaternion(0.192655, 0.295696, 0.0471607, 0.934464)
-bones/19/rotation = Quaternion(0.274439, -0.359481, 0.178143, 0.873912)
-bones/20/rotation = Quaternion(0.240255, -0.00864344, 0.0863007, 0.966828)
-bones/21/rotation = Quaternion(0.348622, -0.0287952, 0.0453071, 0.935725)
-bones/23/rotation = Quaternion(0.0460292, 0.432202, 0.900487, -0.014346)
-bones/24/rotation = Quaternion(-0.541196, -0.0838894, -0.0045419, 0.83669)
-bones/25/rotation = Quaternion(0.62372, 0.0207894, -0.0168784, 0.781189)
-bones/26/rotation = Quaternion(0.208057, 0.00557708, 0.0406903, 0.977254)
-bones/28/rotation = Quaternion(-0.104938, 0.0213039, 0.989218, 0.0999107)
-bones/29/rotation = Quaternion(-0.261667, 0.0699126, -0.0342038, 0.962015)
-bones/30/rotation = Quaternion(0.754097, 0.0277085, 0.080069, 0.651275)
-bones/31/rotation = Quaternion(0.251969, -0.00533395, -0.0480569, 0.966527)
+[node name="Skeleton3D" parent="Graphics/Speedster/RootNode/Speedster_Anim" index="0"]
+bones/0/position = Vector3(-0.000995626, 0.0267145, 0.000130678)
+bones/0/rotation = Quaternion(0.0125063, -0.39129, -0.0284116, 0.919744)
+bones/1/rotation = Quaternion(0.0127936, 0.0257096, -0.0134224, 0.999498)
+bones/2/rotation = Quaternion(0.0103269, 0.02306, -0.00282467, 0.999677)
+bones/3/rotation = Quaternion(0.0101561, 0.0231593, -0.00329785, 0.999675)
+bones/4/rotation = Quaternion(0.114619, 0.048447, -0.0750945, 0.989382)
+bones/5/rotation = Quaternion(0.0840098, 0.262842, -0.00458434, 0.961163)
+bones/7/rotation = Quaternion(-0.577191, -0.420652, 0.551273, -0.431278)
+bones/8/rotation = Quaternion(0.235804, -0.386366, 0.0557577, 0.889949)
+bones/9/rotation = Quaternion(0.00510403, 0.00280193, 0.926335, 0.376655)
+bones/10/rotation = Quaternion(0.212505, 0.15819, -0.0147973, 0.964157)
+bones/11/rotation = Quaternion(0.492908, 0.00258526, -0.0557144, 0.868292)
+bones/12/rotation = Quaternion(0.213994, -0.0189162, 0.0135371, 0.976558)
+bones/13/rotation = Quaternion(0.345544, 0.105379, -0.18689, 0.913546)
+bones/15/rotation = Quaternion(0.58969, -0.416651, 0.516618, 0.460189)
+bones/16/rotation = Quaternion(0.275869, 0.120077, -0.460796, 0.834952)
+bones/17/rotation = Quaternion(-0.00573905, -0.00416289, -0.799678, 0.600387)
+bones/18/rotation = Quaternion(0.042176, -0.0570984, -0.143281, 0.987133)
+bones/19/rotation = Quaternion(0.490949, -0.00402809, 0.0538526, 0.869513)
+bones/20/rotation = Quaternion(0.215151, -0.00803182, 0.0400712, 0.975725)
+bones/21/rotation = Quaternion(0.219857, 0.0629136, -0.0566551, 0.971851)
+bones/23/rotation = Quaternion(0.12144, 0.293197, 0.933856, -0.164928)
+bones/24/rotation = Quaternion(-0.464333, -0.0157022, -0.0897331, 0.880964)
+bones/25/rotation = Quaternion(0.669049, -0.0811048, 0.0759759, 0.734863)
+bones/26/rotation = Quaternion(0.166229, -0.00127939, -0.00654149, 0.986065)
+bones/28/rotation = Quaternion(-0.158286, 0.0355193, 0.976471, 0.142084)
+bones/29/rotation = Quaternion(-0.304682, -0.0243187, 0.0112971, 0.952077)
+bones/30/rotation = Quaternion(0.72256, 0.0667257, 0.0931455, 0.681747)
+bones/31/rotation = Quaternion(0.165699, 0.00128184, 0.00630609, 0.986155)
 
 [node name="HealthManager" parent="." instance=ExtResource("5_62o63")]
-max_health = 50
+max_health = 5
 
 [node name="MeleeFlankBehavior" parent="." node_paths=PackedStringArray("melee_attack_manager", "character_mover") instance=ExtResource("6_trvcd")]
 melee_attack_manager = NodePath("../AttackManager")
@@ -298,8 +322,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 visible = false
 
 [node name="AttackManager" parent="." instance=ExtResource("8_8e23i")]
-damage_dealt = 25
-attack_cooldown = 1.5
+damage_dealt = 5
+attack_cooldown = 1.6
 
 [node name="CanSee" type="MeshInstance3D" parent="." node_paths=PackedStringArray("behavior")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -311,14 +335,13 @@ seen_material = SubResource("StandardMaterial3D_j2qcd")
 unseen_material = SubResource("StandardMaterial3D_xvubw")
 
 [node name="CharacterMover" parent="." instance=ExtResource("10_e70uh")]
+jump_force = 30.0
 gravity = 80.0
-default_max_speed = 3.0
-move_accel = 2.0
+default_max_speed = 10.0
 
 [node name="Footsteps" parent="." instance=ExtResource("11_l6u2i")]
-stream = ExtResource("12_p1agp")
 volume_db = -11.332
-footstep_streams = Array[AudioStream]([ExtResource("12_p1agp"), ExtResource("13_48ila"), ExtResource("14_eef23"), ExtResource("15_tm240"), ExtResource("16_nm07i"), ExtResource("17_727j7")])
+footstep_streams = Array[AudioStream]([ExtResource("12_h3a4c"), ExtResource("13_seky1"), ExtResource("14_htbe4"), ExtResource("15_hlu6m"), ExtResource("16_k4fk7"), ExtResource("17_klilh"), ExtResource("18_cx7u0"), ExtResource("19_7ibjm"), ExtResource("20_bl5vb"), ExtResource("21_05u4a")])
 
 [node name="Screech" type="AudioStreamPlayer3D" parent="."]
 volume_db = -18.286
@@ -326,7 +349,7 @@ bus = &"Reverb"
 attenuation_filter_cutoff_hz = 7500.0
 attenuation_filter_db = -19.0
 script = ExtResource("18_oeaok")
-streams = Array[AudioStream]([ExtResource("19_1sitf"), ExtResource("20_csp5b"), ExtResource("21_riavm"), ExtResource("22_7e3do"), ExtResource("23_6eou7"), ExtResource("24_njynd")])
+streams = Array[AudioStream]([ExtResource("23_h4gud"), ExtResource("24_4fbx2"), ExtResource("25_dasef")])
 
 [node name="ImpactSounds" type="AudioStreamPlayer3D" parent="."]
 volume_db = -19.571
@@ -343,4 +366,4 @@ one_shot = true
 [connection signal="start_attack" from="AttackManager" to="Graphics/AnimationPlayer" method="play" binds= ["attack"]]
 [connection signal="timeout" from="DespawnTimer" to="." method="queue_free"]
 
-[editable path="Graphics/TankEnemy"]
+[editable path="Graphics/Speedster"]
