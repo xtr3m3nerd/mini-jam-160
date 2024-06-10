@@ -13,3 +13,16 @@ func _on_dropped_off():
 	print(collected_orbs)
 	if collected_orbs >= needed_orbs:
 		level_finished.emit()
+
+
+func _on_death_zone_body_entered(body):
+	if body.has_method("hurt"):
+		var damage_data = DamageData.new()
+		damage_data.amount = 1000000
+		damage_data.hit_pos = Vector3.ZERO
+		body.hurt(damage_data)
+
+
+func _on_win_zone_body_entered(body):
+	if body.is_in_group("player"):
+		SceneManager.change_to_win_screen()

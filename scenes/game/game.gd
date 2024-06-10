@@ -20,4 +20,8 @@ func load_level(level: PackedScene) -> void:
 	player.global_transform = current_level.player_spawn.global_transform
 
 func next_level():
-	load_level(SceneManager.next_level())
+	var next = SceneManager.next_level()
+	if next == null:
+		SceneManager.change_to_win_screen()
+	else:
+		load_level(next)
