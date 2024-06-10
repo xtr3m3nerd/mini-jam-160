@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://crb78e5j682o8"
+path.s3tc="res://.godot/imported/anim_exports_combined_v1-67a21476e474e2deb8dd00cd65c95304_arms_mesh_lambert1_BaseColor.1001.png-0a733842ca4d9af92634784f8a19c3a6.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "68b66f3baf5a8827cf82364258094e86"
+}
+
+[deps]
+
+source_file="res://assets/models/arms/anim_exports_combined_v1-67a21476e474e2deb8dd00cd65c95304_arms_mesh_lambert1_BaseColor.1001.png"
+dest_files=["res://.godot/imported/anim_exports_combined_v1-67a21476e474e2deb8dd00cd65c95304_arms_mesh_lambert1_BaseColor.1001.png-0a733842ca4d9af92634784f8a19c3a6.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

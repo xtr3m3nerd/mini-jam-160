@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://be4sgkpxb3xpg"]
+
+[ext_resource type="Script" path="res://prefabs/characters/player/player_health_bar.gd" id="1_5s45l"]
+[ext_resource type="Texture2D" uid="uid://btifv2lhc46b2" path="res://assets/images/empty_hp.png" id="2_40ohw"]
+[ext_resource type="Texture2D" uid="uid://cfwghu15tbnko" path="res://assets/images/h.png" id="3_jkj0o"]
+
+[node name="PlayerHealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_5s45l")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -202.0
+offset_right = 490.0
+offset_bottom = 298.0
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("2_40ohw")
+texture_progress = ExtResource("3_jkj0o")

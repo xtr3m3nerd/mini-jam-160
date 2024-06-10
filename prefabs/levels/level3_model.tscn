@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1uw0sonh1n78" path="res://assets/models/levels/level3_v3.fbx" id="1_c60xy"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t4h5h"]
-[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/base_orb.tscn" id="3_t2iu8"]
+[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/pickups/base_orb.tscn" id="3_t2iu8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2easu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

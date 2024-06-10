@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://decemns5ym0w2"
+path.s3tc="res://.godot/imported/Speedster_Anim-af40734ef23bd24311c7b948f2dee47a_speedster_lambert1_Emissive.png-af4540f259c693b5d83769e2b091f232.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "8d814cfe38f0841e819c4c0d40968feb"
+}
+
+[deps]
+
+source_file="res://assets/models/enemies/speedster/Speedster_Anim-af40734ef23bd24311c7b948f2dee47a_speedster_lambert1_Emissive.png"
+dest_files=["res://.godot/imported/Speedster_Anim-af40734ef23bd24311c7b948f2dee47a_speedster_lambert1_Emissive.png-af4540f259c693b5d83769e2b091f232.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

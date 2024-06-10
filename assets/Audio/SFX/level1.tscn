@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://bpg8klhpegno5"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_q8tyk"]
-[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="2_p7wsr"]
-[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickup.tscn" id="3_ymkg4"]
-[ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/dropoff_zone.tscn" id="4_h0sg7"]
+[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/characters/enemies/templates/basic_demon.tscn" id="2_p7wsr"]
+[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickups/pickup.tscn" id="3_ymkg4"]
+[ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/pickups/dropoff_zone.tscn" id="4_h0sg7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwrid"]
 albedo_color = Color(0.537255, 0, 0, 1)

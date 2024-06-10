@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_pnvdp"]
 [ext_resource type="PackedScene" uid="uid://dcw5qf4f55kwr" path="res://scenes/game/game_manager.tscn" id="2_yj68e"]
-[ext_resource type="PackedScene" uid="uid://dnjxaxedn5ikn" path="res://prefabs/player.tscn" id="3_3nxsc"]
+[ext_resource type="PackedScene" uid="uid://dnjxaxedn5ikn" path="res://prefabs/characters/player/player.tscn" id="3_xi7t7"]
 [ext_resource type="AudioStream" uid="uid://cvbmpkxuraflx" path="res://assets/Audio/AMB/A_Dungeon_Ambience.wav" id="4_5gwvi"]
 
 [node name="Game" type="Node3D"]
@@ -12,7 +12,7 @@ script = ExtResource("1_pnvdp")
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("3_3nxsc")]
+[node name="Player" parent="." instance=ExtResource("3_xi7t7")]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5gwvi")

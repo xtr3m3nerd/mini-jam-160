@@ -1,0 +1,570 @@
+[gd_scene load_steps=57 format=3 uid="uid://dnjxaxedn5ikn"]
+
+[ext_resource type="Script" path="res://prefabs/characters/player/player.gd" id="1_v1psv"]
+[ext_resource type="PackedScene" uid="uid://df07o0u0kc7c3" path="res://prefabs/ui/dead_screen.tscn" id="2_4rfjj"]
+[ext_resource type="PackedScene" uid="uid://bxoma4p1wa410" path="res://prefabs/weapons/weapon_manager.tscn" id="3_8okhs"]
+[ext_resource type="Script" path="res://prefabs/weapons/weapon.gd" id="4_2kj2g"]
+[ext_resource type="PackedScene" uid="uid://cdx8gia7y2a8i" path="res://prefabs/characters/player/arms.tscn" id="5_0xpig"]
+[ext_resource type="PackedScene" uid="uid://3tgpiy7bqx7u" path="res://prefabs/weapons/bullet_emitters/bullet_emitter.tscn" id="6_fj87o"]
+[ext_resource type="PackedScene" uid="uid://bd5l2yuxtc0so" path="res://prefabs/weapons/bullet_emitters/area_damage_emitter.tscn" id="7_eyoeg"]
+[ext_resource type="Texture2D" uid="uid://bosbrodxv1a1j" path="res://assets/images/crosshair001.png" id="8_bqkw6"]
+[ext_resource type="Script" path="res://scripts/random_audio_stream_player_3d.gd" id="9_akyop"]
+[ext_resource type="AudioStream" uid="uid://nmhaowlf3kex" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_1.wav" id="10_hxhy5"]
+[ext_resource type="AudioStream" uid="uid://bbgskkl5uw68r" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_2.wav" id="11_hcmf3"]
+[ext_resource type="AudioStream" uid="uid://dd7leio3ut5lu" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_3.wav" id="12_na7mx"]
+[ext_resource type="AudioStream" uid="uid://c1v0rstxvdrce" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_4.wav" id="13_v4oux"]
+[ext_resource type="AudioStream" uid="uid://b80fdwjtdlssk" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_5.wav" id="14_oteqk"]
+[ext_resource type="AudioStream" uid="uid://dt0jl2wfy23i4" path="res://assets/Audio/SFX/Weapon_SFX/Whooshes/A_Whoosh_6.wav" id="15_aqivw"]
+[ext_resource type="PackedScene" uid="uid://ds02uopifrapf" path="res://assets/models/arms/arms_sword.tscn" id="16_vk5xj"]
+[ext_resource type="AudioStream" uid="uid://l4y520lp3hjo" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_1.wav" id="17_r2iew"]
+[ext_resource type="AudioStream" uid="uid://b6yk8utk4clmq" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_2.wav" id="18_vkyo0"]
+[ext_resource type="AudioStream" uid="uid://h7ra1utie3gy" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_3.wav" id="19_0du08"]
+[ext_resource type="AudioStream" uid="uid://cqncsrk6s0vtd" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Swing_4.wav" id="20_bai0j"]
+[ext_resource type="AudioStream" uid="uid://c56p5b4j33tn1" path="res://assets/Audio/SFX/Weapon_SFX/Sabre/A_Sabre_Hum.wav" id="21_ofkp5"]
+[ext_resource type="PackedScene" uid="uid://b4bsok4cca4ps" path="res://prefabs/characters/player/pickup_manager.tscn" id="22_rhv5q"]
+[ext_resource type="PackedScene" uid="uid://c45k0kryc6nl" path="res://prefabs/characters/character_mover.tscn" id="23_yhl7c"]
+[ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/characters/health_manager.tscn" id="24_k7s1e"]
+[ext_resource type="PackedScene" uid="uid://dlskl61y0hbcv" path="res://prefabs/characters/footsteps.tscn" id="25_85h77"]
+[ext_resource type="AudioStream" uid="uid://xqfgfkyoyo2t" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_1.wav" id="26_3f4db"]
+[ext_resource type="AudioStream" uid="uid://cpmvd0cpx7fn0" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_2.wav" id="27_gbjdf"]
+[ext_resource type="AudioStream" uid="uid://ca3t0agn17vat" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_3.wav" id="28_fe86x"]
+[ext_resource type="AudioStream" uid="uid://cg8vmjjx41egv" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_4.wav" id="29_evn5c"]
+[ext_resource type="AudioStream" uid="uid://bp66oqn6k1pr7" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_5.wav" id="30_q0rrf"]
+[ext_resource type="AudioStream" uid="uid://nxa5owc1nkqj" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_6.wav" id="31_nneqy"]
+[ext_resource type="AudioStream" uid="uid://bi6k8yt0q25ce" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_7.wav" id="32_qf6s8"]
+[ext_resource type="AudioStream" uid="uid://de0cwqfi8xt3k" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_8.wav" id="33_4idtk"]
+[ext_resource type="AudioStream" uid="uid://tgj5a28h1p6v" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_9.wav" id="34_xhmp4"]
+[ext_resource type="AudioStream" uid="uid://be3156kw6wpb3" path="res://assets/Audio/SFX/Player_FS/A_Player_FS_10.wav" id="35_07smo"]
+[ext_resource type="AudioStream" uid="uid://ce4x14y08bn1f" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_1.wav" id="36_vrxk0"]
+[ext_resource type="AudioStream" uid="uid://6kpk88il4oxd" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_2.wav" id="37_nl3f2"]
+[ext_resource type="AudioStream" uid="uid://byj081nptwxua" path="res://assets/Audio/SFX/Weapon_SFX/Impacts/A_Impact_3.wav" id="38_mdfbh"]
+[ext_resource type="AudioStream" uid="uid://n5uplr0earyk" path="res://assets/Audio/SFX/Menus/Game_Over/A_GameOver.wav" id="39_o0yrx"]
+[ext_resource type="PackedScene" uid="uid://be4sgkpxb3xpg" path="res://prefabs/characters/player/player_health_bar.tscn" id="40_usgg4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3s1l1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xqtal"]
+
+[sub_resource type="Animation" id="Animation_tq0c8"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_8qcwm"]
+resource_name = "attack"
+length = 1.3
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arms/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Arm_ANIM_punch_v1"),
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.38),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"actually_attack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FistWhooshes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.29),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_d7apf"]
+resource_name = "moving"
+length = 1.05
+loop_mode = 1
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Arms/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Arm_ANIM_run_v1"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7d7d"]
+_data = {
+"RESET": SubResource("Animation_tq0c8"),
+"attack": SubResource("Animation_8qcwm"),
+"moving": SubResource("Animation_d7apf")
+}
+
+[sub_resource type="Animation" id="Animation_wql6t"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_js1gw"]
+resource_name = "attack"
+length = 1.3
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.69),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"actually_attack"
+}]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArmsSword/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("arms_anim_sword_swing1"),
+"times": PackedFloat32Array(0.01)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sabre_Swing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.63),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0mbfm"]
+resource_name = "moving"
+length = 2.0
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsSword/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("arms_anim_sword_unsheath"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cssd"]
+_data = {
+"RESET": SubResource("Animation_wql6t"),
+"attack": SubResource("Animation_js1gw"),
+"moving": SubResource("Animation_0mbfm")
+}
+
+[sub_resource type="Animation" id="Animation_leuyd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6rrbx"]
+resource_name = "moving"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tinmg"]
+_data = {
+"RESET": SubResource("Animation_leuyd"),
+"moving": SubResource("Animation_6rrbx")
+}
+
+[sub_resource type="Animation" id="Animation_27hw8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ryjf6"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.815686), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycunu"]
+_data = {
+"RESET": SubResource("Animation_27hw8"),
+"hit": SubResource("Animation_ryjf6")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_v1psv")
+dead_screen_prefab = ExtResource("2_4rfjj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3s1l1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_xqtal")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+fov = 74.96
+
+[node name="FirePoint" type="Node3D" parent="Camera3D"]
+
+[node name="WeaponManager" parent="Camera3D" instance=ExtResource("3_8okhs")]
+
+[node name="Weapons" type="Node3D" parent="Camera3D/WeaponManager"]
+
+[node name="Fist" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+script = ExtResource("4_2kj2g")
+ammo = -1
+attack_rate = 0.5
+animation_controlled_attack = true
+
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Fist"]
+
+[node name="Arms" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics" instance=ExtResource("5_0xpig")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.173274, -0.202665)
+
+[node name="L_arm_shoulder_ctrl" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.323306, 0.946273, -0.00634542, -0.254423, 0.0933816, 0.962574, 0.91145, -0.309591, 0.270945, -0.0619251, 0.034193, 0.0393984)
+
+[node name="L_arm_elbow_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset" index="0"]
+transform = Transform3D(0.272527, -0.962148, 4.50972e-19, 0.962148, 0.272527, 7.1772e-18, -7.02843e-18, -1.52208e-18, 1, 0, 0, 0)
+
+[node name="L_arm_wrist_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset" index="0"]
+transform = Transform3D(0.861344, -0.177354, 0.476057, 0.279105, 0.948194, -0.151746, -0.424482, 0.263575, 0.866223, 0, 0, 0)
+
+[node name="L_arm_thumb_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset" index="0"]
+transform = Transform3D(0.758483, 0.594014, 0.268049, -0.110625, 0.5227, -0.845309, -0.642234, 0.611499, 0.462173, 0.00268899, -0.00277203, -0.00394602)
+
+[node name="L_arm_thumb_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset/L_arm_thumb_1_CTRL/L_arm_thumb_2_offset" index="0"]
+transform = Transform3D(0.982208, -0.158951, 0.100008, 0.170773, 0.534458, -0.827763, 0.0781232, 0.830115, 0.552094, 0, 0, 0)
+
+[node name="L_arm_index_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset" index="0"]
+transform = Transform3D(0.332281, -0.903032, 0.272254, 0.938685, 0.34477, -0.00208788, -0.0919798, 0.256255, 0.962223, 0, 0, 0)
+
+[node name="L_arm_index_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset/L_arm_index_1_CTRL/L_arm_index_2_offset" index="0"]
+transform = Transform3D(0.0589984, -0.777623, 0.625957, 0.96785, -0.109031, -0.226671, 0.244513, 0.619205, 0.746189, 0, 0, 0)
+
+[node name="L_arm_index_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset/L_arm_index_1_CTRL/L_arm_index_2_offset/L_arm_index_2_CTRL/L_arm_index_3_offset" index="0"]
+transform = Transform3D(-0.292368, -0.828972, 0.476787, 0.868282, -0.439048, -0.230921, 0.40076, 0.346471, 0.848144, 0, 0, 0)
+
+[node name="L_arm_middle_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset" index="0"]
+transform = Transform3D(0.413929, -0.842939, 0.34368, 0.90907, 0.363085, -0.204353, 0.0474721, 0.397017, 0.916582, 0, 0, 0)
+
+[node name="L_arm_middle_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset/L_arm_middle_1_CTRL/L_arm_middle_2_offset" index="0"]
+transform = Transform3D(0.285193, -0.943519, 0.16863, 0.621158, 0.0479527, -0.782217, 0.72995, 0.327828, 0.599751, 0, 0, 0)
+
+[node name="L_arm_middle_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset/L_arm_middle_1_CTRL/L_arm_middle_2_offset/L_arm_middle_2_CTRL/L_arm_middle_3_offset" index="0"]
+transform = Transform3D(0.22955, -0.703128, 0.672992, 0.697873, -0.363076, -0.617373, 0.678438, 0.611381, 0.407351, 0, 0, 0)
+
+[node name="L_arm_ring_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset" index="0"]
+transform = Transform3D(0.196322, -0.944588, 0.263079, 0.800016, -0.000826125, -0.599977, 0.566948, 0.328257, 0.755524, 0, 0, 0)
+
+[node name="L_arm_ring_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset/L_arm_ring_1_CTRL/L_arm_ring_2_offset" index="0"]
+transform = Transform3D(0.14745, -0.971489, 0.185655, 0.735101, -0.0179428, -0.677719, 0.661728, 0.236406, 0.711497, 0, 0, 0)
+
+[node name="L_arm_ring_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_ring_1_offset/L_arm_ring_1_CTRL/L_arm_ring_2_offset/L_arm_ring_2_CTRL/L_arm_ring_3_offset" index="0"]
+transform = Transform3D(0.257796, -0.776965, 0.57434, 0.761567, -0.202418, -0.615664, 0.594607, 0.596114, 0.539528, 0, 0, 0)
+
+[node name="L_arm_pinky_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset" index="0"]
+transform = Transform3D(0.0409744, -0.988602, 0.144868, -0.0898093, -0.148047, -0.984893, 0.995116, 0.0273449, -0.0948517, 0, 0, 0)
+
+[node name="L_arm_pinky_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset/L_arm_pinky_1_CTRL/L_arm_pinky_2_offset" index="0"]
+transform = Transform3D(0.714381, -0.310441, 0.627126, 0.660505, 0.00320732, -0.750815, 0.231073, 0.950587, 0.207339, 0, 0, 0)
+
+[node name="L_arm_pinky_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_pinky_1_offset/L_arm_pinky_1_CTRL/L_arm_pinky_2_offset/L_arm_pinky_2_CTRL/L_arm_pinky_3_offset" index="0"]
+transform = Transform3D(0.183682, -0.826669, 0.531863, 0.84926, -0.139004, -0.509349, 0.494994, 0.545248, 0.676525, 0, 0, 0)
+
+[node name="R_arm_shoulder_ctrl" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_elbow_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_wrist_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_thumb_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_thumb_1_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_thumb_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_thumb_1_offset/R_arm_thumb_1_CTRL/R_arm_thumb_2_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_index_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_index_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset/R_arm_index_1_CTRL/R_arm_index_2_offset" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_index_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset/R_arm_index_1_CTRL/R_arm_index_2_offset/R_arm_index_2_CTRL/R_arm_index_3_offset" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_middle_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset" index="0"]
+transform = Transform3D(1, 6.93889e-18, -4.81482e-35, -6.93889e-18, 1, -6.93889e-18, 0, 6.93889e-18, 1, 0, 0, 0)
+
+[node name="R_arm_middle_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset/R_arm_middle_1_CTRL/R_arm_middle_2_offset" index="0"]
+transform = Transform3D(1, -1.73472e-17, -1.20371e-34, 1.73472e-17, 1, 6.93889e-18, 0, -6.93889e-18, 1, 0, 0, 0)
+
+[node name="R_arm_middle_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset/R_arm_middle_1_CTRL/R_arm_middle_2_offset/R_arm_middle_2_CTRL/R_arm_middle_3_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, 5.55112e-17, 1.38778e-17, 1, 7.70372e-34, -5.55112e-17, 0, 1, 0, 0, 0)
+
+[node name="R_arm_ring_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset" index="0"]
+transform = Transform3D(1, 1.54074e-33, 1.11022e-16, 0, 1, -1.38778e-17, -1.11022e-16, 1.38778e-17, 0.999999, 0, 0, 0)
+
+[node name="R_arm_ring_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset/R_arm_ring_1_CTRL/R_arm_ring_2_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, -5.55112e-17, 1.38778e-17, 1, -2.77556e-17, 5.55112e-17, 2.77556e-17, 1, 0, 0, 0)
+
+[node name="R_arm_ring_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset/R_arm_ring_1_CTRL/R_arm_ring_2_offset/R_arm_ring_2_CTRL/R_arm_ring_3_offset" index="0"]
+transform = Transform3D(0.999999, -4.16334e-17, -5.55112e-17, 4.16333e-17, 1, -2.77556e-17, 5.55111e-17, 2.77556e-17, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_1_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, 1.66533e-16, 1.38778e-17, 1, -4.16334e-17, -1.66533e-16, 4.16334e-17, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_2_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset/R_arm_pinky_1_CTRL/R_arm_pinky_2_offset" index="0"]
+transform = Transform3D(0.999999, -1.38778e-17, -1.92593e-34, 1.38778e-17, 1, 1.38778e-17, 0, -1.38778e-17, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_3_CTRL" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset/R_arm_pinky_1_CTRL/R_arm_pinky_2_offset/R_arm_pinky_2_CTRL/R_arm_pinky_3_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, 0, 1.38778e-17, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="camera_perspective" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms/RootNode" index="1"]
+transform = Transform3D(-0.1, 0, -8.88178e-16, 0, 0.1, 0, 8.88178e-16, 0, -0.1, 4.76599e-05, 0.322352, -6.97374e-05)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/Fist/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_u7d7d")
+}
+
+[node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/Fist" instance=ExtResource("6_fj87o")]
+
+[node name="AreaDamageEmitter" parent="Camera3D/WeaponManager/Weapons/Fist/BulletEmitter" instance=ExtResource("7_eyoeg")]
+attack_radius = 1.5
+
+[node name="FirePoint" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Fist"]
+
+[node name="Crosshairs" type="TextureRect" parent="Camera3D/WeaponManager/Weapons/Fist"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_bqkw6")
+
+[node name="FistWhooshes" type="AudioStreamPlayer3D" parent="Camera3D/WeaponManager/Weapons/Fist"]
+script = ExtResource("9_akyop")
+streams = Array[AudioStream]([ExtResource("10_hxhy5"), ExtResource("11_hcmf3"), ExtResource("12_na7mx"), ExtResource("13_v4oux"), ExtResource("14_oteqk"), ExtResource("15_aqivw")])
+
+[node name="Sword" type="Node3D" parent="Camera3D/WeaponManager/Weapons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328631, 0, 0)
+visible = false
+script = ExtResource("4_2kj2g")
+damage = 20
+ammo = -1
+attack_rate = 1.0
+animation_controlled_attack = true
+
+[node name="Graphics" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Sword"]
+
+[node name="ArmsSword" parent="Camera3D/WeaponManager/Weapons/Sword/Graphics" instance=ExtResource("16_vk5xj")]
+
+[node name="saber" parent="Camera3D/WeaponManager/Weapons/Sword/Graphics/ArmsSword/RootNode/arms/arm_geo_GRP" index="2"]
+transform = Transform3D(0.0450389, -0.16536, -1.22999, -0.0638264, 0.405938, -0.502132, 1.32635, 0.0251495, 0.0176034, -0.0300199, 0.278423, 0.0683636)
+
+[node name="Skeleton3D" parent="Camera3D/WeaponManager/Weapons/Sword/Graphics/ArmsSword/RootNode/arms/arm_jnt_GRP/R_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(-0.443014, 0.896494, -0.0039885, 0.00468656)
+bones/1/rotation = Quaternion(-0.00890337, 0.0060161, -0.0361841, 0.999287)
+bones/2/rotation = Quaternion(-2.17782e-16, -0.234428, -5.92314e-16, 0.972134)
+bones/3/rotation = Quaternion(-4.5526e-17, 0.973249, 4.5526e-17, -0.229753)
+bones/7/rotation = Quaternion(5.48939e-18, 0.973249, 2.61631e-16, -0.229753)
+bones/11/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
+bones/15/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
+bones/19/rotation = Quaternion(7.36626e-17, 0.973249, 7.36626e-17, -0.229753)
+
+[node name="Skeleton3D" parent="Camera3D/WeaponManager/Weapons/Sword/Graphics/ArmsSword/RootNode/arms/arm_jnt_GRP/L_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(-0.0465658, 0.854099, 0.061125, 0.514403)
+bones/2/rotation = Quaternion(-1.09641e-16, -0.229753, 4.89782e-17, 0.973249)
+bones/3/rotation = Quaternion(-0.570481, -0.4278, 0.271246, 0.646501)
+bones/4/rotation = Quaternion(-0.26749, 0.158169, -0.125751, 0.942135)
+bones/5/rotation = Quaternion(-0.0915698, 0.265767, 0.375612, 0.883119)
+bones/7/rotation = Quaternion(0.762689, 0.608291, -0.0737606, -0.206996)
+bones/8/rotation = Quaternion(0.0251403, -0.0241319, 0.0032601, 0.999387)
+bones/9/rotation = Quaternion(-0.0529187, 0.0836996, 0.414791, 0.904512)
+bones/11/rotation = Quaternion(0.589989, 0.79662, -0.0749893, -0.108101)
+bones/12/rotation = Quaternion(0.013477, -0.144492, 0.33903, 0.929515)
+bones/13/rotation = Quaternion(0.205061, 0.0743214, 0.491852, 0.842916)
+bones/15/rotation = Quaternion(0.491386, 0.868659, -0.0543444, -0.031925)
+bones/16/rotation = Quaternion(0.168096, -0.279245, 0.399433, 0.856866)
+bones/17/rotation = Quaternion(0.294716, -0.0069283, 0.597254, 0.74591)
+bones/18/rotation = Quaternion(2.86663e-18, 0.118944, -2.39296e-17, 0.992901)
+bones/19/rotation = Quaternion(-0.124183, 0.936647, -0.203823, -0.256373)
+bones/20/rotation = Quaternion(0.220524, -0.396428, -0.0929825, 0.886323)
+
+[node name="L_arm_shoulder_ctrl" parent="Camera3D/WeaponManager/Weapons/Sword/Graphics/ArmsSword/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.751045, -0.315459, -0.580014, 0.658723, 0.417737, 0.625763, 0.0448905, -0.852045, 0.521539, 0.00817947, 0.0445296, 0.0405976)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager/Weapons/Sword/Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_2cssd")
+}
+
+[node name="BulletEmitter" parent="Camera3D/WeaponManager/Weapons/Sword" instance=ExtResource("6_fj87o")]
+
+[node name="AreaDamageEmitter" parent="Camera3D/WeaponManager/Weapons/Sword/BulletEmitter" instance=ExtResource("7_eyoeg")]
+attack_radius = 2.5
+
+[node name="FirePoint" type="Node3D" parent="Camera3D/WeaponManager/Weapons/Sword"]
+
+[node name="Crosshairs" type="TextureRect" parent="Camera3D/WeaponManager/Weapons/Sword"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_bqkw6")
+
+[node name="Sabre_Swing" type="AudioStreamPlayer3D" parent="Camera3D/WeaponManager/Weapons/Sword"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0619138, 0, -0.737175)
+volume_db = -4.571
+bus = &"Sfx"
+script = ExtResource("9_akyop")
+streams = Array[AudioStream]([ExtResource("17_r2iew"), ExtResource("18_vkyo0"), ExtResource("19_0du08"), ExtResource("20_bai0j")])
+
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="Camera3D/WeaponManager/Weapons/Sword"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0893466, 0, -0.700826)
+stream = ExtResource("21_ofkp5")
+volume_db = -30.0
+bus = &"Sfx"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/WeaponManager"]
+libraries = {
+"": SubResource("AnimationLibrary_tinmg")
+}
+autoplay = "moving"
+
+[node name="Crossbow" type="Node3D" parent="Camera3D/WeaponManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328631, 0, 0)
+
+[node name="Grenade" type="Node3D" parent="Camera3D/WeaponManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328631, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D"]
+visible = false
+light_energy = 0.3
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_energy = 0.3
+spot_range = 6.613
+spot_attenuation = 4.28709
+spot_angle = 61.33
+
+[node name="PickupManager" parent="Camera3D" instance=ExtResource("22_rhv5q")]
+
+[node name="CharacterMover" parent="." instance=ExtResource("23_yhl7c")]
+gravity = 80.0
+default_max_speed = 10.0
+
+[node name="HealthManager" parent="." instance=ExtResource("24_k7s1e")]
+
+[node name="Footsteps" parent="." instance=ExtResource("25_85h77")]
+stream = ExtResource("26_3f4db")
+volume_db = -21.333
+footstep_streams = Array[AudioStream]([ExtResource("26_3f4db"), ExtResource("27_gbjdf"), ExtResource("28_fe86x"), ExtResource("29_evn5c"), ExtResource("30_q0rrf"), ExtResource("31_nneqy"), ExtResource("32_qf6s8"), ExtResource("33_4idtk"), ExtResource("34_xhmp4"), ExtResource("35_07smo")])
+
+[node name="ImpactSounds" type="AudioStreamPlayer3D" parent="."]
+volume_db = -5.525
+bus = &"Sfx"
+script = ExtResource("9_akyop")
+streams = Array[AudioStream]([ExtResource("36_vrxk0"), ExtResource("37_nl3f2"), ExtResource("38_mdfbh")])
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_o0yrx")
+volume_db = 3.748
+bus = &"Sfx"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HitScreen" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HitScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_ycunu")
+}
+
+[node name="PlayerHealthBar" parent="UI" instance=ExtResource("40_usgg4")]
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 63.0
+offset_bottom = 59.0
+scale = Vector2(0.75, 0.75)
+
+[editable path="Camera3D/WeaponManager/Weapons/Fist/Graphics/Arms"]
+[editable path="Camera3D/WeaponManager/Weapons/Sword/Graphics/ArmsSword"]

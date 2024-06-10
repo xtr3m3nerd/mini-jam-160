@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cs8ey1otrqsnp" path="res://assets/models/levels/level1_v1.fbx" id="1_htrll"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t1huk"]
-[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="3_4pkhr"]
+[ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/characters/enemies/templates/basic_demon.tscn" id="3_4pkhr"]
 [ext_resource type="Material" uid="uid://qbkw0r752jsf" path="res://assets/materials/barrel_material.tres" id="4_ml3rt"]
-[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickup.tscn" id="6_58ve7"]
-[ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/dropoff_zone.tscn" id="7_4natg"]
+[ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickups/pickup.tscn" id="6_58ve7"]
+[ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/pickups/dropoff_zone.tscn" id="7_4natg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rc760"]
 sky_top_color = Color(0.380593, 0.350629, 0.545161, 1)

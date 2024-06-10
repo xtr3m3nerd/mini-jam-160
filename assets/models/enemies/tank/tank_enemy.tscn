@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://pjcf7ao8kjhr"]
+
+[ext_resource type="PackedScene" uid="uid://dldhysba2mj6x" path="res://assets/models/enemies/tank/Tank_Anim.fbx" id="1_pv37w"]
+[ext_resource type="Texture2D" uid="uid://deqol7635y5lp" path="res://assets/models/enemies/tank/Tank_Anim-3938a463c0ddc546cf8e9c6d7a99333c_tank_lambert1_BaseColor.png" id="2_y847a"]
+[ext_resource type="Texture2D" uid="uid://dbr33jt33cxr" path="res://assets/models/enemies/tank/Tank_Anim-3938a463c0ddc546cf8e9c6d7a99333c_tank_lambert1_Emissive.png" id="3_ehfxi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er3sk"]
+resource_name = "Tank_MAT"
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("2_y847a")
+metallic = 1.0
+roughness = 0.8
+emission_enabled = true
+emission_texture = ExtResource("3_ehfxi")
+
+[node name="TankEnemy" instance=ExtResource("1_pv37w")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(-15, 0, -1.31134e-06, 0, 15, 0, 1.31134e-06, 0, -15, 0, 0, 0)
+
+[node name="Skeleton3D" parent="RootNode/Tank_Anim" index="0"]
+bones/0/rotation = Quaternion(0.100249, -0.163637, -0.0126622, 0.981332)
+bones/1/rotation = Quaternion(0.0503934, -0.00525103, 0.0149952, 0.998603)
+bones/3/rotation = Quaternion(0.0651063, -0.00922677, 0.0131444, 0.997749)
+bones/4/rotation = Quaternion(-0.0809528, 0.0274547, -0.0231163, 0.996072)
+bones/5/rotation = Quaternion(-0.195972, 0.121985, -0.0351994, 0.972356)
+bones/7/rotation = Quaternion(-0.565103, -0.417674, 0.5976, -0.386111)
+bones/8/rotation = Quaternion(0.364487, 0.0495448, 0.203323, 0.907389)
+bones/9/rotation = Quaternion(0.279966, -0.313157, 0.598944, 0.681775)
+bones/11/rotation = Quaternion(0.155833, 0.286365, 0.021768, 0.945112)
+bones/12/rotation = Quaternion(0.223244, 0.0191012, -0.148102, 0.963257)
+bones/13/rotation = Quaternion(0.549884, 0.133217, -0.0457074, 0.823281)
+bones/15/rotation = Quaternion(0.609511, -0.398155, 0.541793, 0.420035)
+bones/16/rotation = Quaternion(0.420935, 0.0354007, -0.227412, 0.877408)
+bones/17/rotation = Quaternion(0.292798, 0.316805, -0.617965, 0.657285)
+bones/18/rotation = Quaternion(0.0513968, -0.219662, -0.0998073, 0.969095)
+bones/20/rotation = Quaternion(0.240701, 0.00945358, 0.151395, 0.958672)
+bones/21/rotation = Quaternion(0.293467, 0.0205266, 0.176465, 0.939317)
+bones/23/rotation = Quaternion(0.144415, 0.384499, 0.887356, -0.209531)
+bones/24/rotation = Quaternion(-0.508326, -0.0361165, 0.0216201, 0.860135)
+bones/25/rotation = Quaternion(0.669981, -0.0448023, -0.11747, 0.731655)
+bones/26/rotation = Quaternion(0.176939, 0.00644396, 0.0358332, 0.983548)
+bones/28/rotation = Quaternion(-0.137463, 0.312021, 0.929362, 0.141538)
+bones/29/rotation = Quaternion(-0.482572, 0.0519811, -0.024679, 0.873964)
+bones/30/rotation = Quaternion(0.693156, 0.0362363, 0.102595, 0.712528)
+bones/31/rotation = Quaternion(0.175049, -0.00633729, -0.0356201, 0.983895)
+
+[node name="Tank" parent="RootNode/Tank_Anim/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_er3sk")

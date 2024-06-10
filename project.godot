@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/udim_material/plugin.cfg")
 [gui]
 
 theme/custom="res://assets/themes/main_theme.tres"
+theme/custom_font="res://assets/Fonts/Peking Duck DEMO.otf"
 
 [input]
 
