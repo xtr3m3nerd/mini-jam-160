@@ -1,9 +1,7 @@
 extends Node
 
-@export var button_hover_sound: AudioStream
-@export var button_press_sound: AudioStream
-
 @onready var audio_player: AudioStreamPlayer = $ButtonNoises
+@onready var hover_noises = $HoverNoises as AudioStreamPlayer
 
 var debounce: bool = false
 
@@ -11,7 +9,6 @@ func _ready():
 	print(str(audio_player))
 
 func play_button_press() -> void:
-	audio_player.stream = button_press_sound
 	audio_player.play()
 	
 func play_slider_changed(_value: float) -> void:
@@ -20,7 +17,6 @@ func play_slider_changed(_value: float) -> void:
 		play_button_hover()
 
 func play_button_hover() -> void:
-	audio_player.stream = button_hover_sound
 	audio_player.play()
 
 func add_button(button: BaseButton) -> void:

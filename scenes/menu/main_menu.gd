@@ -3,10 +3,17 @@ extends Control
 
 @onready var quit_button = $MarginContainer/VBoxContainer/ActionButtons/QuitButton
 @onready var play_game_button = $MarginContainer/VBoxContainer/GameButtons/PlayGameButton
+@onready var select_level_button = $MarginContainer/VBoxContainer/GameButtons/SelectLevelButton
+@onready var how_to_play_button = $MarginContainer/VBoxContainer/GameButtons/HowToPlayButton
+@onready var options_button = $MarginContainer/VBoxContainer/GameButtons/OptionsButton
+@onready var credits_button = $MarginContainer/VBoxContainer/ActionButtons/CreditsButton
 
 @onready var menu: Menu = get_parent() as Menu
 
 func _ready():
+	var buttons: Array[BaseButton] = [quit_button, play_game_button, 
+	select_level_button, how_to_play_button, options_button, credits_button]
+	UiSfxManager.add_buttons(buttons)
 	play_game_button.grab_focus()
 	if OS.get_name() == "Web":
 		quit_button.hide()

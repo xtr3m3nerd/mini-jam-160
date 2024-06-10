@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://prefabs/ui/volume_controls.gd" id="1_uom66"]
 
-[node name="VolumeControls" type="VBoxContainer"]
+[node name="VolumeControls" type="VBoxContainer" node_paths=PackedStringArray("sliders_with_sounds")]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_uom66")
+sliders_with_sounds = [NodePath("MusicVolume/MusicSlider"), NodePath("SfxVolume/SfxSlider")]
 
 [node name="MusicVolume" type="HBoxContainer" parent="."]
 layout_mode = 2

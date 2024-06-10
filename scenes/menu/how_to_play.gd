@@ -4,6 +4,7 @@ extends Control
 @onready var menu: Menu = get_parent() as Menu
 
 func _ready():
+	UiSfxManager.add_button(back_button)
 	back_button.grab_focus()
 
 func _process(_delta):

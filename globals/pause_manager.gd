@@ -11,6 +11,7 @@ var paused = false:
 		_update_pause_state(value)
 
 func _ready():
+	UiSfxManager.add_button(main_menu_button)
 	_update_pause_state(paused)
 
 func _process(_delta):
