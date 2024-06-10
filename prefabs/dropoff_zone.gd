@@ -5,6 +5,7 @@ signal dropped_off
 @onready var player : CharacterBody3D = get_tree().get_first_node_in_group("player")
 @onready var label_3d = $Label3D
 @onready var base_orb = $BaseOrb
+@onready var audio_stream_player_3d = $AudioStreamPlayer3D
 
 var can_dropoff = true
 var can_drop_message = "Press 'E' to drop off"
@@ -17,6 +18,7 @@ func dropoff(color: Color):
 	base_orb.show()
 	label_3d.hide()
 	dropped_off.emit()
+	audio_stream_player_3d.play()
 
 func _ready():
 	base_orb.hide()
