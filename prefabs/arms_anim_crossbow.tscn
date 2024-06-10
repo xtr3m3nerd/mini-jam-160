@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://clags6j6moqm1"]
+
+[ext_resource type="PackedScene" uid="uid://cnk5t26pru5gh" path="res://assets/models/arms/arms_anim_crossbow_v1.fbx" id="1_tr1fr"]
+
+[node name="arms_anim_crossbow" instance=ExtResource("1_tr1fr")]
