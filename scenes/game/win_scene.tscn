@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbxnwx502ntmj"]
+[gd_scene load_steps=3 format=3 uid="uid://cbxnwx502ntmj"]
 
 [ext_resource type="Script" path="res://scenes/game/win_scene.gd" id="1_sgcf0"]
+[ext_resource type="AudioStream" uid="uid://dc47i6yp60ohl" path="res://assets/Audio/SFX/Menus/Win_Fanfare/Win_Fanfare.wav" id="2_rq85f"]
 
 [node name="WinScene" type="Node"]
 script = ExtResource("1_sgcf0")
@@ -38,5 +39,10 @@ horizontal_alignment = 1
 [node name="Button" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rq85f")
+volume_db = -7.495
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
