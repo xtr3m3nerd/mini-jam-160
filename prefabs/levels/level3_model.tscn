@@ -1,9 +1,10 @@
-[gd_scene load_steps=143 format=3 uid="uid://dfsms4ch3ugdb"]
+[gd_scene load_steps=144 format=3 uid="uid://dfsms4ch3ugdb"]
 
 [ext_resource type="PackedScene" uid="uid://d1uw0sonh1n78" path="res://assets/models/levels/level3_v3.fbx" id="1_c60xy"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t4h5h"]
-[ext_resource type="PackedScene" uid="uid://cep84ac8datp2" path="res://prefabs/door.tscn" id="3_lq0ka"]
-[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/pickups/base_orb.tscn" id="3_t2iu8"]
+[ext_resource type="PackedScene" uid="uid://bogi02pfqtxye" path="res://prefabs/door.tscn" id="3_lq0ka"]
+[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://assets/models/base_orb.tscn" id="3_t2iu8"]
+[ext_resource type="PackedScene" uid="uid://5q8gtlr2jhi7" path="res://prefabs/pickups/base_orb.tscn" id="5_vym5q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2easu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -473,6 +474,7 @@ shape = SubResource("ConcavePolygonShape3D_m4a0r")
 shape = SubResource("ConcavePolygonShape3D_0sbo8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level3/polySurface10" index="0"]
+transform = Transform3D(0.999995, 0.00268526, -0.00113523, -0.00268147, 0.99999, 0.00331805, 0.00114417, -0.00331499, 0.999994, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/level3/polySurface10/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_ydkjb")
@@ -1131,10 +1133,13 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_ei6yn")
 
 [node name="BaseOrb" parent="WinZone" index="1" instance=ExtResource("3_t2iu8")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(9.99992, -0.0383759, 0.0106028, 0.0383863, 9.99992, -0.0098342, -0.0105651, 0.00987479, 9.99999, 0, 0, 0)
 base_material = SubResource("StandardMaterial3D_4imp8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WinZone" index="2"]
+[node name="BaseOrb2" parent="WinZone" index="2" instance=ExtResource("5_vym5q")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WinZone" index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_wcqxq")
 }

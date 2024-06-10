@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://owmifl5gi0ks"]
+[gd_scene load_steps=7 format=3 uid="uid://owmifl5gi0ks"]
 
 [ext_resource type="Script" path="res://prefabs/pickups/dropoff_zone.gd" id="1_hjhgq"]
-[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/pickups/base_orb.tscn" id="2_17kk2"]
+[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://assets/models/base_orb.tscn" id="2_17kk2"]
 [ext_resource type="AudioStream" uid="uid://dhwhgxuyd6y3m" path="res://assets/Audio/SFX/Object_Interaction_SFX/Light_Ball_Interaction/A_Light_Ball_Interaction.wav" id="3_gdmyf"]
+[ext_resource type="PackedScene" uid="uid://5q8gtlr2jhi7" path="res://prefabs/pickups/base_orb.tscn" id="3_gthgf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7sxrg"]
 radius = 1.0
@@ -29,8 +30,9 @@ texture_filter = 1
 text = "Press 'E' to drop off"
 
 [node name="BaseOrb" parent="." instance=ExtResource("2_17kk2")]
-visible = false
 base_material = SubResource("StandardMaterial3D_buyek")
+
+[node name="BaseOrb2" parent="." instance=ExtResource("3_gthgf")]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_gdmyf")
