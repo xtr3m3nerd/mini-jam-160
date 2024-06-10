@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhnjlwks8cc3o"]
+[gd_scene load_steps=5 format=3 uid="uid://bhnjlwks8cc3o"]
 
 [ext_resource type="Script" path="res://globals/ui_sfx_manager.gd" id="1_au5vp"]
 [ext_resource type="AudioStream" uid="uid://c0olmyfwmw6vb" path="res://assets/Audio/SFX/Menus/UI/A_UI_Click.wav" id="2_x1uwg"]
 [ext_resource type="AudioStream" uid="uid://c1xqawumvuppp" path="res://assets/Audio/SFX/Menus/UI/A_UI_Hover_1.wav" id="3_eo4wr"]
+[ext_resource type="PackedScene" uid="uid://iku5qkxr6rcg" path="res://scripts/audio_stream_pool.tscn" id="4_mte36"]
 
 [node name="UiSfxManager" type="Node"]
 script = ExtResource("1_au5vp")
@@ -14,3 +15,9 @@ bus = &"Sfx"
 [node name="HoverNoises" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_eo4wr")
 bus = &"Sfx"
+
+[node name="ButtonNoisePool" parent="." node_paths=PackedStringArray("template_player") instance=ExtResource("4_mte36")]
+template_player = NodePath("../ButtonNoises")
+
+[node name="HoverNoisePool" parent="." node_paths=PackedStringArray("template_player") instance=ExtResource("4_mte36")]
+template_player = NodePath("../HoverNoises")

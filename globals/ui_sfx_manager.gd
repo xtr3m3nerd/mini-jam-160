@@ -1,15 +1,12 @@
 extends Node
 
-@onready var audio_player: AudioStreamPlayer = $ButtonNoises
-@onready var hover_noises = $HoverNoises as AudioStreamPlayer
+@onready var button_noise_pool = $ButtonNoisePool as AudioStreamPool
+@onready var hover_noise_pool = $HoverNoisePool as AudioStreamPool
 
 var debounce: bool = false
 
-func _ready():
-	print(str(audio_player))
-
 func play_button_press() -> void:
-	audio_player.play()
+	button_noise_pool.play()
 	
 func play_slider_changed(_value: float) -> void:
 	if debounce == false:
@@ -17,7 +14,7 @@ func play_slider_changed(_value: float) -> void:
 		play_button_hover()
 
 func play_button_hover() -> void:
-	audio_player.play()
+	hover_noise_pool.play()
 
 func add_button(button: BaseButton) -> void:
 	if not button.pressed.is_connected(play_button_press):
