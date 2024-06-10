@@ -1118,7 +1118,13 @@ light_energy = 0.669
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.6631, 0)
 
 [node name="Door" parent="doors" index="0" instance=ExtResource("3_tf0u8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0018, -13.6631, 10.2402)
+transform = Transform3D(0.0171798, 0, -0.858506, 0, 1, 0, 1.00228, 0, 0.0147155, 4.31273, -13.7982, -0.663273)
+
+[node name="Door2" parent="doors" index="1" instance=ExtResource("3_tf0u8")]
+transform = Transform3D(0.0171798, 0, -0.858506, 0, 1, 0, 1.00228, 0, 0.0147155, 4.21925, -13.7982, -12.8159)
+
+[node name="Door3" parent="doors" index="2" instance=ExtResource("3_tf0u8")]
+transform = Transform3D(-0.0369654, 0, -1.0627, 0, 1, 0, 0.99764, 0, -0.039376, -8.74445, -13.8184, -11.8738)
 
 [node name="PlayerSpawn" type="Node3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7)
