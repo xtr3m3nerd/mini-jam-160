@@ -1,10 +1,11 @@
-[gd_scene load_steps=46 format=3 uid="uid://dbi7q70ylhenu"]
+[gd_scene load_steps=49 format=3 uid="uid://dbi7q70ylhenu"]
 
 [ext_resource type="Script" path="res://prefabs/enemies/enemy.gd" id="1_wsobw"]
 [ext_resource type="PackedScene" uid="uid://cvpp8sp0ggpql" path="res://prefabs/health_manager.tscn" id="2_26eby"]
 [ext_resource type="Texture2D" uid="uid://doqvahoxybe1n" path="res://assets/images/shadow_clouds.png" id="2_puyms"]
 [ext_resource type="PackedScene" uid="uid://cd04s5plkgpld" path="res://assets/models/demon.tscn" id="4_44ney"]
 [ext_resource type="PackedScene" uid="uid://djecjq7altdel" path="res://prefabs/hit_effect.tscn" id="4_n5atd"]
+[ext_resource type="PackedScene" uid="uid://ds2fy5i2ofqtk" path="res://assets/models/enemies/basic_demon_anim.tscn" id="5_66hp1"]
 [ext_resource type="PackedScene" uid="uid://cawphrhgamkmm" path="res://prefabs/enemies/behaviors/melee_flank_behavior.tscn" id="5_jwos0"]
 [ext_resource type="PackedScene" uid="uid://dhdiuw8ths0en" path="res://prefabs/state_label.tscn" id="6_neegu"]
 [ext_resource type="PackedScene" uid="uid://f5co8frc5i74" path="res://prefabs/enemies/attacks/melee_attack_manager.tscn" id="7_1sobh"]
@@ -118,6 +119,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rhgbu"]
 resource_name = "death"
+length = 3.75
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -154,16 +157,116 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BasicDemonAnim/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("demon_basic_anim_death"),
+"times": PackedFloat32Array(0.01)
+}
 
 [sub_resource type="Animation" id="Animation_dorfj"]
 resource_name = "idle"
+length = 6.7
 loop_mode = 1
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicDemonAnim/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("demon_basic_anim_idle"),
+"times": PackedFloat32Array(0.01)
+}
+
+[sub_resource type="Animation" id="Animation_d5by4"]
+resource_name = "Attack"
+length = 1.75
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicDemonAnim/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("demon_basic_anim_attack"),
+"times": PackedFloat32Array(0.01)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AttackManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"perform_attack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ImpactSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.49),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iwb3n"]
+resource_name = "walk"
+length = 1.41
+loop_mode = 1
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BasicDemonAnim/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("demon_basic_anim_walk"),
+"times": PackedFloat32Array(0.02)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Footsteps")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.37, 1.06),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_step"
+}, {
+"args": [],
+"method": &"play_step"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yj12p"]
 _data = {
 "RESET": SubResource("Animation_wu4xq"),
+"attack": SubResource("Animation_d5by4"),
 "death": SubResource("Animation_rhgbu"),
-"idle": SubResource("Animation_dorfj")
+"idle": SubResource("Animation_dorfj"),
+"moving": SubResource("Animation_iwb3n")
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_6pu0l"]
@@ -225,10 +328,44 @@ libraries = {
 autoplay = "idle"
 
 [node name="Demon" parent="Graphics" instance=ExtResource("4_44ney")]
-transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, -0.1, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.1, 0)
+visible = false
 
 [node name="HitPoint" type="Node3D" parent="Graphics"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="BasicDemonAnim" parent="Graphics" instance=ExtResource("5_66hp1")]
+
+[node name="Skeleton3D" parent="Graphics/BasicDemonAnim/RootNode/demon" index="0"]
+bones/0/position = Vector3(-0.00630451, 0.0141259, 0.141579)
+bones/0/rotation = Quaternion(0.758534, 0.0804602, -0.0238001, 0.646209)
+bones/1/rotation = Quaternion(-0.017201, -0.00672933, 0.0217906, 0.999592)
+bones/2/rotation = Quaternion(-0.0185665, -0.00905321, 0.0377624, 0.999073)
+bones/3/rotation = Quaternion(-0.0183431, -0.0101801, 0.0375155, 0.999076)
+bones/4/rotation = Quaternion(-0.11913, 0.263907, 0.181523, 0.939793)
+bones/5/rotation = Quaternion(0.0698008, 0.348694, -0.0530667, 0.933126)
+bones/7/rotation = Quaternion(0.579902, 0.364114, -0.501141, 0.529144)
+bones/8/rotation = Quaternion(0.00263868, 0.547583, -0.0449443, 0.83554)
+bones/9/rotation = Quaternion(0.192366, 0.0405091, 0.61171, 0.766267)
+bones/10/rotation = Quaternion(-0.0902824, -0.252214, -0.144671, 0.952527)
+bones/11/rotation = Quaternion(-0.0664356, 0.995263, -0.0659801, -0.0261533)
+bones/12/rotation = Quaternion(0.236303, 0.092994, 0.248475, 0.934758)
+bones/13/rotation = Quaternion(-0.19934, -0.168079, -0.075059, 0.962486)
+bones/15/rotation = Quaternion(0.617383, -0.323428, 0.477321, 0.53516)
+bones/16/rotation = Quaternion(0.102294, -0.320791, 0.095214, 0.936784)
+bones/17/rotation = Quaternion(0.114774, -0.413218, -0.32641, 0.842339)
+bones/18/rotation = Quaternion(0.0336282, 0.112938, 0.0961582, 0.988366)
+bones/19/rotation = Quaternion(-0.117781, -0.450074, -0.0940886, 0.880175)
+bones/20/rotation = Quaternion(-0.0183913, 0.0156868, -0.0916854, 0.995495)
+bones/21/rotation = Quaternion(0.148053, 0.0136398, -0.0413034, 0.988022)
+bones/23/rotation = Quaternion(-0.00630123, 0.196832, 0.977715, -0.0727442)
+bones/24/rotation = Quaternion(-0.123374, 0.462772, 0.0637145, 0.875535)
+bones/25/rotation = Quaternion(0.104567, -0.212317, -0.194639, 0.951894)
+bones/26/rotation = Quaternion(0.273017, -0.0748721, 0.00998934, 0.959039)
+bones/28/rotation = Quaternion(-0.149332, 0.196272, 0.946963, 0.206008)
+bones/29/rotation = Quaternion(-0.0866153, -0.444575, 0.0227656, 0.891253)
+bones/30/rotation = Quaternion(0.0248834, 0.200123, 0.16693, 0.965125)
+bones/31/rotation = Quaternion(0.286394, 0.0603245, -0.0207311, 0.955986)
 
 [node name="HealthManager" parent="." instance=ExtResource("2_26eby")]
 max_health = 20
@@ -260,7 +397,7 @@ default_max_speed = 5.0
 move_accel = 2.0
 
 [node name="Footsteps" parent="." instance=ExtResource("10_6as3n")]
-volume_db = -6.071
+volume_db = -3.023
 footstep_streams = Array[AudioStream]([ExtResource("11_xilxc"), ExtResource("12_4ql4q"), ExtResource("13_iqjtk"), ExtResource("14_uta6f"), ExtResource("15_c5ddm"), ExtResource("16_en6u7"), ExtResource("17_nalxa"), ExtResource("18_yj1co")])
 
 [node name="Screech" type="AudioStreamPlayer3D" parent="."]
@@ -284,4 +421,7 @@ one_shot = true
 
 [connection signal="state_changed" from="MeleeFlankBehavior" to="." method="_on_melee_flank_behavior_state_changed"]
 [connection signal="state_changed" from="MeleeFlankBehavior" to="StateLabel" method="_on_state_changed"]
+[connection signal="start_attack" from="AttackManager" to="Graphics/AnimationPlayer" method="play" binds= ["attack"]]
 [connection signal="timeout" from="DespawnTimer" to="." method="queue_free"]
+
+[editable path="Graphics/BasicDemonAnim"]

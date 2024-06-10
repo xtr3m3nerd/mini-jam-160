@@ -440,6 +440,7 @@ offset_bottom = 40.0
 texture = ExtResource("8_od268")
 
 [node name="FistWhooshes" type="AudioStreamPlayer3D" parent="Camera3D/WeaponManager/Weapons/Fist"]
+bus = &"Reverb"
 script = ExtResource("17_sj0tx")
 streams = Array[AudioStream]([ExtResource("10_1q18i"), ExtResource("11_hgpkb"), ExtResource("12_jb3dm"), ExtResource("13_sgpcx"), ExtResource("14_t6k12"), ExtResource("15_vin07")])
 
@@ -484,8 +485,8 @@ texture = ExtResource("8_od268")
 
 [node name="Sabre_Swing" type="AudioStreamPlayer3D" parent="Camera3D/WeaponManager/Weapons/Sword"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0619138, 0, -0.737175)
-volume_db = -4.571
-bus = &"Sfx"
+volume_db = -21.333
+bus = &"Reverb"
 script = ExtResource("17_sj0tx")
 streams = Array[AudioStream]([ExtResource("11_cf20h"), ExtResource("12_hpn1e"), ExtResource("13_jh3o7"), ExtResource("14_b8w4v")])
 
@@ -527,7 +528,7 @@ default_max_speed = 10.0
 
 [node name="Footsteps" parent="." instance=ExtResource("7_u3hxi")]
 stream = ExtResource("8_s6tco")
-volume_db = -21.333
+volume_db = -18.285
 footstep_streams = Array[AudioStream]([ExtResource("8_s6tco"), ExtResource("9_q15wc"), ExtResource("10_wtpge"), ExtResource("11_r8yw1"), ExtResource("12_oy2bd"), ExtResource("13_dkjvy"), ExtResource("14_a4f7c"), ExtResource("15_qynyt"), ExtResource("16_j30ov"), ExtResource("17_loy46")])
 
 [node name="ImpactSounds" type="AudioStreamPlayer3D" parent="."]

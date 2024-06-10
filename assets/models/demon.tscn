@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cd04s5plkgpld"]
 
 [ext_resource type="PackedScene" uid="uid://17xgjqogeijf" path="res://assets/models/basic_demon.fbx" id="1_45gyk"]
-[ext_resource type="Material" uid="uid://cqe1kmd7tun5c" path="res://assets/materials/demon_udim.tres" id="2_s5vqv"]
+[ext_resource type="Material" uid="uid://vhexgxe6hr38" path="res://assets/materials/demon_udim.tres" id="2_s5vqv"]
 
 [node name="Demon" instance=ExtResource("1_45gyk")]
 
