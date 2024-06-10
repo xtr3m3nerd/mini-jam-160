@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://doqvahoxybe1n" path="res://assets/images/shadow_clouds.png" id="2_puyms"]
 [ext_resource type="PackedScene" uid="uid://cd04s5plkgpld" path="res://assets/models/demon.tscn" id="4_44ney"]
 [ext_resource type="PackedScene" uid="uid://djecjq7altdel" path="res://prefabs/hit_effect.tscn" id="4_n5atd"]
-[ext_resource type="PackedScene" path="res://assets/models/enemies/basic_demon_anim.tscn" id="5_66hp1"]
+[ext_resource type="PackedScene" uid="uid://ds2fy5i2ofqtk" path="res://assets/models/enemies/basic_demon_anim.tscn" id="5_66hp1"]
 [ext_resource type="PackedScene" uid="uid://cawphrhgamkmm" path="res://prefabs/enemies/behaviors/melee_flank_behavior.tscn" id="5_jwos0"]
 [ext_resource type="Material" uid="uid://vhexgxe6hr38" path="res://assets/materials/demon_udim.tres" id="6_f1b1m"]
 [ext_resource type="PackedScene" uid="uid://dhdiuw8ths0en" path="res://prefabs/state_label.tscn" id="6_neegu"]
