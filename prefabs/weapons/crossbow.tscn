@@ -1,0 +1,235 @@
+[gd_scene load_steps=20 format=3 uid="uid://c8gq4rb7avvcf"]
+
+[ext_resource type="Script" path="res://prefabs/weapons/weapon.gd" id="1_6cv6k"]
+[ext_resource type="PackedScene" uid="uid://nwoe8fcy6uet" path="res://assets/models/arms/arms_crossbow.tscn" id="2_ljch4"]
+[ext_resource type="PackedScene" uid="uid://3tgpiy7bqx7u" path="res://prefabs/weapons/bullet_emitters/bullet_emitter.tscn" id="3_a2pv6"]
+[ext_resource type="PackedScene" uid="uid://cgn7b1efbkx7g" path="res://prefabs/weapons/bullet_emitters/projectile_emitter.tscn" id="4_f5mxu"]
+[ext_resource type="PackedScene" uid="uid://dvo48xwxotcau" path="res://prefabs/weapons/bolt_projectile.tscn" id="5_v7tun"]
+[ext_resource type="Texture2D" uid="uid://bosbrodxv1a1j" path="res://assets/images/crosshair001.png" id="6_biuiu"]
+[ext_resource type="Script" path="res://scripts/random_audio_stream_player_3d.gd" id="7_pg0a6"]
+[ext_resource type="AudioStream" uid="uid://cnk7khmekqbis" path="res://assets/Audio/SFX/Weapon_SFX/Crossbow/A_Crossbow_Shoot_1.wav" id="8_ymenc"]
+[ext_resource type="AudioStream" uid="uid://dtra6thr85k8h" path="res://assets/Audio/SFX/Weapon_SFX/Crossbow/A_Crossbow_Shoot_2.wav" id="9_d42yf"]
+[ext_resource type="AudioStream" uid="uid://d3am7kr837jp0" path="res://assets/Audio/SFX/Weapon_SFX/Crossbow/A_Crossbow_Shoot_3.wav" id="10_coq5d"]
+[ext_resource type="AudioStream" uid="uid://b6vsquglhr76s" path="res://assets/Audio/SFX/Weapon_SFX/Crossbow/A_Crossbow_Shoot_4.wav" id="11_1b0i1"]
+[ext_resource type="AudioStream" uid="uid://crhnf1digfhxm" path="res://assets/Audio/SFX/Weapon_SFX/Crossbow/A_Crossbow_Shoot_5.wav" id="12_5fcqs"]
+[ext_resource type="AudioStream" uid="uid://cwmysy37sapc5" path="res://assets/Audio/SFX/Weapon_SFX/Crossbow/A_Crossbow_Shoot_6.wav" id="13_e8tfb"]
+
+[sub_resource type="Animation" id="Animation_wql6t"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_js1gw"]
+resource_name = "attack"
+length = 3.6
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"actually_attack"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ShootsSounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play_random"
+}]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ArmsCrossbow/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("arms_anim_crossbow_shot", "arms_anim_crossbow_reload"),
+"times": PackedFloat32Array(0.02, 0.95)
+}
+
+[sub_resource type="Animation" id="Animation_0mbfm"]
+resource_name = "moving"
+length = 2.0
+step = 0.01
+
+[sub_resource type="Animation" id="Animation_qor5i"]
+resource_name = "pullout"
+length = 3.7
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsCrossbow/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("arms_anim_crossbow_pullout"),
+"times": PackedFloat32Array(0.02)
+}
+
+[sub_resource type="Animation" id="Animation_bpyuw"]
+resource_name = "reload"
+length = 2.65
+step = 0.01
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArmsCrossbow/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("arms_anim_crossbow_reload"),
+"times": PackedFloat32Array(0.02)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cssd"]
+_data = {
+"RESET": SubResource("Animation_wql6t"),
+"attack": SubResource("Animation_js1gw"),
+"moving": SubResource("Animation_0mbfm"),
+"pullout": SubResource("Animation_qor5i"),
+"reload": SubResource("Animation_bpyuw")
+}
+
+[node name="Crossbow" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0328631, 0, 0)
+visible = false
+script = ExtResource("1_6cv6k")
+damage = 15
+ammo = -1
+attack_rate = 3.5
+animation_controlled_attack = true
+
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics"]
+libraries = {
+"": SubResource("AnimationLibrary_2cssd")
+}
+
+[node name="ArmsCrossbow" parent="Graphics" instance=ExtResource("2_ljch4")]
+
+[node name="crossbow" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_geo_GRP" index="2"]
+transform = Transform3D(0.191502, -0.00109842, 0.0644233, 0.000596753, 0.324475, 0.000371245, -0.0644242, -0.000259504, 0.191503, -0.0259656, 0.2334, 0.142752)
+
+[node name="Skeleton3D" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_jnt_GRP/R_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(-0.205288, 0.977308, 0.0419599, -0.031085)
+bones/1/rotation = Quaternion(0.0821382, 0.582701, -0.415443, 0.693628)
+bones/2/position = Vector3(0.0396912, 0.00194942, -0.00550119)
+bones/2/rotation = Quaternion(-0.122793, -0.429242, 0.234896, 0.863422)
+bones/3/rotation = Quaternion(1.75693e-16, 0.973249, 5.05872e-16, -0.229753)
+bones/4/rotation = Quaternion(-2.35922e-16, 2.77556e-17, 4.16334e-16, 1)
+bones/7/rotation = Quaternion(1.0752e-16, 0.973249, 6.9384e-16, -0.229753)
+bones/8/rotation = Quaternion(-3.19189e-16, -8.32667e-17, -2.63678e-16, 1)
+bones/9/position = Vector3(-0.00446981, -0.00196703, -3.79978e-12)
+bones/9/rotation = Quaternion(-4.71845e-16, -8.32667e-17, 2.498e-16, 1)
+bones/11/rotation = Quaternion(1.75693e-16, 0.973249, 5.05872e-16, -0.229753)
+bones/15/rotation = Quaternion(5.65048e-17, 0.973249, 4.77735e-16, -0.229753)
+bones/19/position = Vector3(0.00541114, -0.00388556, -0.0177512)
+bones/19/rotation = Quaternion(0.100506, 0.974282, -0.0974202, -0.176585)
+bones/20/rotation = Quaternion(3.08149e-33, 1.38778e-16, 5.55112e-17, 1)
+
+[node name="Skeleton3D" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_jnt_GRP/L_arm_JNT_GRP" index="0"]
+bones/0/rotation = Quaternion(0.205307, -0.820787, 0.10164, 0.523285)
+bones/1/rotation = Quaternion(-0.258734, 0.278419, 0.093971, 0.920168)
+bones/2/rotation = Quaternion(-0.0591045, -0.22202, -0.250371, 0.940494)
+bones/11/rotation = Quaternion(0.517548, 0.811307, -0.204601, -0.179062)
+bones/15/rotation = Quaternion(0.545813, 0.809965, -0.17818, -0.119568)
+bones/16/rotation = Quaternion(0.144726, -0.162032, 0.42298, 0.879709)
+bones/19/rotation = Quaternion(0.213143, 0.903775, -0.0648539, 0.365451)
+
+[node name="L_arm_shoulder_ctrl" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.574076, 0.0499577, 0.817277, -0.604289, 0.699376, 0.381717, -0.552514, -0.713006, 0.431684, -0.0144307, -0.00277017, 0.0183464)
+
+[node name="L_arm_elbow_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset" index="0"]
+transform = Transform3D(0.706693, 0.112445, 0.698528, -0.233432, 0.969063, 0.0801667, -0.667903, -0.219712, 0.711078, 0, 0, 0)
+
+[node name="L_arm_wrist_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset" index="0"]
+transform = Transform3D(0.867643, -0.497189, 4.47815e-17, 0.497189, 0.867643, -2.23231e-17, -2.77556e-17, 4.16334e-17, 1, 0, 0, 0)
+
+[node name="L_arm_thumb_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_thumb_1_offset" index="0"]
+transform = Transform3D(0.709887, -0.645141, -0.282583, 0.0624703, 0.45731, -0.887111, 0.701539, 0.612096, 0.364941, 0, 0, 0)
+
+[node name="L_arm_index_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset" index="0"]
+transform = Transform3D(0.345291, -0.933525, 0.0964616, 0.933441, 0.330958, -0.138403, 0.0972776, 0.13783, 0.985667, 0, 0, 0)
+
+[node name="L_arm_index_2_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_index_1_offset/L_arm_index_1_CTRL/L_arm_index_2_offset" index="0"]
+transform = Transform3D(0.640754, -0.7327, 0.229315, 0.755697, 0.549199, -0.356794, 0.135483, 0.401911, 0.9056, 0, 0, 0)
+
+[node name="L_arm_middle_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/L_arm_CTRL_GRP/L_arm_shoulder_offset/L_arm_shoulder_ctrl/L_arm_elbow_offset/L_arm_elbow_CTRL/L_arm_wrist_offset/L_arm_wrist_CTRL/L_arm_middle_1_offset" index="0"]
+transform = Transform3D(0.522437, -0.798672, 0.298633, 0.823295, 0.381337, -0.420438, 0.221912, 0.465515, 0.856768, 0, 0, 0)
+
+[node name="R_arm_shoulder_ctrl" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset" index="0"]
+transform = Transform3D(0.87077, 0.483943, 0.0869365, -0.478388, 0.874714, -0.0775922, -0.113595, 0.0259755, 0.993188, -0.0259213, -0.00713445, -0.00427637)
+
+[node name="R_arm_elbow_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset" index="0"]
+transform = Transform3D(0.558994, -0.828538, -0.0324208, 0.276893, 0.149672, 0.949173, -0.781573, -0.539559, 0.313082, 0, 0, 0)
+
+[node name="R_arm_wrist_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset" index="0"]
+transform = Transform3D(0.916672, 0.395278, -0.0588792, -0.365188, 0.768666, -0.525157, -0.162325, 0.502899, 0.848966, 0, 0, 0)
+
+[node name="R_arm_thumb_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_thumb_1_offset" index="0"]
+transform = Transform3D(0.969295, -0.232211, 0.0809047, 0.242475, 0.957308, -0.157375, -0.0409067, 0.17216, 0.984219, 0, 0, 0)
+
+[node name="R_arm_thumb_2_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_thumb_1_offset/R_arm_thumb_1_CTRL/R_arm_thumb_2_offset" index="0"]
+transform = Transform3D(1, -2.77556e-17, 5.55112e-17, 2.77556e-17, 1, -2.77556e-17, -5.55112e-17, 2.77556e-17, 1, 0, 0, 0)
+
+[node name="R_arm_index_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_index_1_offset" index="0"]
+transform = Transform3D(1, -9.24446e-33, -1.66533e-16, 0, 1, -5.55112e-17, 1.66533e-16, 5.55112e-17, 1, 0, 0, 0)
+
+[node name="R_arm_middle_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_middle_1_offset" index="0"]
+transform = Transform3D(1, 0, 1.11022e-16, 0, 1, 0, -1.11022e-16, 0, 1, 0, 0, 0)
+
+[node name="R_arm_ring_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset" index="0"]
+transform = Transform3D(1, -2.77556e-17, 0, 2.77556e-17, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_ring_2_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset/R_arm_ring_1_CTRL/R_arm_ring_2_offset" index="0"]
+transform = Transform3D(1, 0, -5.55112e-17, 0, 1, 0, 5.55112e-17, 0, 1, 0, 0, 0)
+
+[node name="R_arm_ring_3_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_ring_1_offset/R_arm_ring_1_CTRL/R_arm_ring_2_offset/R_arm_ring_2_CTRL/R_arm_ring_3_offset" index="0"]
+transform = Transform3D(1, 1.38778e-17, 0, -1.38778e-17, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_1_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset" index="0"]
+transform = Transform3D(1, 6.93889e-18, 1.38778e-17, -6.93889e-18, 1, 1.11022e-16, -1.38778e-17, -1.11022e-16, 1, 0, 0, 0)
+
+[node name="R_arm_pinky_2_CTRL" parent="Graphics/ArmsCrossbow/RootNode/arms/arm_ctrl_GRP/arm_root_offset/arm_root_CTRL/R_arm_shoulder_offset/R_arm_shoulder_ctrl/R_arm_elbow_offset/R_arm_elbow_CTRL/R_arm_wrist_offset/R_arm_wrist_CTRL/R_arm_pinky_1_offset/R_arm_pinky_1_CTRL/R_arm_pinky_2_offset" index="0"]
+transform = Transform3D(1, -1.38778e-17, -7.70372e-34, 1.38778e-17, 1, 5.55112e-17, 0, -5.55112e-17, 1, 0, 0, 0)
+
+[node name="BulletEmitter" parent="." instance=ExtResource("3_a2pv6")]
+
+[node name="ProjectileEmitter" parent="BulletEmitter" instance=ExtResource("4_f5mxu")]
+projectile_prefab = ExtResource("5_v7tun")
+
+[node name="FirePoint" type="Node3D" parent="."]
+
+[node name="Crosshairs" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_biuiu")
+
+[node name="ShootsSounds" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0619138, 0, -0.737175)
+volume_db = -4.571
+bus = &"Sfx"
+script = ExtResource("7_pg0a6")
+streams = Array[AudioStream]([ExtResource("8_ymenc"), ExtResource("9_d42yf"), ExtResource("10_coq5d"), ExtResource("11_1b0i1"), ExtResource("12_5fcqs"), ExtResource("13_e8tfb")])
+
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0893466, 0, -0.700826)
+volume_db = -30.0
+bus = &"Sfx"
+
+[editable path="Graphics/ArmsCrossbow"]

@@ -20,6 +20,8 @@ var last_attack_time = -9999.9
 signal fired
 signal out_of_ammo
 
+var held = false
+
 func _ready():
 	bullet_emitter.set_damage(damage)
 
@@ -27,6 +29,7 @@ func set_bodies_to_exclude(bodies: Array):
 	bullet_emitter.set_bodies_to_exclude(bodies)
 
 func attack(input_just_pressed: bool, input_held: bool):
+	held = input_held
 	if !automatic and !input_just_pressed:
 		return
 	if automatic and !input_held:
@@ -61,6 +64,9 @@ func set_active(a: bool):
 	visible = a
 	if !a:
 		animation_player.play("RESET")
+	else:
+		if animation_player.has_animation("pullout"):
+			animation_player.play("pullout",0.3)
 	if ambient_sound != null:
 		if a:
 			ambient_sound.play()
@@ -72,8 +78,14 @@ func is_idle() -> bool:
 
 func start_moving():
 	if animation_player.current_animation != "attack":
-		animation_player.play("moving",0.3)
+		if animation_player.has_animation("moving"):
+			animation_player.play("moving",0.3)
 
 func stop_moving():
 	if animation_player.current_animation != "attack":
+		pass
+		#animation_player.stop()
+
+func check_stop():
+	if !held:
 		animation_player.stop()

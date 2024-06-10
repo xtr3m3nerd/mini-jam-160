@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://nwoe8fcy6uet"]
+
+[ext_resource type="PackedScene" uid="uid://cnk5t26pru5gh" path="res://assets/models/arms/arms_anim_crossbow_v1.fbx" id="1_riuxi"]
+[ext_resource type="Material" uid="uid://01fj0l5tqiue" path="res://assets/materials/bolt_projectile_mat.tres" id="2_6yq6q"]
+[ext_resource type="Material" path="res://assets/materials/crate_mat.tres" id="3_tnuf1"]
+
+[node name="ArmsCrossbow" instance=ExtResource("1_riuxi")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(-10, 0, -1.50996e-06, 0, 10, 0, 1.50996e-06, 0, -10, 0, -3.21, 0)
+
+[node name="crossbow_bolt" parent="RootNode/arms/arm_geo_GRP/crossbow" index="0"]
+material_override = ExtResource("2_6yq6q")
+
+[node name="crossbow_base" parent="RootNode/arms/arm_geo_GRP/crossbow" index="1"]
+material_override = ExtResource("3_tnuf1")
+
+[node name="camera_perspective" parent="RootNode" index="1"]
+visible = false
