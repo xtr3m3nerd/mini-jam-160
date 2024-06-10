@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bn1tpncl45wul"
-path="res://.godot/imported/door.fbx-670bc7b105550ebc0b5504061d5aadf8.scn"
+uid="uid://cnk5t26pru5gh"
+path="res://.godot/imported/arms_anim_crossbow_v1.fbx-66f1c4ef44fe54d3fe122f9695103a1a.scn"
 
 [deps]
 
-source_file="res://assets/models/door.fbx"
-dest_files=["res://.godot/imported/door.fbx-670bc7b105550ebc0b5504061d5aadf8.scn"]
+source_file="res://assets/models/arms/arms_anim_crossbow_v1.fbx"
+dest_files=["res://.godot/imported/arms_anim_crossbow_v1.fbx-66f1c4ef44fe54d3fe122f9695103a1a.scn"]
 
 [params]
 
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"aiStandardSurface3": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/door_mat.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1
