@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dy38ko17q0xms"]
+[gd_scene load_steps=6 format=3 uid="uid://dy38ko17q0xms"]
 
 [ext_resource type="Script" path="res://prefabs/pickups/pickup.gd" id="1_lfy5w"]
-[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://prefabs/pickups/base_orb.tscn" id="2_sk1oh"]
+[ext_resource type="PackedScene" uid="uid://5bewye2ailts" path="res://assets/models/base_orb.tscn" id="2_sk1oh"]
+[ext_resource type="PackedScene" uid="uid://5q8gtlr2jhi7" path="res://prefabs/pickups/base_orb.tscn" id="3_8fq2v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bujhy"]
 radius = 1.0
@@ -29,6 +30,8 @@ text = "Press 'E' to pick up"
 
 [node name="BaseOrb" parent="." instance=ExtResource("2_sk1oh")]
 base_material = SubResource("StandardMaterial3D_0huoh")
+
+[node name="BaseOrb2" parent="." instance=ExtResource("3_8fq2v")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
