@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://5bxcu2taliw2" path="res://assets/models/levels/level2_v3.fbx" id="1_ityr7"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_70lf7"]
 [ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/pickups/dropoff_zone.tscn" id="3_hdslu"]
-[ext_resource type="PackedScene" uid="uid://cep84ac8datp2" path="res://prefabs/door.tscn" id="3_tf0u8"]
+[ext_resource type="PackedScene" uid="uid://bogi02pfqtxye" path="res://prefabs/door.tscn" id="3_tf0u8"]
 [ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickups/pickup.tscn" id="4_xfhgf"]
 [ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/characters/enemies/templates/tank_demon.tscn" id="5_do74b"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/characters/enemies/templates/basic_demon.tscn" id="6_lihu3"]
