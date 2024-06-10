@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dh026oj3ubdn7" path="res://scenes/menu/level_select.tscn" id="3_xn3bn"]
 [ext_resource type="PackedScene" uid="uid://clr15a5n0mxxt" path="res://scenes/menu/credits.tscn" id="4_dq7di"]
 [ext_resource type="PackedScene" uid="uid://lregacajuyic" path="res://scenes/menu/options.tscn" id="5_7w5l8"]
-[ext_resource type="PackedScene" uid="uid://djdntaqlet7wd" path="res://scenes/menu/menu_background.tscn" id="7_ccd7v"]
+[ext_resource type="PackedScene" uid="uid://bus5e6o56itxc" path="res://scenes/menu/menu_background.tscn" id="7_ccd7v"]
 
 [node name="Menu" type="Node" groups=["menu"]]
 script = ExtResource("1_nj06s")

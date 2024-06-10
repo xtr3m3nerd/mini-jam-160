@@ -17,4 +17,5 @@ script = ExtResource("1_pnvdp")
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_5gwvi")
 volume_db = -7.895
+autoplay = true
 bus = &"Sfx"
