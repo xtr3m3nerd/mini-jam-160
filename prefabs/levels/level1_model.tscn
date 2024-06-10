@@ -1,10 +1,9 @@
-[gd_scene load_steps=129 format=3 uid="uid://dftss8ns3r35i"]
+[gd_scene load_steps=128 format=3 uid="uid://dftss8ns3r35i"]
 
 [ext_resource type="PackedScene" uid="uid://cs8ey1otrqsnp" path="res://assets/models/levels/level1_v1.fbx" id="1_htrll"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="2_t1huk"]
 [ext_resource type="PackedScene" uid="uid://dbi7q70ylhenu" path="res://prefabs/enemies/test_enemy.tscn" id="3_4pkhr"]
 [ext_resource type="Material" uid="uid://qbkw0r752jsf" path="res://assets/materials/barrel_material.tres" id="4_ml3rt"]
-[ext_resource type="PackedScene" uid="uid://11x824ts84ue" path="res://prefabs/enemies/TankEnemy.tscn" id="5_lidmk"]
 [ext_resource type="PackedScene" uid="uid://dy38ko17q0xms" path="res://prefabs/pickup.tscn" id="6_58ve7"]
 [ext_resource type="PackedScene" uid="uid://owmifl5gi0ks" path="res://prefabs/dropoff_zone.tscn" id="7_4natg"]
 
@@ -1014,10 +1013,7 @@ shape = SubResource("ConcavePolygonShape3D_e1nnm")
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/level1" index="119"]
 transform = Transform3D(0, 0, -0.0985188, 0, 0.0985188, 0, 0.0985188, 0, 0, 0.0419087, 0.0189129, -0.0092205)
 
-[node name="TankEnemy" parent="." index="10" instance=ExtResource("5_lidmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -6)
-
-[node name="lights" type="Node3D" parent="." index="11"]
+[node name="lights" type="Node3D" parent="." index="10"]
 
 [node name="Lantern_Light_1" type="OmniLight3D" parent="lights" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65953, 2.65347, 1.98892)
@@ -1109,24 +1105,24 @@ light_color = Color(1, 0.694875, 0.328635, 1)
 light_energy = 0.459
 light_bake_mode = 1
 
-[node name="Pickup" parent="." index="12" instance=ExtResource("6_58ve7")]
+[node name="Pickup" parent="." index="11" instance=ExtResource("6_58ve7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.843, 1.30738, 17.1851)
 color = Color(0, 1, 0, 1)
 
-[node name="Pickup2" parent="." index="13" instance=ExtResource("6_58ve7")]
+[node name="Pickup2" parent="." index="12" instance=ExtResource("6_58ve7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8068, 1.50975, 5.82592)
 
-[node name="Pickup3" parent="." index="14" instance=ExtResource("6_58ve7")]
+[node name="Pickup3" parent="." index="13" instance=ExtResource("6_58ve7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9231, 0.5655, -23.9982)
 color = Color(1, 0, 0, 1)
 
-[node name="DropoffZone" parent="." index="15" instance=ExtResource("7_4natg")]
+[node name="DropoffZone" parent="." index="14" instance=ExtResource("7_4natg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72378, 0.96611, -0.313251)
 
-[node name="DropoffZone4" parent="." index="16" instance=ExtResource("7_4natg")]
+[node name="DropoffZone4" parent="." index="15" instance=ExtResource("7_4natg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15415, 0.96611, -3.11035)
 
-[node name="DropoffZone3" parent="." index="17" instance=ExtResource("7_4natg")]
+[node name="DropoffZone3" parent="." index="16" instance=ExtResource("7_4natg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72378, 0.96611, -5.90812)
 
 [connection signal="dropped_off" from="DropoffZone" to="." method="_on_dropped_off"]

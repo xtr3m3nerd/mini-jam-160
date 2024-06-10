@@ -12,7 +12,7 @@ tile_1001 = ExtResource("2_0ycva")
 tile_1002 = ExtResource("3_6ge8b")
 tile_1003 = ExtResource("4_wsx1l")
 
-[sub_resource type="Shader" id="Shader_g2otl"]
+[sub_resource type="Shader" id="Shader_jlrom"]
 code = "// NOTE: This UDIM Shader is automatically generated
 
 shader_type spatial;
@@ -71,7 +71,7 @@ void fragment() {
 
 [resource]
 render_priority = 0
-shader = SubResource("Shader_g2otl")
+shader = SubResource("Shader_jlrom")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
